@@ -18,8 +18,8 @@ from sklearn.metrics import mean_squared_error
 global outputFilePath
 global recordFileName
 
-outputFilePath = './data/Step-0_ModuleResult/'
-recordFileName = 'record_ver002_20220527-0039_4_8_12.csv'
+outputFilePath = './data/'
+recordFileName = 'Step-0_MethodTwoResult.csv'
 limit = 8   #決定rmse最高上限
 
 # 使用bat或是直接運行時，在terminal上留下時間紀錄
@@ -131,7 +131,7 @@ def iterate(func):
                                                 'batch_size': batch_size,
                                                 }
                                             
-                                            recordDf = pd.read_csv('./data/Step-0_ModuleResult/record_ver001.csv', index_col=False)
+                                            recordDf = pd.read_csv('./data/Step-0_MethodOneResult.csv', index_col=False)
                                             if (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1).any():
                                                 #如果比對到已經跑過的資料則Continue
                                                 # writeLog('The parameters have been trained before.')

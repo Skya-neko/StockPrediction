@@ -1,1 +1,0 @@
-C:\Users\Vivian\anaconda3\python.exe   D:\StockPrediction\package\testspace\module_remake_ANN_keras.py  >>   D:\StockPrediction\data\Stock_Prediction\record_ver002\log_2022-05-19.txt  2>&1
