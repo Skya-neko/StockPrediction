@@ -1,27 +1,22 @@
+import matplotlib
 import numpy as np
 import pandas as pd
+
+matplotlib.use("TkAgg")
+print(matplotlib.get_backend())
 import matplotlib.pyplot as plt
 import time   # 計算function執行時間
 from datetime import datetime
 import math
-import os
-import concurrent
 
 from tensorflow.compat.v1.keras import Sequential
 from tensorflow.compat.v1.keras.layers import Dense
 from tensorflow.compat.v1.keras.optimizers import SGD
 
 #可以調整Dense權重參數的模組
-from tensorflow.compat.v1.keras import initializers
-from tensorflow.compat.v1.keras import regularizers
-from tensorflow.compat.v1.keras import constraints
-
-from  tensorflow.compat.v1 import set_random_seed
-
 
 
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
 
 from sklearn.metrics import mean_squared_error
 import joblib
@@ -57,8 +52,9 @@ def PltCombData( ):
     
     #設定樣式
     plt.grid(linestyle='-.')                            #在圖上顯示網底
-    # plt.savefig(self.outputFilePath+self.case+'.png')
-    plt.show()
+    plt.savefig('./data/Step-0_ANNOneResult.png')
+    plt.close()   #prevent matplotlib auto plot
+    # plt.show()
         
 
 
@@ -77,6 +73,8 @@ feature_train, feature_test,target_train, target_test = train_test_split(feature
 predictedDays = int(math.ceil(0.25*len(target) )) #int(math.ceil(testSize*( len(data) - nDay )))               #pridectedDays用模型預測出的數據天數 - (nPeriod-1) 
 
 scaler = joblib.load(r'.\data\Step-1_Scaler.gz')
+feature_train_scaled = scaler.fit_transform(feature_train)
+
 
 def iterate(func):
     # optimizerList = ['sgd']
@@ -203,10 +201,10 @@ def main(paramDict):
         rowDf  = pd.DataFrame([recordDict], columns=recordDict.keys())
         
         # init record file
-        # rowDf.to_csv(outputFilePath+'Step-0_MethodOneResult.csv', encoding='big5', index=False)#init record file
-        # recordDf = pd.read_csv(outputFilePath+'Step-0_MethodOneResult.csv', index_col=False).head(0)  #init record file
+        # rowDf.to_csv(outputFilePath+'Step-0_ANNOneResult.csv', encoding='big5', index=False)#init record file
+        # recordDf = pd.read_csv(outputFilePath+'Step-0_ANNOneResult.csv', index_col=False).head(0)  #init record file
         
-        recordDf = pd.read_csv(outputFilePath+'Step-0_MethodOneResult.csv', index_col=False)
+        recordDf = pd.read_csv(outputFilePath+'Step-0_ANNOneResult.csv', index_col=False)
         recordDf = pd.concat([recordDf, rowDf], axis = 0).reset_index()
         try:
             recordDf = recordDf.drop(['index'], axis = 1)
@@ -215,7 +213,7 @@ def main(paramDict):
             print('no level_0 or index column')
         # recordDf = recordDf.drop([0,1,2,3])
         finally:
-            recordDf.to_csv(outputFilePath+'Step-0_MethodOneResult.csv', encoding='big5', index=False)
+            recordDf.to_csv(outputFilePath+'Step-0_ANNOneResult.csv', encoding='big5', index=False)
     except ValueError:
         print("module can't converge")
         
@@ -225,7 +223,6 @@ def main(paramDict):
 
 # main()
 
-# iterate(main)
+iterate(main)
 
-# with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
-#     result = executor.submit(iterate, main).result()
+

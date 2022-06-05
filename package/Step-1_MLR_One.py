@@ -54,8 +54,9 @@ def PltCombData( ):
     
     #設定樣式
     plt.grid(linestyle='-.')                                            #在圖上顯示網底
-    # plt.savefig(self.outputFilePath+self.case+'.png')
-    plt.show()
+    plt.savefig('./data/Step-0_MLROneResult.png')
+    plt.close()  # prevent matplotlib auto plot
+    # plt.show()
         
 
      
@@ -92,6 +93,6 @@ pred = model.predict(feature_test_scaled)                   #predictByTest是預
 score = round( model.score(feature_test, target_test) , 3 )
       
 CombData(pred)
-# PltCombData()
+PltCombData()
 
 rmse = mean_squared_error(target_test, pred, squared=False)
