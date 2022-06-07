@@ -2,99 +2,89 @@ import pandas as pd
 from datetime import datetime, timedelta 
 
 
-filePath = './data/'
-monthFile = 'Step-2_MonthBasicAnalysis.csv'
-quarterFile = 'Step-2_QuarterBasicAnalysis.csv'
+# Input File
+monthFile = './data/Step-2_MonthBasicAnalysis.csv'
+quarterFile = './data/Step-2_QuarterBasicAnalysis.csv'
+scoreFile = './data/Step-2_SentimentScore.csv'
+priceFile = './data/Step-2_StockPrice.csv'
 
+# Output File
+datasetFile = './data/Step-1_Dataset.csv'
 
-month = pd.read_csv(filePath+monthFile)[::-1].reset_index(drop=True)
-quarter = pd.read_csv(filePath+quarterFile,encoding='big5')[::-1].reset_index(drop=True)
-quarter.drop([0,1,2,3], inplace=True)
+# ========================================================================
+# Monthly Indicators
+# ========================================================================
+dateList = []
+MIndList = []
 
+monthDF = pd.read_csv(monthFile)[::-1].reset_index(drop=True)     # reverse
 
-
-# In[]   月營收
-
-data={}
-
-i_date = datetime.strptime('2017-01-01','%Y-%m-%d')
+i_date = datetime.strptime('2017-01-01','%Y-%m-%d')               # pointer
 endDate = datetime.strptime('2021-12-31','%Y-%m-%d')
 
-dateList = []
-indicatorList = []
-
-count = 0
-i_last_mon = i_date.strftime('%Y-%m-%d')[5:7]
+# Get all dates, values  in duration
 while i_date <= endDate:
     dateList.append(i_date.strftime('%Y-%m-%d'))
+    i_year = i_date.strftime('%Y-%m-%d')[:4]
     i_mon = i_date.strftime('%Y-%m-%d')[5:7]
-    if i_mon != i_last_mon:
-        count += 1
-    indicatorList.append(month['revenue'][count])
-    
-    
-    i_last_mon = i_mon
+    i_value = monthDF[ (monthDF['year']==int(i_year)) & (monthDF['month']==int(i_mon)) ]['revenue']
+    i_value = i_value.item()                                       # Return the first element in the series
+    MIndList.append(i_value)
+
     i_date += timedelta(days=1)
 
-
-data['date'] = dateList
-data['Rev_Mon'] = indicatorList
-
-dataDf = pd.DataFrame(data)
-# dataDf.to_csv(filePath+'allIndicator.csv', index=False)
-    
-    
-    
- # In[]  季指標  
+# Debug data
+# data={}
+# data['date'] = dateList
+# data['Rev_Mon'] = MIndList
+# dataDf = pd.DataFrame(data)
 
 
-allList = []
 
 
-for year in range(2017,2022):
-    for QQ in range(1,5):
-        rowIdx  = quarter['year'].isin([year]) & quarter['quarter'].isin([QQ])
-        row = quarter[rowIdx].values.tolist()[0]
-        if QQ == 1:
-            i_date = datetime.strptime(f'{year}-01-01','%Y-%m-%d')
-            endDate = datetime.strptime(f'{year}-03-31','%Y-%m-%d')
-            while i_date <= endDate:
-                row_copy = row.copy()
-                row_copy.append(i_date.strftime('%Y-%m-%d'))
-                allList.append(row_copy)
-                i_date += timedelta(days=1)
-        elif QQ == 2:
-            i_date = datetime.strptime(f'{year}-04-01','%Y-%m-%d')
-            endDate = datetime.strptime(f'{year}-06-30','%Y-%m-%d')
-            while i_date <= endDate:
-                row_copy = row.copy()
-                row_copy.append(i_date.strftime('%Y-%m-%d'))
-                allList.append(row_copy)
-                i_date += timedelta(days=1)
-        elif QQ == 3:
-            i_date = datetime.strptime(f'{year}-07-01','%Y-%m-%d')
-            endDate = datetime.strptime(f'{year}-09-30','%Y-%m-%d')
-            while i_date <= endDate:
-                row_copy = row.copy()
-                row_copy.append(i_date.strftime('%Y-%m-%d'))
-                allList.append(row_copy)
-                i_date += timedelta(days=1)
-        elif QQ == 4:
-            i_date = datetime.strptime(f'{year}-10-01','%Y-%m-%d')
-            endDate = datetime.strptime(f'{year}-12-31','%Y-%m-%d')
-            while i_date <= endDate:
-                row_copy = row.copy()
-                row_copy.append(i_date.strftime('%Y-%m-%d'))
-                allList.append(row_copy)
-                i_date += timedelta(days=1)
+# ========================================================================
+# Quarterly Indicators
+# ========================================================================
+QIndList = []
+
+quarterDF = pd.read_csv(quarterFile,encoding='big5')[::-1].reset_index(drop=True)
+quarterDF.drop([0,1,2,3], inplace=True)
+
+# Get all dates, values  in duration
+for i_year in range(2017,2022):
+    for i_quarter in range(1,5):
+        mask = ((quarterDF['year'] == i_year) & (quarterDF['quarter'] == i_quarter))
+        row = quarterDF[mask].values.tolist()[0]
+        if i_quarter == 1:
+            i_date = datetime.strptime(f'{i_year}-01-01','%Y-%m-%d')
+            endDate = datetime.strptime(f'{i_year}-03-31','%Y-%m-%d')
+        elif i_quarter == 2:
+            i_date = datetime.strptime(f'{i_year}-04-01', '%Y-%m-%d')
+            endDate = datetime.strptime(f'{i_year}-06-30', '%Y-%m-%d')
+        elif i_quarter == 3:
+            i_date = datetime.strptime(f'{i_year}-07-01', '%Y-%m-%d')
+            endDate = datetime.strptime(f'{i_year}-09-30', '%Y-%m-%d')
+        elif i_quarter == 4:
+            i_date = datetime.strptime(f'{i_year}-10-01', '%Y-%m-%d')
+            endDate = datetime.strptime(f'{i_year}-12-31', '%Y-%m-%d')
+        while i_date <= endDate:
+            row_copy = row.copy()                          # Must use row_copy
+            row_copy.append(i_date.strftime('%Y-%m-%d'))
+            QIndList.append(row_copy)
+            i_date += timedelta(days=1)
 
 
-columnsList = quarter.columns.tolist()
+
+
+# ========================================================================
+# Quarterly & Monthly Indicators
+# ========================================================================
+columnsList = quarterDF.columns.tolist()
 columnsList.append('date')
 
-df = pd.DataFrame(allList, columns = columnsList)
-df['月營收'] = indicatorList
-df = df [[
+indicatorsDF = pd.DataFrame(QIndList, columns = columnsList)
+indicatorsDF['月營收'] = MIndList
+indicatorsDF = indicatorsDF [[
           'date',
           '月營收',
           'EPS',                                                         #EPS
@@ -105,10 +95,11 @@ df = df [[
           '流動比率','速動比率','利息保障倍數',                            #償債能力
           ]]
 
-# In[]   大統合
-
-scoreDf = pd.read_csv('data/Step-2_SentimentScore.csv')
-stockPriceDf = pd.read_csv('data/Step-2_StockPrice.csv')
+# ========================================================================
+# Stock Price & Sentiment Score & Indicators
+# ========================================================================
+scoreDf = pd.read_csv(scoreFile)
+stockPriceDf = pd.read_csv(priceFile)
 
 label_col = ['close']
 score_col = ['Score']
@@ -122,6 +113,7 @@ indicator_col = [
           '應收款項週轉率','存貨週轉率','不動產及設備週轉率','總資產週轉率', #經營能力
           '流動比率','速動比率','利息保障倍數',                            #償債能力
           ]
+
 dataset_col = ['date']
 dataset_col.extend(label_col)
 dataset_col.extend(score_col)
@@ -130,16 +122,16 @@ dataset_col.extend(indicator_col)
 
 
 datasetList = []
-for specDate in range(1,980):
+for specDate in range(1,980):   # ????????????????why 980????
     print(stockPriceDf['date'][specDate])
-    
-    
+
+
     i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')
     i_date += timedelta(days=-1)
     i_date_str = i_date.strftime('%Y-%m-%d')
-    
+
     rowList = [i_date_str,stockPriceDf['close'][specDate]]
-    
+
     idx = scoreDf['PublishDate'].isin([i_date_str])
     if scoreDf[idx].empty:
         score_i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')
@@ -148,12 +140,12 @@ for specDate in range(1,980):
             score_i_date_str = score_i_date.strftime('%Y-%m-%d')
             idx = scoreDf['PublishDate'].isin([score_i_date_str])
         rowList.extend(scoreDf[idx][score_col].values.tolist()[0])
-            
+
     else:
         idx = scoreDf['PublishDate'].isin([i_date_str])
         rowList.extend(scoreDf[idx][score_col].values.tolist()[0])
         # print(scoreDf[idx])
-        
+
     idx = stockPriceDf['date'].isin([i_date_str])
     if stockPriceDf[idx].empty:
         stock_i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')
@@ -162,20 +154,20 @@ for specDate in range(1,980):
             stock_i_date_str = stock_i_date.strftime('%Y-%m-%d')
             idx = stockPriceDf['date'].isin([stock_i_date_str])
         rowList.extend(stockPriceDf[idx][stock_col].values.tolist()[0])
-            
+
     else:
         idx = stockPriceDf['date'].isin([i_date_str])
         rowList.extend(stockPriceDf[idx][stock_col].values.tolist()[0])
         # print(stockPriceDf[idx][stock_col])
-    
-    idx = df['date'].isin([i_date_str])
-    rowList.extend(df[idx][indicator_col].values.tolist()[0])
-    # print(df[idx][indicator_col])
-    
+
+    idx = indicatorsDF['date'].isin([i_date_str])
+    rowList.extend(indicatorsDF[idx][indicator_col].values.tolist()[0])
+    # print(indicatorsDF[idx][indicator_col])
+
     datasetList.append(rowList)
     rowList = []
 
 datasetDf = pd.DataFrame(datasetList, columns = dataset_col)
-datasetDf.to_csv('data/Step-1_Dataset.csv',encoding='big5',index=False)
+datasetDf.to_csv(datasetFile,encoding='big5',index=False)
 
 # print(datasetDf.iloc[:,datasetDf.columns != 'close'].columns.tolist())
