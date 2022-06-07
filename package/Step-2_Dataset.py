@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 # Input File
 monthFile = './data/Step-2_MonthBasicAnalysis.csv'
 quarterFile = './data/Step-2_QuarterBasicAnalysis.csv'
-scoreFile = './data/Step-2_SentimentScore.csv'
+scoreFile = './data/Step-2-B_SentimentScore.csv'
 priceFile = './data/Step-2_StockPrice.csv'
 
 # Output File

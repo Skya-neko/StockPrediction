@@ -181,7 +181,7 @@ def CalSentimentScore(sentence):
 
 def SaveSentenceTo(sentence_stockIndustry_list, sentence_stockName_list, sentence_stock_id_list, timestamp,sentence):
     if sentence_stockIndustry_list == []:
-        path = 'data/Step-4_SentenceSliced/{}/{}_{}/'.format('無提到公司','無股票ID','無公司')
+        path = 'data/Step-4-A_SentenceSliced/{}/{}_{}/'.format('無提到公司','無股票ID','無公司')
         file = '{}{}_{}_{}.csv'.format(timestamp[:4],timestamp[5:7],'無股票ID','無公司')
         if not os.path.exists(path):
                 os.makedirs(path)
@@ -199,7 +199,7 @@ def SaveSentenceTo(sentence_stockIndustry_list, sentence_stockName_list, sentenc
         
     else:
         for industry, stockid, name in zip(sentence_stockIndustry_list, sentence_stock_id_list,sentence_stockName_list): 
-            path = 'data/Step-4_SentenceSliced/{}/{}_{}/'.format(industry,stockid,name)
+            path = 'data/Step-4-A_SentenceSliced/{}/{}_{}/'.format(industry,stockid,name)
             file = '{}{}_{}_{}.csv'.format(timestamp[:4],timestamp[5:7],stockid,name)
             if not os.path.exists(path):
                 os.makedirs(path)
@@ -276,14 +276,14 @@ for i_year in range(2018,2019):
                 
               
 #                 if sentence_stockIndustry_list == []:
-#                     path = 'data/Step-4_SentenceSliced/{}/{}_{}/'.format('無提到公司','無股票ID','無公司')
+#                     path = 'data/Step-4-A_SentenceSliced/{}/{}_{}/'.format('無提到公司','無股票ID','無公司')
 #                     file = '{}{}_{}_{}.csv'.format(timestamp[:4],timestamp[5:7],'無股票ID','無公司')
 #                     if os.path.exists(path+file):
 #                         os.remove(path+file)
 #                         logger.info('Delete file: '+path+file)
 #                 else:
 #                     for industry, stockid, name in zip(sentence_stockIndustry_list, sentence_stock_id_list,sentence_stockName_list): 
-#                         path = 'data/Step-4_SentenceSliced/{}/{}_{}/'.format(industry,stockid,name)
+#                         path = 'data/Step-4-A_SentenceSliced/{}/{}_{}/'.format(industry,stockid,name)
 #                         file = '{}{}_{}_{}.csv'.format(timestamp[:4],timestamp[5:7],stockid,name)
 #                         if os.path.exists(path+file):
 #                             os.remove(path+file)

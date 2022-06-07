@@ -22,7 +22,7 @@ outputFilePath = './data/'
 recordFileName = 'Step-0_ANNTwoResult.csv'
 limit = 8   #決定rmse最高上限
 
-# 使用bat或是直接運行時，在terminal上留下時間紀錄
+# Log on terminal
 def writeLog(something):
     print(f"INFO - {datetime.now().strftime('%Y/%m/%d %H:%M:%S')} - ",something)
 

@@ -48,7 +48,7 @@ def SumSentimentScore(categoryKeyword,category):
                         industry = stockList['industry_category'][i_stock]
                         stockid = stockList['stock_id'][i_stock]
                         name = stockList['stock_name'][i_stock]
-                        readPath = 'data/Step-4_SentenceSliced/{}/{}_{}/'.format(industry,stockid,name)
+                        readPath = 'data/Step-4-A_SentenceSliced/{}/{}_{}/'.format(industry,stockid,name)
                         readFile = '{}{}_{}_{}.csv'.format(i_year,i_month,stockid,name)
                         if os.path.exists(readPath+readFile):
                             df = pd.read_csv(readPath+readFile)
@@ -86,7 +86,7 @@ def SumSentimentScore(categoryKeyword,category):
                 date = date + timedelta(days=1)
 
             df_all = df_all.sort_values(by=['PublishDate'],ascending = True)
-            df_all.to_csv('data/Step-3_SentimentScore/'+f'{category}_{i_year}{i_month}.csv', index=False)
+            df_all.to_csv('data/Step-3-A_SentimentScore/'+f'{category}_{i_year}{i_month}.csv', index=False)
             
             
                     

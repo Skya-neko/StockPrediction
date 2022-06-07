@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 filePath = 'data/'
-file = 'Step-2_SentimentScore.csv'
+file = 'Step-2-B_SentimentScore.csv'
 data = pd.read_csv(filePath+file)
 
 # data['PublishDate'] = data['PublishDate'].dt.strftime("%Y-%m-%d")             #為了讓plt時的xlabel不要顯示00:00:00
