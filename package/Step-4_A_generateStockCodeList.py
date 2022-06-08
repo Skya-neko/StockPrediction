@@ -1,3 +1,6 @@
+"""
+Add new categories into the stock companies list.
+"""
 import pandas as pd
 
 dataset = pd.read_csv('./data/Step-3_2330HistoryNews/news_2330_201701.csv')
@@ -5,22 +8,17 @@ article = dataset['content'][4]
 timestamp = dataset['timestamp'][4]
 
 marketKeyword = ['台股', '大盤', '外資', '投信', '自營商', '法人', '加權指數', '美股', '台灣', '美國', '景氣', ]
-TSMCKeyword = ['半導體', '電子', '晶圓', '台積電', '奈米', '英特爾']
-otherKeyword = ['金融', '鋼鐵', '三星', '中國', '大陸', '避險', '自行買賣', '會計師', '分析師', ]
+TSMCKeyword = ['半導體', '電子', '晶圓', '台積電', '奈米', '蘋果', '蘋概股']  #還要再加一個"蘋果"、"蘋概股"才是!  他可是台積電第一大客戶
+antiTSMCKeyword = ['三星', '英特爾']
+# otherKeyword = ['金融', '鋼鐵', '三星', '中國', '大陸', '避險', '自行買賣', '會計師', '分析師', ]
 
 
 def recover_stock_list_file():
     from FinMind.data import DataLoader
     api = DataLoader()
-    # api.login_by_token(api_token='token')
-    # api.login(user_id='user_id',password='password')
     df = api.taiwan_stock_info()
     df['stock_name'] = df['stock_name'].apply(lambda x: x.replace('*', '') if '*' in x else x)
     df.to_csv('./data/Step-3_StockCodeList.csv', encoding='utf-8', index=False)
-
-
-recover_stock_list_file()
-
 
 def add_name_in_stock_list(new_industry, new_stock_id, new_name):
     # check whether the new_name in stockCodeDF
@@ -41,14 +39,23 @@ def add_name_in_stock_list(new_industry, new_stock_id, new_name):
         new_df.to_csv('./data/Step-3_StockCodeList.csv', encoding='utf-8', index=False)
 
 
+recover_stock_list_file()
+
 for market in marketKeyword:
     add_name_in_stock_list('無產業分類', 'market', market)
 
 for TSMC in TSMCKeyword:
     add_name_in_stock_list('無產業分類', 'TSMC', TSMC)
 
-for other in otherKeyword:
-    add_name_in_stock_list('無產業分類', 'other', other)
+for antiTSMC in antiTSMCKeyword:
+    add_name_in_stock_list('無產業分類', 'antiTSMC', antiTSMC)
+
+# 加權指數 is already in df
+# 台積電 is already in df
+# 三星 is already in df
+
+# for other in otherKeyword:
+#     add_name_in_stock_list('無產業分類', 'other', other)
 
 stockCodeDF = pd.read_csv('./data/Step-3_StockCodeList.csv')
 

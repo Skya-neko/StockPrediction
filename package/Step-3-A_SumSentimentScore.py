@@ -13,7 +13,7 @@ antiTSMCKeyword = ['三星', '英特爾']
 
 stockCodeDF = pd.read_csv('./data/Step-3_StockCodeList.csv')
 
-def sum_sentiment_score ( categoryKeyword, category):
+def sum_sentiment_score(categoryKeyword, category):
     for i_year in range(2017,2019):
         for i_month in range(1,13):
             # Replace i_month to meet file keywords
