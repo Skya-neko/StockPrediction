@@ -1,3 +1,9 @@
+"""
+This script doesn't count TSMC and marketing categories in. 
+It sum all sentiment score including other companies we want.
+Therefore, this is not the correct script for sum up sentiment score for my study.
+"""
+
 import pandas as pd
 import time
 from ckiptagger import WS, POS, NER

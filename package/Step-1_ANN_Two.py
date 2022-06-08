@@ -23,7 +23,7 @@ recordFileName = 'Step-0_ANNTwoResult.csv'
 limit = 8   #決定rmse最高上限
 
 # Log on terminal
-def writeLog(something):
+def write_log(something):
     print(f"INFO - {datetime.now().strftime('%Y/%m/%d %H:%M:%S')} - ",something)
 
 
@@ -83,7 +83,7 @@ def iterateDay():
         endDate = datasetDf["date"][i_dataset]
 
 
-        writeLog(f'{"="*20} predict date{startDate} ~ {endDate} {"="*20} ')
+        write_log(f'{"="*20} predict date{startDate} ~ {endDate} {"="*20} ')
 
         new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date', 'close'])]  # .values                        #單獨抓出feature的值，並將其指定給feature。對df使用values函式後，資料型態就會變成ndarray
         # 劃分特徵值和目標值(都要變成ndarray才可以輸入train_test_split
@@ -134,8 +134,8 @@ def iterate(func):
                                             recordDf = pd.read_csv('./data/Step-0_ANNOneResult.csv', index_col=False)
                                             if (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1).any():
                                                 #如果比對到已經跑過的資料則Continue
-                                                # writeLog('The parameters have been trained before.')
-                                                # writeLog('Continue...')
+                                                # write_log('The parameters have been trained before.')
+                                                # write_log('Continue...')
                                                 continue
                                             recordDf = pd.read_csv(outputFilePath+recordFileName, index_col=False)
                                             ifSameRow = (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
@@ -145,31 +145,31 @@ def iterate(func):
                                                 if ifLessThan.any(): #如果這些次參數訓練出的所有時段的rmse都小於限制，則   
                                                     ifSameDate = (recordDf[['startDate','endDate']].loc[ifLessThan.index] == pd.Series({'startDate':startDate, 'endDate':endDate}) ).all(1)
                                                     if ifSameDate.any(): #如果這個時間段已經被訓練過，則
-                                                        # writeLog('SameRow,LessThan,Date yes')
-                                                        # writeLog('The parameters have been trained before.')
-                                                        # writeLog(recordDf[['startDate','endDate']].loc[ifSameDate.index])
-                                                        # writeLog('Continue...')
+                                                        # write_log('SameRow,LessThan,Date yes')
+                                                        # write_log('The parameters have been trained before.')
+                                                        # write_log(recordDf[['startDate','endDate']].loc[ifSameDate.index])
+                                                        # write_log('Continue...')
                                                         continue
                                                     
                                                     # elif not ifSameDate.any():
                                                     else:
-                                                        # writeLog('SameDate Noooo')
-                                                        # writeLog(f'New parameters during {startDate}~{endDate}')
-                                                        # writeLog('Input')
-                                                        # writeLog(str(paramDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
+                                                        # write_log('SameDate Noooo')
+                                                        # write_log(f'New parameters during {startDate}~{endDate}')
+                                                        # write_log('Input')
+                                                        # write_log(str(paramDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
                                                         func(paramDict)
                                                 else:
-                                                    # writeLog('LessThan Noooo')
-                                                    # writeLog(f'rmse > {limit}')
-                                                    # writeLog(recordDf['rmse'].loc[ifLessThan.index])
-                                                    # writeLog('continue...')
+                                                    # write_log('LessThan Noooo')
+                                                    # write_log(f'rmse > {limit}')
+                                                    # write_log(recordDf['rmse'].loc[ifLessThan.index])
+                                                    # write_log('continue...')
                                                     continue
                                                     
                                             else:
-                                                # writeLog('SameRow Noooo')
-                                                # writeLog('New parameters first time.')
-                                                # writeLog('Input')
-                                                # writeLog(str(paramDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
+                                                # write_log('SameRow Noooo')
+                                                # write_log('New parameters first time.')
+                                                # write_log('Input')
+                                                # write_log(str(paramDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
                                                 func(paramDict)
                                                         
 
@@ -179,7 +179,7 @@ def iterate(func):
 def main(paramDict):
     
     
-    # writeLog('Execute')
+    # write_log('Execute')
     t0 = time.time()
     set_random_seed(paramDict['random_seed'])
     
@@ -205,7 +205,7 @@ def main(paramDict):
     pred =  model.predict(feature_test_scaled)
     
     score = model.evaluate(feature_test_scaled, target_test,verbose=1)
-    # writeLog(score)
+    # write_log(score)
     model.summary()
     
     CombData(pred)
@@ -216,7 +216,7 @@ def main(paramDict):
     # PltCombData()
     try:
         rmse = mean_squared_error(target_test, pred, squared=False)
-        # writeLog(rmse)
+        # write_log(rmse)
         rmseStr = str(rmse)[:7].replace('.','_')
         
         t1 = time.time()
@@ -241,8 +241,8 @@ def main(paramDict):
             'startDate':startDate,
             'endDate':endDate,
             }
-        writeLog('Output')
-        writeLog(str(recordDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
+        write_log('Output')
+        write_log(str(recordDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
         recordDict.update(paramDict)
         rowDf  = pd.DataFrame([recordDict], columns=recordDict.keys())
         
@@ -256,12 +256,12 @@ def main(paramDict):
             recordDf = recordDf.drop(['index'], axis = 1)
             recordDf = recordDf.drop(['level_0'], axis = 1)
         except KeyError:
-            writeLog('no level_0 or index column')
+            write_log('no level_0 or index column')
         # recordDf = recordDf.drop([0,1,2,3])
         finally:
             recordDf.to_csv(outputFilePath+recordFileName, encoding='big5', index=False)
     except ValueError:
-        writeLog("module can't converge")
+        write_log("module can't converge")
 
     #釋放記憶體空間
     del model
@@ -269,7 +269,7 @@ def main(paramDict):
 
 
 iterateDay()
-writeLog('The End of Execution')
+write_log('The End of Execution')
 
 
 r"""
