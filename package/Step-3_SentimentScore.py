@@ -56,11 +56,12 @@ coerce_dictionary = construct_dictionary(coerce_dictionary)
 def sum_category_score(categoryList,category):
     timestampList = []
     scoreList = []
-    allKeywordScoreDF = []
+    allKeywordScoreDF = pd.DataFrame()
     # Find out sentences_of_a_keyword.csv file name we want.
     stockCodeDF = pd.read_csv('./data/Step-3_StockCodeList.csv')
-    categoryIdx = stockCodeDF.isin(categoryList)
+    categoryIdx = stockCodeDF['stock_name'].isin(categoryList)
     categoryInfoDF = stockCodeDF[categoryIdx]
+    categoryInfoDF.reset_index(drop=True,inplace=True)
     for i_keyword in range(len(categoryInfoDF)):
         industry = categoryInfoDF['industry_category'][i_keyword]
         stockId = categoryInfoDF['stock_id'][i_keyword]
@@ -89,17 +90,17 @@ def sum_category_score(categoryList,category):
         keywordScoreDF = pd.DataFrame({'PublishDate': timestampList, 'Score': scoreList})
         keywordScoreDF = keywordScoreDF.sort_values(by=['PublishDate'], ascending=True)
         keywordScoreDF = keywordScoreDF.groupby(keywordScoreDF['PublishDate']).sum()     # Sum the score at the same day
-        keywordScoreDF.reset_index(inplace=True)
+        keywordScoreDF.reset_index(inplace=True)    # After groupby function, PubilshDate will become index
         # keywordScoreDF.to_csv(f'./data/Step-2_CategorySentimentScore/Score_{industry}_{stockId}_{keyword}.csv',
         #                       index=False)
 
-
-        if not allKeywordScoreDF:
+        if allKeywordScoreDF.empty:
             allKeywordScoreDF = keywordScoreDF
         else:
             allKeywordScoreDF = pd.concat([allKeywordScoreDF, keywordScoreDF], ignore_index=True)
 
-    allKeywordScoreDF = allKeywordScoreDF.groupby(keywordScoreDF['PublishDate']).sum()  # Sum the score at the same day
+    allKeywordScoreDF = allKeywordScoreDF.groupby(allKeywordScoreDF['PublishDate']).sum()  # Sum the score at the same day
+    allKeywordScoreDF.reset_index(inplace=True)
 
 
     i_date = datetime.strptime('2017-01-01', "%Y-%m-%d")
@@ -108,8 +109,7 @@ def sum_category_score(categoryList,category):
         i_date_str = i_date.strftime('%Y-%m-%d')
         # Add score "0" to null date
         if not allKeywordScoreDF['PublishDate'].str.contains(i_date_str).any():
-            allKeywordScoreDF.loc[-1] = [i_date_str, 0]  # Append row to df_all, the index of it will be -1
-            allKeywordScoreDF.reset_index(drop=True, inplace=True)
+            allKeywordScoreDF.loc[len(allKeywordScoreDF)] = [i_date_str, 0]  # Append row to df_all, the index of it will be -1
 
         i_date += timedelta(days=1)
 
@@ -134,8 +134,8 @@ TSMCKeyword = ['半導體', '電子', '晶圓', '台積電', '奈米']
 antiTSMCKeyword = ['三星', '英特爾']
 
 
-# sum_category_score(marketKeyword, 'market')
-# sum_category_score(TSMCKeyword, 'TSMC')
-sum_category_score(antiTSMCKeyword, 'antiTSMC')
+sum_category_score(marketKeyword, 'market')
+sum_category_score(TSMCKeyword, 'TSMC')
+# sum_category_score(antiTSMCKeyword, 'antiTSMC')
 #
 # sum_anti_score('TSMC', 'antiTSMC')
