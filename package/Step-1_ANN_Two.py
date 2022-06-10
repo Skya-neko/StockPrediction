@@ -273,5 +273,5 @@ write_log('The End of Execution')
 
 
 r"""
-python C:\Users\Vivian\Desktop\資訊碩士\資訊碩二上\畢業論文研究\StockPrediction\package\testspace\module_remake_ANN_keras.py >> C:\Users\Vivian\Desktop\資訊碩士\資訊碩二上\畢業論文研究\StockPrediction\data\Stock_Prediction\record_ver002\log_2022-05-15.txt 2>&1
+python D:\StockPrediction\StockPrediction\package\Step-1_ANN_Two.py >> D:\StockPrediction\Log\log_2022-05-15.txt 2>&1
 """

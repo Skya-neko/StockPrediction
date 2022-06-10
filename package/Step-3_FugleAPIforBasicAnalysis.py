@@ -11,7 +11,6 @@ import pandas as pd
 import time 
 import json
 from pandas import json_normalize
-#filePath = r'C:\Users\Vivian\Desktop\資訊碩士\資訊碩二上\畢業論文研究\StockPrediction\其他\news crawler\\'
 
 class FugleAPI:
     def __init__(self,
