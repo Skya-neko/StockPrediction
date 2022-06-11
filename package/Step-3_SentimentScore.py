@@ -131,8 +131,8 @@ TSMCSentencesFile = './data/Step-4_SentenceSliced/TSMC_Sentences.csv'
 antiTSMCSentencesFile = './data/Step-4_SentenceSliced/antiTSMC_Sentences.csv'
 
 # Run 1
-# sum_category_score(TSMCSentencesFile, 'TSMC')
-# sum_category_score(antiTSMCSentencesFile, 'antiTSMC')
+sum_category_score(TSMCSentencesFile, 'TSMC')
+sum_category_score(antiTSMCSentencesFile, 'antiTSMC')
 
 # Run 2
 # deduct_antiTSMC_score('TSMC', 'antiTSMC')
