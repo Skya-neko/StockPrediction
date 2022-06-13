@@ -97,17 +97,20 @@ def sum_category_score(filename, category):
     scoreDF = scoreDF.loc[mask]
     scoreDF['PublishDate'] = scoreDF['PublishDate'].dt.strftime('%Y-%m-%d')
 
-    # Add score "0" to the dates which value is null
-    while i_date <= endDate:
-        i_date_str = i_date.strftime('%Y-%m-%d')
-        if not scoreDF['PublishDate'].str.contains(i_date_str).any():
-            scoreDF.loc[len(scoreDF)] = [i_date_str, 0]  # Append row to df_all, the index of it will be -1
-
-        i_date += timedelta(days=1)
-
     scoreDF = scoreDF.sort_values(by=['PublishDate'], ascending=True)
     scoreDF.to_csv(f'./data/Step-2_CategorySentimentScore/Score_{category}.csv', index=False)
 
+
+def Balance_len_of_categories(categoryA, categoryB):
+    scoreADF = pd.read_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryA}.csv')
+    scoreBDF = pd.read_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryB}.csv')
+    # Find out PublishDate that A has but B don't have
+    mask = ~scoreADF['PublishDate'].isin(scoreBDF['PublishDate'])
+    dataToFillUpB = scoreADF['PublishDate'][mask]
+    # Add score "0" to the dates which value is null
+    for i in range(len(dataToFillUpB)):
+        scoreBDF.loc[len(scoreBDF)] = [dataToFillUpB[i], 0]   # Append row to scoreBDF, the index of it will be -1
+    scoreBDF.to_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryB}.csv', index=False)
 
 
 
@@ -131,10 +134,14 @@ TSMCSentencesFile = './data/Step-4_SentenceSliced/TSMC_Sentences.csv'
 antiTSMCSentencesFile = './data/Step-4_SentenceSliced/antiTSMC_Sentences.csv'
 
 # Run 1
-sum_category_score(TSMCSentencesFile, 'TSMC')
-sum_category_score(antiTSMCSentencesFile, 'antiTSMC')
+# sum_category_score(TSMCSentencesFile, 'TSMC')
+# sum_category_score(antiTSMCSentencesFile, 'antiTSMC')
 
 # Run 2
+Balance_len_of_categories('TSMC', 'antiTSMC')
+Balance_len_of_categories('antiTSMC', 'TSMC')
+
+# Run 3
 # deduct_antiTSMC_score('TSMC', 'antiTSMC')
 
 
