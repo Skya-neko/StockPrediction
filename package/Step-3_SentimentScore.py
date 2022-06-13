@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 ws = WS("../Step-3_CKIPtaggerModule/data")
 pos = POS("../Step-3_CKIPtaggerModule/data")
 ner = NER("../Step-3_CKIPtaggerModule/data")
-sentenceListPath = './data/Step-4_SentenceSliced/'
+sentenceListPath = './data/'
 
 
 # Log on terminal
@@ -98,7 +98,7 @@ def sum_category_score(filename, category):
     scoreDF['PublishDate'] = scoreDF['PublishDate'].dt.strftime('%Y-%m-%d')
 
     scoreDF = scoreDF.sort_values(by=['PublishDate'], ascending=True)
-    scoreDF.to_csv(f'./data/Step-2_CategorySentimentScore/Score_{category}.csv', index=False)
+    scoreDF.to_csv(f'./data/Step-2_Score_{category}.csv', index=False)
 
 
 def Balance_len_of_categories(categoryA, categoryB):
@@ -108,8 +108,8 @@ def Balance_len_of_categories(categoryA, categoryB):
     :param categoryB:
     :return:
     """
-    scoreADF = pd.read_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryA}.csv')
-    scoreBDF = pd.read_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryB}.csv')
+    scoreADF = pd.read_csv(f'./data/Step-2_Score_{categoryA}.csv')
+    scoreBDF = pd.read_csv(f'./data/Step-2_Score_{categoryB}.csv')
     # Find out PublishDate that A has but B don't have
     mask = ~scoreADF['PublishDate'].isin(scoreBDF['PublishDate'])
     dataToFillUpB = scoreADF['PublishDate'][mask]
@@ -118,7 +118,7 @@ def Balance_len_of_categories(categoryA, categoryB):
     for i in range(len(dataToFillUpB)):
         scoreBDF.loc[len(scoreBDF)] = [dataToFillUpB.loc[i], 0]   # Append row to scoreBDF, the index of it will be -1
     scoreBDF.sort_values(by=['PublishDate'], ascending=True, inplace=True)
-    scoreBDF.to_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryB}.csv', index=False)
+    scoreBDF.to_csv(f'./data/Step-2_Score_{categoryB}.csv', index=False)
 
 
 
@@ -130,17 +130,16 @@ def deduct_antiTSMC_score(categoryA, categoryB):
     :param categoryB: antiTSMC
     :return: None
     """
-    categoryADF = pd.read_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryA}.csv')
-    categoryBDF = pd.read_csv(f'./data/Step-2_CategorySentimentScore/Score_{categoryB}.csv')
+    categoryADF = pd.read_csv(f'./data/Step-2_Score_{categoryA}.csv')
+    categoryBDF = pd.read_csv(f'./data/Step-2_Score_{categoryB}.csv')
     categoryADF['Anti-Score'] = categoryBDF['Score']
-    categoryADF['FinalScore'] = categoryADF['Score'] - categoryADF['Anti-Score']
-    categoryADF['Score'] = categoryADF['FinalScore']
-    # categoryADF.drop(['Anti-Score', 'FinalScore'], axis=1)
+    categoryADF['Score'] = categoryADF['Score'] - categoryADF['Anti-Score']
+    categoryADF.drop(['Anti-Score'], axis=1, inplace=True)
     categoryADF.to_csv(f'./data/Step-2_SentimentScore.csv', index=False)
 
 
-TSMCSentencesFile = './data/Step-4_SentenceSliced/TSMC_Sentences.csv'
-antiTSMCSentencesFile = './data/Step-4_SentenceSliced/antiTSMC_Sentences.csv'
+TSMCSentencesFile = './data/Step-4_Sentences_TSMC.csv'
+antiTSMCSentencesFile = './data/Step-4_Sentences_antiTSMC.csv'
 
 # Run 1
 # sum_category_score(TSMCSentencesFile, 'TSMC')
@@ -151,7 +150,7 @@ antiTSMCSentencesFile = './data/Step-4_SentenceSliced/antiTSMC_Sentences.csv'
 # Balance_len_of_categories('antiTSMC', 'TSMC')
 
 # Run 3
-# deduct_antiTSMC_score('TSMC', 'antiTSMC')
+deduct_antiTSMC_score('TSMC', 'antiTSMC')
 
 
 

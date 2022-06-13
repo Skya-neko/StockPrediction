@@ -1,6 +1,6 @@
 """
 Cut article into sentences and store the sentences in the company csv file (all dates in a file)
-in structured direcotory (in ./data/Step-4_SentenceSliced/)
+in structured direcotory (in ./data/)
 """
 import os
 import pandas as pd 
@@ -92,7 +92,7 @@ def save_sentence_to(sentenceCompaniesDF, timestamp, sentence):
     mask = sentenceCompaniesDF['stock_name'].isin(TSMCKeyword)
     antiMask = sentenceCompaniesDF['stock_name'].isin(antiTSMCKeyword)
 
-    path = 'data/Step-4_SentenceSliced/'
+    path = './data/'
     dicto = {'PublishDate': [timestamp],
              'Sentence': [sentence]}
     oneRow = pd.DataFrame(dicto)
@@ -102,15 +102,15 @@ def save_sentence_to(sentenceCompaniesDF, timestamp, sentence):
     # when it's turn to count 台積電 then count score,
     # when it's turn to count 三星 then ignore the sentence.
     if mask.any() and antiMask.any():
-        file = 'TSMC_Sentences.csv'
+        file = 'Step-4_Sentences_TSMC.csv'
         __save_sentence_iterate(path, file, oneRow)
 
     elif mask.any():
-        file = 'TSMC_Sentences.csv'
+        file = 'Step-4_Sentences_TSMC.csv'
         __save_sentence_iterate(path, file, oneRow)
 
     elif antiMask.any():
-        file = 'antiTSMC_Sentences.csv'
+        file = 'Step-4_Sentences_antiTSMC.csv'
         __save_sentence_iterate(path, file, oneRow)
 
 
