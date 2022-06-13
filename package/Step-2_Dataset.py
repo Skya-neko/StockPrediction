@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 
 
 # Input File
@@ -27,7 +27,7 @@ while i_date <= endDate:
     dateList.append(i_date.strftime('%Y-%m-%d'))
     i_year = i_date.strftime('%Y-%m-%d')[:4]
     i_mon = i_date.strftime('%Y-%m-%d')[5:7]
-    i_value = monthDF[ (monthDF['year']==int(i_year)) & (monthDF['month']==int(i_mon)) ]['revenue']
+    i_value = monthDF[(monthDF['year'] == int(i_year)) & (monthDF['month'] == int(i_mon))]['revenue']
     i_value = i_value.item()                                       # Return the first element in the series
     MIndList.append(i_value)
 
@@ -39,7 +39,7 @@ while i_date <= endDate:
 # data['Rev_Mon'] = MIndList
 # dataDf = pd.DataFrame(data)
 
-
+print('End of Monthly Indicators')
 
 
 # ========================================================================
@@ -47,8 +47,8 @@ while i_date <= endDate:
 # ========================================================================
 QIndList = []
 
-quarterDF = pd.read_csv(quarterFile,encoding='big5')[::-1].reset_index(drop=True)
-quarterDF.drop([0,1,2,3], inplace=True)
+quarterDF = pd.read_csv(quarterFile, encoding='big5')[::-1].reset_index(drop=True)
+quarterDF.drop([0, 1, 2, 3], inplace=True)
 
 # Get all dates, values  in duration
 for i_year in range(2017,2022):
@@ -72,7 +72,7 @@ for i_year in range(2017,2022):
             row_copy.append(i_date.strftime('%Y-%m-%d'))
             QIndList.append(row_copy)
             i_date += timedelta(days=1)
-
+print('End of Quarterly Indicators')
 
 
 
@@ -94,10 +94,33 @@ indicatorsDF = indicatorsDF [[
           '應收款項週轉率', '存貨週轉率', '不動產及設備週轉率', '總資產週轉率',    # 經營能力
           '流動比率', '速動比率', '利息保障倍數',                             # 償債能力
           ]]
+print('End of Quarterly & Monthly Indicators')
 
 # ========================================================================
 # Stock Price & Sentiment Score & Indicators
 # ========================================================================
+def append_yesterday_data(specDF, dateCol, i_date_str, specColumn):
+    """
+    Append yesterday data.
+    :param specDF: The kind of dataframe we want to extract data.
+    :param dateCol: The column name of the dates
+    :param i_date_str: The pointer
+    :param specColumn: The column data we want in the dataframe
+    :return: The data at specific date we want
+    """
+    idx = specDF[dateCol].isin([i_date_str])
+    if specDF[idx].empty:  # If no yesterday data
+        spec_i_date = i_date
+        # Find previous data which date is the closest to the date of lable
+        while specDF[idx].empty:
+            spec_i_date += timedelta(days=-1)
+            spec_i_date_str = spec_i_date.strftime('%Y-%m-%d')
+            idx = specDF[dateCol].isin([spec_i_date_str])
+    return specDF[idx][specColumn].values.tolist()[0]
+
+
+
+
 scoreDf = pd.read_csv(scoreFile)
 stockPriceDf = pd.read_csv(priceFile)
 
@@ -122,52 +145,32 @@ dataset_col.extend(indicator_col)
 
 
 datasetList = []
-for specDate in range(1,980):   # ????????????????why 980????
-    print(stockPriceDf['date'][specDate])
+for specDate in range(1, len(stockPriceDf['date'])):  # Count from 1 because 2017/1/3 don't have previous data
+    print('start', stockPriceDf['date'][specDate])   # Date of label
 
 
-    i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')
-    i_date += timedelta(days=-1)
-    i_date_str = i_date.strftime('%Y-%m-%d')
+    i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')    # Date of label
+    i_date += timedelta(days=-1)               # Make yesterday data as data
+    i_date_str = i_date.strftime('%Y-%m-%d')   # find out data with yesterday str
 
-    rowList = [i_date_str,stockPriceDf['close'][specDate]]
+    # Append close to the i_date as lable
+    rowList = [i_date_str, stockPriceDf['close'][specDate]]
 
-    idx = scoreDf['PublishDate'].isin([i_date_str])
-    if scoreDf[idx].empty:
-        score_i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')
-        while scoreDf[idx].empty:
-            score_i_date += timedelta(days=-1)
-            score_i_date_str = score_i_date.strftime('%Y-%m-%d')
-            idx = scoreDf['PublishDate'].isin([score_i_date_str])
-        rowList.extend(scoreDf[idx][score_col].values.tolist()[0])
+    # Append score to the i_date as data
+    rowList.extend(append_yesterday_data(scoreDf, 'PublishDate', i_date_str, score_col))
 
-    else:
-        idx = scoreDf['PublishDate'].isin([i_date_str])
-        rowList.extend(scoreDf[idx][score_col].values.tolist()[0])
-        # print(scoreDf[idx])
+    # Append stock price to the i_date as data
+    rowList.extend(append_yesterday_data(stockPriceDf, 'date', i_date_str, stock_col))
 
-    idx = stockPriceDf['date'].isin([i_date_str])
-    if stockPriceDf[idx].empty:
-        stock_i_date = datetime.strptime(stockPriceDf['date'][specDate], '%Y-%m-%d')
-        while stockPriceDf[idx].empty:
-            stock_i_date += timedelta(days=-1)
-            stock_i_date_str = stock_i_date.strftime('%Y-%m-%d')
-            idx = stockPriceDf['date'].isin([stock_i_date_str])
-        rowList.extend(stockPriceDf[idx][stock_col].values.tolist()[0])
-
-    else:
-        idx = stockPriceDf['date'].isin([i_date_str])
-        rowList.extend(stockPriceDf[idx][stock_col].values.tolist()[0])
-        # print(stockPriceDf[idx][stock_col])
-
+    # Append indicators to the i_date as data
     idx = indicatorsDF['date'].isin([i_date_str])
     rowList.extend(indicatorsDF[idx][indicator_col].values.tolist()[0])
-    # print(indicatorsDF[idx][indicator_col])
 
     datasetList.append(rowList)
     rowList = []
 
-datasetDf = pd.DataFrame(datasetList, columns = dataset_col)
-datasetDf.to_csv(datasetFile,encoding='big5',index=False)
+datasetDf = pd.DataFrame(datasetList, columns=dataset_col)
+datasetDf.to_csv(datasetFile, encoding='big5', index=False)
 
 # print(datasetDf.iloc[:,datasetDf.columns != 'close'].columns.tolist())
+print('End of execution')
