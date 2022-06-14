@@ -30,8 +30,8 @@ def write_log(something):
 def CombData(pred):
     # 在前95%的交易日中，設定預測結果和收盤價一致
     sameDays = len(datasetDf) - len(pred)  # 預測結果和收盤價一致的天數
-    datasetDf.loc[:, 'predictedValue'] = datasetDf.loc[:,
-                                         'close']  # 預測結果跟收盤價一致，所以複製DataFrame的close欄數值，並貼上到df新宣告的predictedValue欄
+    # 預測結果跟收盤價一致，所以複製DataFrame的close欄數值，並貼上到df新宣告的predictedValue欄
+    datasetDf.loc[:, 'predictedValue'] = datasetDf.loc[:, 'close']
 
     # 在後5%的交易日中，用測試集推算預測股價，用預測的資料蓋掉原後5%的資料
     datasetDf.loc[sameDays:, 'predictedValue'] = pred
@@ -72,8 +72,11 @@ def iterateDay():
     global datasetDf
 
     allDatasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
-    for i_dataset in range(794, len(allDatasetDf) + 10, 10):
-        # 確保最後一段時間被預測到
+    mask = allDatasetDf['date'].isin(['2021-01-03'])
+    startIdx = mask[mask].index.tolist()[0]
+
+    for i_dataset in range(startIdx, len(allDatasetDf) + 10, 10):
+        # 確保最後一段時間被預測到 (len(allDatasetDf) + 10)
         if i_dataset > len(allDatasetDf):
             i_dataset = len(allDatasetDf) - 1
         datasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
@@ -83,8 +86,9 @@ def iterateDay():
 
         write_log(f'{"=" * 20} predict date{startDate} ~ {endDate} {"=" * 20} ')
 
+        # 單獨抓出feature的值，並將其指定給feature。對df使用values函式後，資料型態就會變成ndarray
         new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date',
-                                                                 'close'])]  #單獨抓出feature的值，並將其指定給feature。對df使用values函式後，資料型態就會變成ndarray
+                                                                 'close'])]
         # 劃分特徵值和目標值(都要變成ndarray才可以輸入train_test_split
         new_target = np.array(datasetDf['close'])  # 將df中的'close'欄位，存成numpy的array
 
@@ -96,6 +100,26 @@ def iterateDay():
         scaler = joblib.load(r'.\data\Step-1_Scaler.gz')
         feature_train_scaled = scaler.fit_transform(feature_train)
         iterate(main)
+"""
+# Manually Manipulate
+def iterate(func):
+    paramDict = {
+        'random_seed': 200,
+        'Dense1Units': 72,
+        'Dense2Units': 24,
+        'learning_rate': 0.00001,
+        'decay': 0,
+        'momentum': 0.9,
+        'nesterov': True,
+        'optimizer': 'sgd',
+        'loss': 'mean_squared_error',
+        'epochs': 3000,
+        'verbose': 0,
+        'batch_size': 10,
+    }
+    func(paramDict)
+
+"""
 
 
 # 迭代模型每一次的參數
@@ -128,18 +152,21 @@ def iterate(func):
                                             'batch_size': batch_size,
                                         }
 
-                                        recordDf = pd.read_csv('./data/Step-0_ANNOneResult.csv', index_col=False)
-                                        if (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1).any():
-                                            # 如果比對到已經跑過的資料則Continue
-                                            # write_log('The parameters have been trained before.')
-                                            # write_log('Continue...')
-                                            continue
+
+
+                                        # recordDf = pd.read_csv('./data/Step-0_ANNOneResult.csv', index_col=False)
+                                        # if (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1).any():
+                                        #     # 如果比對到已經跑過的資料則Continue
+                                        #     # write_log('The parameters have been trained before.')
+                                        #     # write_log('Continue...')
+                                        #     continue
                                         recordDf = pd.read_csv(outputFilePath + recordFileName, index_col=False)
                                         ifSameRow = (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
                                         if ifSameRow.any():
                                             # 如果比對到已經跑過的資料則Continue
                                             ifLessThan = (recordDf['rmse'][ifSameRow] < limit)
-                                            if ifLessThan.any():  # 如果這些次參數訓練出的所有時段的rmse都小於限制，則
+                                            # Check whether all values in a column satisfy a condition in Data Frame
+                                            if ifLessThan.all():  # 如果這些次參數訓練出的所有時段的rmse都小於限制，則
                                                 ifSameDate = (recordDf[['startDate', 'endDate']].loc[
                                                                   ifLessThan.index] == pd.Series(
                                                     {'startDate': startDate, 'endDate': endDate})).all(1)
@@ -172,24 +199,21 @@ def iterate(func):
                                             func(paramDict)
 
 
+
 # 訓練模型與儲存資訊
 def main(paramDict):
     # write_log('Execute')
     t0 = time.time()
     set_random_seed(paramDict['random_seed'])
 
-    # init_constant = initializers.Constant(value=0.1)
-    # init_random = initializers.RandomNormal(seed=1)
-
     model = Sequential()
     model.add(Dense(units=paramDict['Dense1Units'], activation='relu', input_dim=feature_train_scaled.shape[1], ))
     model.add(Dense(units=paramDict['Dense2Units'], activation='relu', ))
-    # model.add(Dense(units = paramDict['Dense3Units'], activation = 'relu', ))
-    # model.add(Dense(units = paramDict['Dense4Units'], activation = 'relu', ))
     model.add(Dense(units=1, ))
 
     sgd = SGD(learning_rate=paramDict['learning_rate'], decay=paramDict['decay'], momentum=paramDict['momentum'],
               nesterov=paramDict['nesterov'])
+
     model.compile(optimizer=sgd, loss=paramDict['loss'])
     model.fit(feature_train_scaled, target_train, epochs=paramDict['epochs'], verbose=paramDict['verbose'],
               batch_size=paramDict['batch_size'], shuffle=False)
