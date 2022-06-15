@@ -19,7 +19,7 @@ global outputFilePath
 global recordFileName
 
 outputFilePath = './data/'
-recordFileName = 'Step-0_ANNTwoResult.csv'
+recordFileName = 'Step-0_ANNOneResult.csv'
 limit = 8  # 決定rmse最高上限
 
 
@@ -72,37 +72,35 @@ def iterateDay():
     global target_test
     global datasetDf
 
-    allDatasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
-    mask = allDatasetDf['date'].isin(['2021-01-03'])
-    startIdx = mask[mask].index.tolist()[0] + 10  # Plus 10 make it start from 20210103
 
-    for i_dataset in range(startIdx, len(allDatasetDf) + 10, 10):
-        # 確保最後一段時間被預測到 (len(allDatasetDf) + 10)
-        if i_dataset > len(allDatasetDf):
-            i_dataset = len(allDatasetDf) - 1
-        datasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
-        datasetDf = datasetDf.loc[:i_dataset, ]
-        startDate = datasetDf["date"][i_dataset - 10]
-        endDate = datasetDf["date"][i_dataset]
+    datasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
+    mask = datasetDf['date'].isin(['2021-01-03'])
+    startIdx = mask[mask].index.tolist()[0]
+    startDate = datasetDf["date"][startIdx]
+    endDate = datasetDf["date"].iloc[-1]
 
-        write_log(f'{"=" * 20} predict date {startDate} ~ {endDate} {"=" * 20} ')
+    write_log(f'{"=" * 20} predict date {startDate} ~ {endDate} {"=" * 20} ')
 
-        # 單獨抓出feature的值，並將其指定給feature。對df使用values函式後，資料型態就會變成ndarray
-        new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date',
-                                                                 'close'])]
-        # 劃分特徵值和目標值(都要變成ndarray才可以輸入train_test_split
-        new_target = np.array(datasetDf['close'])  # 將df中的'close'欄位，存成numpy的array
+    # 單獨抓出feature的值，並將其指定給feature。對df使用values函式後，資料型態就會變成ndarray
+    new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date',
+                                                             'close'])]
+    # 劃分特徵值和目標值(都要變成ndarray才可以輸入train_test_split
+    new_target = np.array(datasetDf['close'])  # 將df中的'close'欄位，存成numpy的array
 
-        test_size = 10 / len(new_target)
-        feature_train, feature_test, target_train, target_test = train_test_split(new_feature, new_target,
-                                                                                  test_size=test_size,
-                                                                                  shuffle=False)
+    test_size = (len(datasetDf) - startIdx) / len(new_target)
+    feature_train, feature_test, target_train, target_test = train_test_split(new_feature, new_target,
+                                                                              test_size=test_size,
+                                                                              shuffle=False)
+    # Save scaler from 2021-01-03~2021-12-29
+    # scaler = MinMaxScaler()
+    # feature_train_scaled = scaler.fit_transform(feature_train)
+    # joblib.dump(scaler, './data/Step-1_Scaler.gz')
 
-        scaler = MinMaxScaler()
-        feature_train_scaled = scaler.fit_transform(feature_train)
-        iterate(main)
+    scaler = joblib.load('./data/Step-1_Scaler.gz')
+    feature_train_scaled = scaler.fit_transform(feature_train)
+    iterate(main)
 """
-# Manually Manipulate
+# Manually Manipulate ( Can be use for initialize record file)
 def iterate(func):
     paramDict = {
         'random_seed': 200,
@@ -122,11 +120,11 @@ def iterate(func):
 
 """
 
-
+# """
 # 迭代模型每一次的參數
 def iterate(func):
-    Dense1List = np.random.randint(1, 144, size=1).tolist()
-    Dense2List = np.random.randint(1, 144, size=1).tolist()
+    Dense1List = np.random.randint(144, size=10).tolist()
+    Dense2List = np.random.randint(144, size=10).tolist()
     lossList = ['mean_squared_error']
     for loss in lossList:
         for random_seed in [200]:
@@ -167,31 +165,6 @@ def iterate(func):
                                         if ifSameRow.any():
                                             # 如果比對到已經跑過的資料則Continue
                                             ifLessThan = (recordDf['rmse'][ifSameRow] < limit)
-                                            # Check whether all values in a column satisfy a condition in Data Frame
-                                            if ifLessThan.all():  # 如果這些次參數訓練出的所有時段的rmse都小於限制，則
-                                                ifSameDate = (recordDf[['startDate', 'endDate']].loc[
-                                                                  ifLessThan.index] == pd.Series(
-                                                    {'startDate': startDate, 'endDate': endDate})).all(1)
-                                                if ifSameDate.any():  # 如果這個時間段已經被訓練過，則
-                                                    # write_log('SameRow,LessThan,Date yes')
-                                                    # write_log('The parameters have been trained before.')
-                                                    # write_log(recordDf[['startDate','endDate']].loc[ifSameDate.index])
-                                                    # write_log('Continue...')
-                                                    continue
-
-                                                # elif not ifSameDate.any():
-                                                else:
-                                                    # write_log('SameDate Noooo')
-                                                    # write_log(f'New parameters during {startDate}~{endDate}')
-                                                    # write_log('Input')
-                                                    # write_log(str(paramDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
-                                                    func(paramDict)
-                                            else:
-                                                # write_log('LessThan Noooo')
-                                                # write_log(f'rmse > {limit}')
-                                                # write_log(recordDf['rmse'].loc[ifLessThan.index])
-                                                # write_log('continue...')
-                                                continue
 
                                         else:
                                             # write_log('SameRow Noooo')
@@ -200,8 +173,7 @@ def iterate(func):
                                             # write_log(str(paramDict).replace(', ',',\n').replace("{'","{\n'").replace("}","\n}"))
                                             func(paramDict)
 
-
-
+# """
 # 訓練模型與儲存資訊
 def main(paramDict):
     # write_log('Execute')
@@ -280,7 +252,6 @@ def main(paramDict):
     # 釋放記憶體空間
     del model
     del recordDf
-
 
 while True:
     iterateDay()
