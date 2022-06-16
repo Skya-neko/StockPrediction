@@ -100,7 +100,7 @@ def iterateDay():
     feature_train_scaled = scaler.fit_transform(feature_train)
     iterate(main)
 """
-# Manually Manipulate ( Can be use for initialize record file)
+# Manually Manipulate (Can be use for initialize record file)
 def iterate(func):
     paramDict = {
         'random_seed': 200,
