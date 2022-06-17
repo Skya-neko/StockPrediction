@@ -9,9 +9,9 @@ recordB = sys.argv[2]
 target = sys.argv[3]
 
 # Debug
-# recordA = 'Step-0_ANNTwoResult_ProcessA.csv'
-# recordB = 'Step-0_ANNTwoResult_ProcessB.csv'
-# target = 'Step-0_ANNTwoResult.csv'
+# recordA = 'Step-0_ANN_Two_Result_ProcessA.csv'
+# recordB = 'Step-0_ANN_Two_Result_ProcessB.csv'
+# target = 'Step-0_ANN_Two_Result.csv'
 
 recordADF = pd.read_csv(filePath+recordA, index_col=False)  # ProcessA
 recordBDF = pd.read_csv(filePath+recordB, index_col=False)  # ProcessB

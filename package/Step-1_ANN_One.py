@@ -19,7 +19,7 @@ global outputFilePath
 global recordFileName
 
 outputFilePath = './data/'
-recordFileName = 'Step-0_ANNOneResult.csv'
+recordFileName = 'Step-0_ANN_One_Result.csv'
 limit = 8  # 決定rmse最高上限
 
 

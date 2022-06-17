@@ -250,7 +250,7 @@ def main():
 if __name__ == '__main__':
     outputFilePath = './data/'
     recordFileName = sys.argv[1]
-    recordCheckFileName = 'Step-0_ANNTwoResult.csv'
+    recordCheckFileName = 'Step-0_ANN_Two_Result.csv'
     limit = 8  # rmse upper bound
     while True:
         main()
