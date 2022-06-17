@@ -1,2 +1,1 @@
 modelName,score,rmse,spendTime,executionTime(s),startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size
-rmseBeyond8,417.16827392578125,20.42469736190967,84.31191492080688,2022/06/17 23:15:05,2021-01-31,2021-02-23,200,134,18,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10

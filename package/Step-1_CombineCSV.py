@@ -33,9 +33,9 @@ targetDF.to_csv(filePath+target, encoding='big5', index=False)
 
 
 # Initialize the per process record
-recordADF = recordADF.head(0)
+recordADF = recordADF.head(0)  # Truncate table
 recordADF.to_csv(filePath+recordA, encoding='big5', index=False)
-recordBDF = recordBDF.head(0)
+recordBDF = recordBDF.head(0)  # Truncate table
 recordBDF.to_csv(filePath+recordB, encoding='big5', index=False)
 
 
