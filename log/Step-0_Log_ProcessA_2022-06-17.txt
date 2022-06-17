@@ -5994,3 +5994,9 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 1/1 [==============================] - 0s 80ms/step - loss: 126.9465
 2022-06-17 22:44:26.181572: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
 2022-06-17 22:44:26.181600: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:44:28.558970: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:44:28.558996: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:44:28.561128: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:44:28.561190: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:44:28.561408: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
