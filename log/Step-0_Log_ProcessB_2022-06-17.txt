@@ -30612,3 +30612,1325 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 2022-06-17 21:43:06.712515: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
 2022-06-17 21:43:06.712722: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 30.1130
+1/1 [==============================] - 0s 71ms/step - loss: 30.1130
+2022-06-17 21:44:52.455167: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:44:52.455195: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:44:54.420980: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:44:54.421003: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:44:54.422887: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:44:54.422945: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:44:54.423133: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 21.0407
+1/1 [==============================] - 0s 72ms/step - loss: 21.0407
+2022-06-17 21:46:47.228880: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:46:47.228903: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:46:49.315487: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:46:49.315510: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:46:49.317249: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:46:49.317301: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:46:49.317478: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 1195.8002
+1/1 [==============================] - 0s 72ms/step - loss: 1195.8002
+
+INFO - 2022/06/17 21:35:59 -  Output
+INFO - 2022/06/17 21:35:59 -  {
+'modelName': 'rmseBeyond8',
+'score': 253.8847198486328,
+'rmse': 15.933751581881936,
+'spendTime': 107.48041248321533,
+'executionTime(s)': '2022/06/17 21:35:59',
+'startDate': '2021-09-30',
+'endDate': '2021-10-17'
+}
+INFO - 2022/06/17 21:35:59 -  ==================== predict date 2021-10-17 ~ 2021-10-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 53)                1272      
+                                                                 
+ dense_1 (Dense)             (None, 101)               5454      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 102       
+                                                                 
+=================================================================
+Total params: 6,828
+Trainable params: 6,828
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:37:43 -  Output
+INFO - 2022/06/17 21:37:43 -  {
+'modelName': 'keras_4_56026.h5',
+'score': 20.79613494873047,
+'rmse': 4.560266038387678,
+'spendTime': 100.51506328582764,
+'executionTime(s)': '2022/06/17 21:37:43',
+'startDate': '2021-10-17',
+'endDate': '2021-10-31'
+}
+INFO - 2022/06/17 21:37:43 -  ==================== predict date 2021-10-31 ~ 2021-11-14 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 53)                1272      
+                                                                 
+ dense_1 (Dense)             (None, 101)               5454      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 102       
+                                                                 
+=================================================================
+Total params: 6,828
+Trainable params: 6,828
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:39:28 -  Output
+INFO - 2022/06/17 21:39:28 -  {
+'modelName': 'keras_6_52637.h5',
+'score': 42.59336471557617,
+'rmse': 6.526371234628261,
+'spendTime': 100.34205150604248,
+'executionTime(s)': '2022/06/17 21:39:28',
+'startDate': '2021-10-31',
+'endDate': '2021-11-14'
+}
+INFO - 2022/06/17 21:39:28 -  ==================== predict date 2021-11-14 ~ 2021-11-28 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 53)                1272      
+                                                                 
+ dense_1 (Dense)             (None, 101)               5454      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 102       
+                                                                 
+=================================================================
+Total params: 6,828
+Trainable params: 6,828
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:41:14 -  Output
+INFO - 2022/06/17 21:41:14 -  {
+'modelName': 'keras_6_30255.h5',
+'score': 39.72228240966797,
+'rmse': 6.3025581344975095,
+'spendTime': 101.85245704650879,
+'executionTime(s)': '2022/06/17 21:41:14',
+'startDate': '2021-11-14',
+'endDate': '2021-11-28'
+}
+INFO - 2022/06/17 21:41:14 -  ==================== predict date 2021-11-28 ~ 2021-12-12 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 53)                1272      
+                                                                 
+ dense_1 (Dense)             (None, 101)               5454      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 102       
+                                                                 
+=================================================================
+Total params: 6,828
+Trainable params: 6,828
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:43:02 -  Output
+INFO - 2022/06/17 21:43:02 -  {
+'modelName': 'keras_5_84567.h5',
+'score': 34.17180633544922,
+'rmse': 5.845679831084015,
+'spendTime': 104.3666660785675,
+'executionTime(s)': '2022/06/17 21:43:02',
+'startDate': '2021-11-28',
+'endDate': '2021-12-12'
+}
+INFO - 2022/06/17 21:43:02 -  ==================== predict date 2021-12-12 ~ 2021-12-26 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 53)                1272      
+                                                                 
+ dense_1 (Dense)             (None, 101)               5454      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 102       
+                                                                 
+=================================================================
+Total params: 6,828
+Trainable params: 6,828
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:44:50 -  Output
+INFO - 2022/06/17 21:44:50 -  {
+'modelName': 'keras_5_48753.h5',
+'score': 30.113027572631836,
+'rmse': 5.487536174285904,
+'spendTime': 104.1697347164154,
+'executionTime(s)': '2022/06/17 21:44:50',
+'startDate': '2021-12-12',
+'endDate': '2021-12-26'
+}
+INFO - 2022/06/17 21:44:50 -  ==================== predict date 2021-12-15 ~ 2021-12-29 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 53)                1272      
+                                                                 
+ dense_1 (Dense)             (None, 101)               5454      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 102       
+                                                                 
+=================================================================
+Total params: 6,828
+Trainable params: 6,828
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:46:45 -  Output
+INFO - 2022/06/17 21:46:45 -  {
+'modelName': 'keras_4_58703.h5',
+'score': 21.040735244750977,
+'rmse': 4.5870357868837965,
+'spendTime': 111.05546498298645,
+'executionTime(s)': '2022/06/17 21:46:45',
+'startDate': '2021-12-15',
+'endDate': '2021-12-29'
+}
+INFO - 2022/06/17 21:46:45 -  The End of Execution
+INFO - 2022/06/17 21:46:45 -  ==================== predict date 2021-01-03 ~ 2021-01-17 ==================== 
+INFO - 2022/06/17 21:46:45 -  The End of Execution
+INFO - 2022/06/17 21:46:45 -  ==================== predict date 2021-01-03 ~ 2021-01-17 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________2022-06-17 21:48:12.020862: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:48:12.020909: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:48:14.155777: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:48:14.155800: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:48:14.157719: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:48:14.157775: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:48:14.157957: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 274.0764
+1/1 [==============================] - 0s 75ms/step - loss: 274.0764
+2022-06-17 21:49:37.925590: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:49:37.925622: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:49:39.952211: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:49:39.952238: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:49:39.954084: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:49:39.954142: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:49:39.954334: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 323.4003
+1/1 [==============================] - 0s 72ms/step - loss: 323.4003
+2022-06-17 21:51:05.719099: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:51:05.719122: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:51:07.698585: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:51:07.698609: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:51:07.700501: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:51:07.700560: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:51:07.700751: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 268.5400
+1/1 [==============================] - 0s 81ms/step - loss: 268.5400
+2022-06-17 21:52:35.201234: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:52:35.201258: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:52:37.161034: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:52:37.161066: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:52:37.163050: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:52:37.163105: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:52:37.163306: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 137.8355
+1/1 [==============================] - 0s 74ms/step - loss: 137.8355
+2022-06-17 21:54:04.255883: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:54:04.255912: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:54:06.297487: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:54:06.297512: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:54:06.299245: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:54:06.299300: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:54:06.299481: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 82.8001
+1/1 [==============================] - 0s 74ms/step - loss: 82.8001
+2022-06-17 21:55:33.543241: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:55:33.543265: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:55:35.719312: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:55:35.719334: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:55:35.721128: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:55:35.721183: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:55:35.721369: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 222.6131
+1/1 [==============================] - 0s 72ms/step - loss: 222.6131
+2022-06-17 21:57:09.316951: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:57:09.316975: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:57:11.374737: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:57:11.374759: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:57:11.376575: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:57:11.376632: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:57:11.376830: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 190.4500
+1/1 [==============================] - 0s 73ms/step - loss: 190.4500
+
+INFO - 2022/06/17 21:48:10 -  Output
+INFO - 2022/06/17 21:48:10 -  {
+'modelName': 'rmseBeyond8',
+'score': 1195.8001708984375,
+'rmse': 34.58034123667237,
+'spendTime': 81.00538396835327,
+'executionTime(s)': '2022/06/17 21:48:10',
+'startDate': '2021-01-03',
+'endDate': '2021-01-17'
+}
+INFO - 2022/06/17 21:48:10 -  ==================== predict date 2021-01-17 ~ 2021-01-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:49:36 -  Output
+INFO - 2022/06/17 21:49:36 -  {
+'modelName': 'rmseBeyond8',
+'score': 274.0764465332031,
+'rmse': 16.55525809603548,
+'spendTime': 82.20794248580933,
+'executionTime(s)': '2022/06/17 21:49:36',
+'startDate': '2021-01-17',
+'endDate': '2021-01-31'
+}
+INFO - 2022/06/17 21:49:36 -  ==================== predict date 2021-01-31 ~ 2021-02-23 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:51:04 -  Output
+INFO - 2022/06/17 21:51:04 -  {
+'modelName': 'rmseBeyond8',
+'score': 323.4002685546875,
+'rmse': 17.98332350499588,
+'spendTime': 84.1806161403656,
+'executionTime(s)': '2022/06/17 21:51:04',
+'startDate': '2021-01-31',
+'endDate': '2021-02-23'
+}
+INFO - 2022/06/17 21:51:04 -  ==================== predict date 2021-02-23 ~ 2021-03-10 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:52:33 -  Output
+INFO - 2022/06/17 21:52:33 -  {
+'modelName': 'rmseBeyond8',
+'score': 268.5400390625,
+'rmse': 16.38718797492731,
+'spendTime': 85.92887687683105,
+'executionTime(s)': '2022/06/17 21:52:33',
+'startDate': '2021-02-23',
+'endDate': '2021-03-10'
+}
+INFO - 2022/06/17 21:52:33 -  ==================== predict date 2021-03-10 ~ 2021-03-24 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:54:02 -  Output
+INFO - 2022/06/17 21:54:02 -  {
+'modelName': 'rmseBeyond8',
+'score': 137.83547973632812,
+'rmse': 11.740341686430401,
+'spendTime': 85.5149188041687,
+'executionTime(s)': '2022/06/17 21:54:02',
+'startDate': '2021-03-10',
+'endDate': '2021-03-24'
+}
+INFO - 2022/06/17 21:54:02 -  ==================== predict date 2021-03-24 ~ 2021-04-11 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:55:31 -  Output
+INFO - 2022/06/17 21:55:31 -  {
+'modelName': 'rmseBeyond8',
+'score': 82.80009460449219,
+'rmse': 9.099457472184051,
+'spendTime': 85.65264701843262,
+'executionTime(s)': '2022/06/17 21:55:31',
+'startDate': '2021-03-24',
+'endDate': '2021-04-11'
+}
+INFO - 2022/06/17 21:55:31 -  ==================== predict date 2021-04-11 ~ 2021-04-25 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 21:57:07 -  Output
+INFO - 2022/06/17 21:57:07 -  {
+'modelName': 'rmseBeyond8',
+'score': 222.61309814453125,
+'rmse': 14.92023534766318,
+'spendTime': 91.83075952529907,
+'executionTime(s)': '2022/06/17 21:57:07',
+'startDate': '2021-04-11',
+'endDate': '2021-04-25'
+}
+INFO - 2022/06/17 21:57:07 -  ==================== predict date 2021-04-25 ~ 2021-05-10 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________2022-06-17 21:58:40.639979: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 21:58:40.640005: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 21:58:42.812059: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 21:58:42.812080: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 21:58:42.813944: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 21:58:42.813997: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 21:58:42.814228: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 143.5023
+1/1 [==============================] - 0s 71ms/step - loss: 143.5023
+2022-06-17 22:00:12.834086: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:00:12.834110: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:00:14.774411: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:00:14.774434: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:00:14.776243: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:00:14.776299: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:00:14.776482: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 510.6992
+1/1 [==============================] - 0s 71ms/step - loss: 510.6992
+2022-06-17 22:01:45.017645: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:01:45.017671: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:01:47.049796: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:01:47.049818: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:01:47.051710: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:01:47.051772: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:01:47.051959: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 159.2369
+1/1 [==============================] - 0s 77ms/step - loss: 159.2369
+2022-06-17 22:03:20.865528: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:03:20.865551: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:03:22.852760: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:03:22.852786: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:03:22.854788: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:03:22.854852: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:03:22.855115: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 40.5964
+1/1 [==============================] - 0s 73ms/step - loss: 40.5964
+2022-06-17 22:04:55.739057: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:04:55.739084: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:04:57.763903: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:04:57.763926: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:04:57.765733: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:04:57.765788: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:04:57.765980: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 101.0431
+1/1 [==============================] - 0s 71ms/step - loss: 101.0431
+2022-06-17 22:06:30.823431: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:06:30.823453: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:06:32.992777: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:06:32.992799: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:06:32.994862: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:06:32.994916: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:06:32.995112: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 20.0845
+1/1 [==============================] - 0s 72ms/step - loss: 20.0845
+2022-06-17 22:08:07.180602: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:08:07.180626: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:08:09.332100: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:08:09.332123: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:08:09.333871: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:08:09.333928: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:08:09.334113: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 19.9378
+1/1 [==============================] - 0s 71ms/step - loss: 19.9378
+
+INFO - 2022/06/17 21:58:39 -  Output
+INFO - 2022/06/17 21:58:39 -  {
+'modelName': 'rmseBeyond8',
+'score': 190.45004272460938,
+'rmse': 13.80033674630997,
+'spendTime': 87.6410665512085,
+'executionTime(s)': '2022/06/17 21:58:39',
+'startDate': '2021-04-25',
+'endDate': '2021-05-10'
+}
+INFO - 2022/06/17 21:58:39 -  ==================== predict date 2021-05-10 ~ 2021-05-24 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:00:11 -  Output
+INFO - 2022/06/17 22:00:11 -  {
+'modelName': 'rmseBeyond8',
+'score': 143.5023193359375,
+'rmse': 11.979246683062536,
+'spendTime': 88.3594958782196,
+'executionTime(s)': '2022/06/17 22:00:11',
+'startDate': '2021-05-10',
+'endDate': '2021-05-24'
+}
+INFO - 2022/06/17 22:00:11 -  ==================== predict date 2021-05-24 ~ 2021-06-07 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:01:43 -  Output
+INFO - 2022/06/17 22:01:43 -  {
+'modelName': 'rmseBeyond8',
+'score': 510.69921875,
+'rmse': 22.59865601574151,
+'spendTime': 88.63935112953186,
+'executionTime(s)': '2022/06/17 22:01:43',
+'startDate': '2021-05-24',
+'endDate': '2021-06-07'
+}
+INFO - 2022/06/17 22:01:43 -  ==================== predict date 2021-06-07 ~ 2021-06-22 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:03:19 -  Output
+INFO - 2022/06/17 22:03:19 -  {
+'modelName': 'rmseBeyond8',
+'score': 159.2368927001953,
+'rmse': 12.618922798739954,
+'spendTime': 92.18722629547119,
+'executionTime(s)': '2022/06/17 22:03:19',
+'startDate': '2021-06-07',
+'endDate': '2021-06-22'
+}
+INFO - 2022/06/17 22:03:19 -  ==================== predict date 2021-06-22 ~ 2021-07-06 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:04:54 -  Output
+INFO - 2022/06/17 22:04:54 -  {
+'modelName': 'keras_6_37153.h5',
+'score': 40.59639358520508,
+'rmse': 6.371532013382762,
+'spendTime': 91.21479892730713,
+'executionTime(s)': '2022/06/17 22:04:54',
+'startDate': '2021-06-22',
+'endDate': '2021-07-06'
+}
+INFO - 2022/06/17 22:04:54 -  ==================== predict date 2021-07-06 ~ 2021-07-20 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:06:29 -  Output
+INFO - 2022/06/17 22:06:29 -  {
+'modelName': 'rmseBeyond8',
+'score': 101.04314422607422,
+'rmse': 10.05201985864372,
+'spendTime': 91.380939245224,
+'executionTime(s)': '2022/06/17 22:06:29',
+'startDate': '2021-07-06',
+'endDate': '2021-07-20'
+}
+INFO - 2022/06/17 22:06:29 -  ==================== predict date 2021-07-20 ~ 2021-08-03 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:08:05 -  Output
+INFO - 2022/06/17 22:08:05 -  {
+'modelName': 'keras_4_48157.h5',
+'score': 20.084491729736328,
+'rmse': 4.481572412686431,
+'spendTime': 92.4506425857544,
+'executionTime(s)': '2022/06/17 22:08:05',
+'startDate': '2021-07-20',
+'endDate': '2021-08-03'
+}
+INFO - 2022/06/17 22:08:05 -  ==================== predict date 2021-08-03 ~ 2021-08-17 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________2022-06-17 22:09:43.065009: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:09:43.065035: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:09:45.046060: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:09:45.046082: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:09:45.048204: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:09:45.048257: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:09:45.048505: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 102.5032
+1/1 [==============================] - 0s 71ms/step - loss: 102.5032
+2022-06-17 22:11:19.315462: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:11:19.315484: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:11:21.526316: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:11:21.526339: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:11:21.528517: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:11:21.528575: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:11:21.528810: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 78.2710
+1/1 [==============================] - 0s 73ms/step - loss: 78.2710
+2022-06-17 22:12:57.558869: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:12:57.558893: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:12:59.686629: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:12:59.686657: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:12:59.688594: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:12:59.688660: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:12:59.688882: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 183.4987
+1/1 [==============================] - 0s 75ms/step - loss: 183.4987
+2022-06-17 22:14:37.778700: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:14:37.778727: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:14:39.709463: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:14:39.709485: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:14:39.711295: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:14:39.711351: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:14:39.711535: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 138.2843
+1/1 [==============================] - 0s 72ms/step - loss: 138.2843
+2022-06-17 22:16:22.204297: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:16:22.204320: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:16:24.364523: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:16:24.364546: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:16:24.366578: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:16:24.366633: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:16:24.366870: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 21.1987
+1/1 [==============================] - 0s 73ms/step - loss: 21.1987
+2022-06-17 22:18:01.946394: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:18:01.946418: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:18:04.066012: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:18:04.066036: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:18:04.067905: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:18:04.067958: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:18:04.068141: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 93.5055
+1/1 [==============================] - 0s 73ms/step - loss: 93.5055
+2022-06-17 22:19:44.562480: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:19:44.562505: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:19:46.542352: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:19:46.542375: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:19:46.544215: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:19:46.544270: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:19:46.544459: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 25.8708
+1/1 [==============================] - 0s 72ms/step - loss: 25.8708
+
+INFO - 2022/06/17 22:09:41 -  Output
+INFO - 2022/06/17 22:09:41 -  {
+'modelName': 'keras_4_46517.h5',
+'score': 19.937835693359375,
+'rmse': 4.4651718927266195,
+'spendTime': 92.04360365867615,
+'executionTime(s)': '2022/06/17 22:09:41',
+'startDate': '2021-08-03',
+'endDate': '2021-08-17'
+}
+INFO - 2022/06/17 22:09:41 -  ==================== predict date 2021-08-17 ~ 2021-08-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:11:17 -  Output
+INFO - 2022/06/17 22:11:17 -  {
+'modelName': 'rmseBeyond8',
+'score': 102.50315856933594,
+'rmse': 10.124386251834421,
+'spendTime': 92.57802176475525,
+'executionTime(s)': '2022/06/17 22:11:17',
+'startDate': '2021-08-17',
+'endDate': '2021-08-31'
+}
+INFO - 2022/06/17 22:11:17 -  ==================== predict date 2021-08-31 ~ 2021-09-14 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:12:56 -  Output
+INFO - 2022/06/17 22:12:56 -  {
+'modelName': 'rmseBeyond8',
+'score': 78.27095031738281,
+'rmse': 8.847065702607647,
+'spendTime': 94.4899640083313,
+'executionTime(s)': '2022/06/17 22:12:56',
+'startDate': '2021-08-31',
+'endDate': '2021-09-14'
+}
+INFO - 2022/06/17 22:12:56 -  ==================== predict date 2021-09-14 ~ 2021-09-30 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:14:36 -  Output
+INFO - 2022/06/17 22:14:36 -  {
+'modelName': 'rmseBeyond8',
+'score': 183.49874877929688,
+'rmse': 13.54616776786388,
+'spendTime': 96.42542433738708,
+'executionTime(s)': '2022/06/17 22:14:36',
+'startDate': '2021-09-14',
+'endDate': '2021-09-30'
+}
+INFO - 2022/06/17 22:14:36 -  ==================== predict date 2021-09-30 ~ 2021-10-17 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:16:20 -  Output
+INFO - 2022/06/17 22:16:20 -  {
+'modelName': 'rmseBeyond8',
+'score': 138.28427124023438,
+'rmse': 11.759426566638655,
+'spendTime': 100.88064479827881,
+'executionTime(s)': '2022/06/17 22:16:20',
+'startDate': '2021-09-30',
+'endDate': '2021-10-17'
+}
+INFO - 2022/06/17 22:16:20 -  ==================== predict date 2021-10-17 ~ 2021-10-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:18:00 -  Output
+INFO - 2022/06/17 22:18:00 -  {
+'modelName': 'keras_4_60419.h5',
+'score': 21.19873046875,
+'rmse': 4.604196351540534,
+'spendTime': 95.91531252861023,
+'executionTime(s)': '2022/06/17 22:18:00',
+'startDate': '2021-10-17',
+'endDate': '2021-10-31'
+}
+INFO - 2022/06/17 22:18:00 -  ==================== predict date 2021-10-31 ~ 2021-11-14 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:19:42 -  Output
+INFO - 2022/06/17 22:19:42 -  {
+'modelName': 'rmseBeyond8',
+'score': 93.50550842285156,
+'rmse': 9.669823912966292,
+'spendTime': 98.89579629898071,
+'executionTime(s)': '2022/06/17 22:19:42',
+'startDate': '2021-10-31',
+'endDate': '2021-11-14'
+}
+INFO - 2022/06/17 22:19:42 -  ==================== predict date 2021-11-14 ~ 2021-11-28 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________2022-06-17 22:21:25.964026: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:21:25.964052: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:21:27.898598: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:21:27.898625: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:21:27.900534: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:21:27.900595: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:21:27.900801: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 56.2337
+1/1 [==============================] - 0s 72ms/step - loss: 56.2337
+2022-06-17 22:23:08.674758: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:23:08.674786: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:23:10.598018: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:23:10.598041: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:23:10.599814: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:23:10.599868: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:23:10.600047: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 231.3687
+1/1 [==============================] - 0s 73ms/step - loss: 231.3687
+2022-06-17 22:24:37.044967: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:24:37.044992: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:24:39.040993: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:24:39.041014: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:24:39.043033: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:24:39.043085: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:24:39.043265: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 252.5477
+1/1 [==============================] - 0s 74ms/step - loss: 252.5477
+2022-06-17 22:26:07.083916: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:26:07.083940: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:26:09.212425: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:26:09.212447: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:26:09.214318: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:26:09.214388: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:26:09.214603: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 325.4730
+1/1 [==============================] - 0s 70ms/step - loss: 325.4730
+2022-06-17 22:27:39.288647: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:27:39.288671: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:27:41.238974: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:27:41.238997: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:27:41.240816: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:27:41.240870: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:27:41.241055: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 199.5025
+1/1 [==============================] - 0s 71ms/step - loss: 199.5025
+2022-06-17 22:29:09.662476: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:29:09.662500: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:29:11.839106: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:29:11.839129: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:29:11.841024: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:29:11.841080: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:29:11.841287: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 117.0754
+1/1 [==============================] - 0s 72ms/step - loss: 117.0754
+2022-06-17 22:30:41.409020: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:30:41.409048: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:30:43.450768: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:30:43.450791: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:30:43.452685: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:30:43.452740: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:30:43.452925: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 719.9797
+1/1 [==============================] - 0s 72ms/step - loss: 719.9797
+
+INFO - 2022/06/17 22:21:24 -  Output
+INFO - 2022/06/17 22:21:24 -  {
+'modelName': 'keras_5_08633.h5',
+'score': 25.870830535888672,
+'rmse': 5.086332198874445,
+'spendTime': 97.85118985176086,
+'executionTime(s)': '2022/06/17 22:21:24',
+'startDate': '2021-11-14',
+'endDate': '2021-11-28'
+}
+INFO - 2022/06/17 22:21:24 -  ==================== predict date 2021-11-28 ~ 2021-12-12 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 43)                1032      
+                                                                 
+ dense_1 (Dense)             (None, 9)                 396       
+                                                                 
+ dense_2 (Dense)             (None, 1)                 10        
+                                                                 
+=================================================================
+Total params: 1,438
+Trainable params: 1,438
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:23:07 -  Output
+INFO - 2022/06/17 22:23:07 -  {
+'modelName': 'keras_7_49890.h5',
+'score': 56.233665466308594,
+'rmse': 7.498909561762048,
+'spendTime': 99.23680019378662,
+'executionTime(s)': '2022/06/17 22:23:07',
+'startDate': '2021-11-28',
+'endDate': '2021-12-12'
+}
+INFO - 2022/06/17 22:23:07 -  ==================== predict date 2021-12-12 ~ 2021-12-26 ==================== 
+INFO - 2022/06/17 22:23:07 -  The End of Execution
+INFO - 2022/06/17 22:23:07 -  ==================== predict date 2021-01-03 ~ 2021-01-17 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 91)                2184      
+                                                                 
+ dense_1 (Dense)             (None, 142)               13064     
+                                                                 
+ dense_2 (Dense)             (None, 1)                 143       
+                                                                 
+=================================================================
+Total params: 15,391
+Trainable params: 15,391
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:24:35 -  Output
+INFO - 2022/06/17 22:24:35 -  {
+'modelName': 'rmseBeyond8',
+'score': 231.36865234375,
+'rmse': 15.210794396515903,
+'spendTime': 84.87003493309021,
+'executionTime(s)': '2022/06/17 22:24:35',
+'startDate': '2021-01-03',
+'endDate': '2021-01-17'
+}
+INFO - 2022/06/17 22:24:35 -  ==================== predict date 2021-01-17 ~ 2021-01-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 91)                2184      
+                                                                 
+ dense_1 (Dense)             (None, 142)               13064     
+                                                                 
+ dense_2 (Dense)             (None, 1)                 143       
+                                                                 
+=================================================================
+Total params: 15,391
+Trainable params: 15,391
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:26:05 -  Output
+INFO - 2022/06/17 22:26:05 -  {
+'modelName': 'rmseBeyond8',
+'score': 252.5476837158203,
+'rmse': 15.891748740752949,
+'spendTime': 86.50597429275513,
+'executionTime(s)': '2022/06/17 22:26:05',
+'startDate': '2021-01-17',
+'endDate': '2021-01-31'
+}
+INFO - 2022/06/17 22:26:05 -  ==================== predict date 2021-01-31 ~ 2021-02-23 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 91)                2184      
+                                                                 
+ dense_1 (Dense)             (None, 142)               13064     
+                                                                 
+ dense_2 (Dense)             (None, 1)                 143       
+                                                                 
+=================================================================
+Total params: 15,391
+Trainable params: 15,391
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:27:37 -  Output
+INFO - 2022/06/17 22:27:37 -  {
+'modelName': 'rmseBeyond8',
+'score': 325.47296142578125,
+'rmse': 18.04085905510556,
+'spendTime': 88.55126357078552,
+'executionTime(s)': '2022/06/17 22:27:37',
+'startDate': '2021-01-31',
+'endDate': '2021-02-23'
+}
+INFO - 2022/06/17 22:27:37 -  ==================== predict date 2021-02-23 ~ 2021-03-10 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 91)                2184      
+                                                                 
+ dense_1 (Dense)             (None, 142)               13064     
+                                                                 
+ dense_2 (Dense)             (None, 1)                 143       
+                                                                 
+=================================================================
+Total params: 15,391
+Trainable params: 15,391
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:29:07 -  Output
+INFO - 2022/06/17 22:29:07 -  {
+'modelName': 'rmseBeyond8',
+'score': 199.50250244140625,
+'rmse': 14.124536719942794,
+'spendTime': 86.76067733764648,
+'executionTime(s)': '2022/06/17 22:29:07',
+'startDate': '2021-02-23',
+'endDate': '2021-03-10'
+}
+INFO - 2022/06/17 22:29:08 -  ==================== predict date 2021-03-10 ~ 2021-03-24 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 91)                2184      
+                                                                 
+ dense_1 (Dense)             (None, 142)               13064     
+                                                                 
+ dense_2 (Dense)             (None, 1)                 143       
+                                                                 
+=================================================================
+Total params: 15,391
+Trainable params: 15,391
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 22:30:39 -  Output
+INFO - 2022/06/17 22:30:39 -  {
+'modelName': 'rmseBeyond8',
+'score': 117.075439453125,
+'rmse': 10.82015395836757,
+'spendTime': 87.85403037071228,
+'executionTime(s)': '2022/06/17 22:30:39',
+'startDate': '2021-03-10',
+'endDate': '2021-03-24'
+}
+INFO - 2022/06/17 22:30:39 -  ==================== predict date 2021-03-24 ~ 2021-04-11 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 91)                2184      
+                                                                 
+ dense_1 (Dense)             (None, 142)               13064     
+                                                                 
+ dense_2 (Dense)             (None, 1)                 143       
+                                                                 
+=================================================================
+Total params: 15,391
+Trainable params: 15,391
+Non-trainable params: 0
+_________________________________________________________________2022-06-17 22:32:15.008533: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:32:15.008559: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:32:17.150107: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:32:17.150129: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:32:17.152074: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:32:17.152125: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:32:17.152308: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 185.0186
+1/1 [==============================] - 0s 71ms/step - loss: 185.0186
+2022-06-17 22:33:53.734603: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:33:53.734628: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:33:55.621218: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:33:55.621241: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:33:55.623052: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:33:55.623107: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:33:55.623297: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 213.4876
+1/1 [==============================] - 0s 71ms/step - loss: 213.4876
+2022-06-17 22:35:27.084387: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:35:27.084412: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:35:29.016600: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:35:29.016623: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:35:29.018483: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:35:29.018536: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:35:29.018720: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 456.3779
+1/1 [==============================] - 0s 70ms/step - loss: 456.3779
+2022-06-17 22:37:01.780311: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:37:01.780350: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:37:03.787794: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:37:03.787817: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:37:03.789537: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:37:03.789591: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:37:03.789776: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 406.7411
+1/1 [==============================] - 0s 74ms/step - loss: 406.7411
+2022-06-17 22:38:37.578613: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:38:37.578637: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:38:39.531048: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:38:39.531072: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:38:39.533073: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:38:39.533134: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:38:39.533348: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 23217.9316
+1/1 [==============================] - 0s 74ms/step - loss: 23217.9316
+2022-06-17 22:40:14.818039: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:40:14.818064: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:40:16.853830: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:40:16.853855: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:40:16.855733: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:40:16.855791: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:40:16.855989: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 418.5606
+1/1 [==============================] - 0s 73ms/step - loss: 418.5606
+2022-06-17 22:41:51.691976: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 22:41:51.692006: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 22:41:53.710802: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 22:41:53.710852: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 22:41:53.712782: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 22:41:53.712836: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 22:41:53.713026: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
