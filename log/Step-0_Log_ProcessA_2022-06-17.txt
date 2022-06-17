@@ -6551,3 +6551,210 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 2022-06-17 23:12:13.790684: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
 2022-06-17 23:12:13.790932: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 247.3081
+1/1 [==============================] - 0s 69ms/step - loss: 247.3081
+2022-06-17 23:13:39.610469: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 23:13:39.610491: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 23:13:41.564154: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 23:13:41.564178: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 23:13:41.566003: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 23:13:41.566065: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 23:13:41.566258: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+1/1 [==============================] - ETA: 0s - loss: 417.1683
+1/1 [==============================] - 0s 70ms/step - loss: 417.1683
+
+INFO - 2022/06/17 23:04:53 -  Output
+INFO - 2022/06/17 23:04:53 -  {
+'modelName': 'keras_4_84942.h5',
+'score': 23.516870498657227,
+'rmse': 4.849429506268607,
+'spendTime': 107.859041929245,
+'executionTime(s)': '2022/06/17 23:04:53',
+'startDate': '2021-12-15',
+'endDate': '2021-12-29'
+}
+INFO - 2022/06/17 23:04:53 -  The End of Execution
+INFO - 2022/06/17 23:04:53 -  ==================== predict date 2021-01-03 ~ 2021-01-17 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 29)                696       
+                                                                 
+ dense_1 (Dense)             (None, 72)                2160      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 73        
+                                                                 
+=================================================================
+Total params: 2,929
+Trainable params: 2,929
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 23:06:20 -  Output
+INFO - 2022/06/17 23:06:20 -  {
+'modelName': 'rmseBeyond8',
+'score': 124.40000915527344,
+'rmse': 11.153485329752211,
+'spendTime': 82.76544880867004,
+'executionTime(s)': '2022/06/17 23:06:20',
+'startDate': '2021-01-03',
+'endDate': '2021-01-17'
+}
+INFO - 2022/06/17 23:06:20 -  ==================== predict date 2021-01-17 ~ 2021-01-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 29)                696       
+                                                                 
+ dense_1 (Dense)             (None, 72)                2160      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 73        
+                                                                 
+=================================================================
+Total params: 2,929
+Trainable params: 2,929
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 23:07:47 -  Output
+INFO - 2022/06/17 23:07:47 -  {
+'modelName': 'rmseBeyond8',
+'score': 250.0232391357422,
+'rmse': 15.81212483683575,
+'spendTime': 83.6927216053009,
+'executionTime(s)': '2022/06/17 23:07:47',
+'startDate': '2021-01-17',
+'endDate': '2021-01-31'
+}
+INFO - 2022/06/17 23:07:47 -  ==================== predict date 2021-01-31 ~ 2021-02-23 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 29)                696       
+                                                                 
+ dense_1 (Dense)             (None, 72)                2160      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 73        
+                                                                 
+=================================================================
+Total params: 2,929
+Trainable params: 2,929
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 23:09:14 -  Output
+INFO - 2022/06/17 23:09:14 -  {
+'modelName': 'rmseBeyond8',
+'score': 250.96047973632812,
+'rmse': 15.84173879925525,
+'spendTime': 82.49488067626953,
+'executionTime(s)': '2022/06/17 23:09:14',
+'startDate': '2021-01-31',
+'endDate': '2021-02-23'
+}
+INFO - 2022/06/17 23:09:14 -  ==================== predict date 2021-02-23 ~ 2021-03-10 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 29)                696       
+                                                                 
+ dense_1 (Dense)             (None, 72)                2160      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 73        
+                                                                 
+=================================================================
+Total params: 2,929
+Trainable params: 2,929
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 23:10:43 -  Output
+INFO - 2022/06/17 23:10:43 -  {
+'modelName': 'rmseBeyond8',
+'score': 201.4689178466797,
+'rmse': 14.193971725622905,
+'spendTime': 85.46494126319885,
+'executionTime(s)': '2022/06/17 23:10:43',
+'startDate': '2021-02-23',
+'endDate': '2021-03-10'
+}
+INFO - 2022/06/17 23:10:43 -  ==================== predict date 2021-03-10 ~ 2021-03-24 ==================== 
+INFO - 2022/06/17 23:10:43 -  The End of Execution
+INFO - 2022/06/17 23:10:43 -  ==================== predict date 2021-01-03 ~ 2021-01-17 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 134)               3216      
+                                                                 
+ dense_1 (Dense)             (None, 18)                2430      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 19        
+                                                                 
+=================================================================
+Total params: 5,665
+Trainable params: 5,665
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 23:12:10 -  Output
+INFO - 2022/06/17 23:12:10 -  {
+'modelName': 'rmseBeyond8',
+'score': 191.37303161621094,
+'rmse': 13.833764411818027,
+'spendTime': 83.48063921928406,
+'executionTime(s)': '2022/06/17 23:12:10',
+'startDate': '2021-01-03',
+'endDate': '2021-01-17'
+}
+INFO - 2022/06/17 23:12:10 -  ==================== predict date 2021-01-17 ~ 2021-01-31 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 134)               3216      
+                                                                 
+ dense_1 (Dense)             (None, 18)                2430      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 19        
+                                                                 
+=================================================================
+Total params: 5,665
+Trainable params: 5,665
+Non-trainable params: 0
+_________________________________________________________________
+INFO - 2022/06/17 23:13:38 -  Output
+INFO - 2022/06/17 23:13:38 -  {
+'modelName': 'rmseBeyond8',
+'score': 247.30810546875,
+'rmse': 15.726021021073915,
+'spendTime': 84.30404138565063,
+'executionTime(s)': '2022/06/17 23:13:38',
+'startDate': '2021-01-17',
+'endDate': '2021-01-31'
+}
+INFO - 2022/06/17 23:13:38 -  ==================== predict date 2021-01-31 ~ 2021-02-23 ==================== 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 134)               3216      
+                                                                 
+ dense_1 (Dense)             (None, 18)                2430      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 19        
+                                                                 
+=================================================================
+Total params: 5,665
+Trainable params: 5,665
+Non-trainable params: 0
+_________________________________________________________________2022-06-17 23:15:07.415844: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-17 23:15:07.415872: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-17 23:15:09.366339: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'nvcuda.dll'; dlerror: nvcuda.dll not found
+2022-06-17 23:15:09.366361: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 23:15:09.368298: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: DESKTOP-2LNIJAK
+2022-06-17 23:15:09.368349: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: DESKTOP-2LNIJAK
+2022-06-17 23:15:09.368527: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
