@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -5,11 +6,9 @@ import time
 from datetime import datetime
 from memory_profiler import profile  # Memory Observation
 import itertools
+from multiprocessing import Process, Queue
 
-from tensorflow.compat.v1.keras import Sequential
-from tensorflow.compat.v1.keras.layers import Dense
-from tensorflow.compat.v1.keras.optimizers import SGD
-from tensorflow.compat.v1 import set_random_seed
+
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -17,9 +16,7 @@ from sklearn.metrics import mean_squared_error
 import joblib  # Save sklearn scaler
 
 
-outputFilePath = './data/'
-recordFileName = 'Step-0_ANNTwoResult.csv'
-limit = 8  # rmse upper bound
+
 
 
 # Log on terminal
@@ -78,8 +75,44 @@ def new_param_dict(random_seed, Dense1Units,
     }
     return paramDict
 
+def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_train, target_test, queue):
+    from tensorflow.compat.v1.keras import Sequential
+    from tensorflow.compat.v1.keras.layers import Dense
+    from tensorflow.compat.v1.keras.optimizers import SGD
+    from tensorflow.compat.v1 import set_random_seed
 
-@profile   # uncomment for memory obervation
+    # Train model
+    t0 = time.time()
+    set_random_seed(paramDict['random_seed'])
+
+    model = Sequential()
+    model.add(Dense(units=paramDict['Dense1Units'], activation='relu',
+                    input_dim=feature_train_scaled.shape[1], ))
+    model.add(Dense(units=paramDict['Dense2Units'], activation='relu', ))
+    model.add(Dense(units=1, ))
+
+    sgd = SGD(learning_rate=paramDict['learning_rate'], decay=paramDict['decay'],
+              momentum=paramDict['momentum'], nesterov=paramDict['nesterov'])
+
+    model.compile(optimizer=sgd, loss=paramDict['loss'])
+    model.fit(feature_train_scaled, target_train, epochs=paramDict['epochs'], verbose=paramDict['verbose'],
+              batch_size=paramDict['batch_size'], shuffle=False)
+
+
+    pred = model.predict(feature_test_scaled)
+    score = model.evaluate(feature_test_scaled, target_test, verbose=1)
+
+    stringlist = []
+    model.summary(print_fn=lambda x: stringlist.append(x))
+    short_model_summary = "\n".join(stringlist)
+
+    queue.put(pred)
+    queue.put(score)
+    queue.put(short_model_summary)
+    queue.put(t0)
+
+
+# @profile   # uncomment for memory obervation & don't use in debugger mode
 def main():
     # Model parameters
     randomSeedList = [200]
@@ -128,6 +161,7 @@ def main():
 
             scaler = MinMaxScaler()
             feature_train_scaled = scaler.fit_transform(feature_train)
+            feature_test_scaled = scaler.transform(feature_test)
 
 
             # """ # Comment this snippet for initialize result file
@@ -135,7 +169,7 @@ def main():
             # Read data in chuncks to avoid error:
             # pandas.errors.ParserError: Error tokenizing data. C error: out of memory
             mylist = []
-            for chunk in pd.read_csv(outputFilePath + recordFileName, sep=',', chunksize=20000):
+            for chunk in pd.read_csv(outputFilePath + recordCheckFileName, sep=',', chunksize=20000):
                 mylist.append(chunk)
             recordDf = pd.concat(mylist, axis=0)
             del mylist
@@ -157,30 +191,17 @@ def main():
 
             # """ # Comment this snippet for initialize result file
 
+            queue = Queue()
+            model_process = Process(target=train_model, args=(paramDict, feature_train_scaled, feature_test_scaled, target_train, target_test, queue))
+            model_process.start()
+            model_process.join()   # Continue the main process after execution of child process
 
-            # Train model
-            t0 = time.time()
-            set_random_seed(paramDict['random_seed'])
+            pred = queue.get()
+            score = queue.get()
+            short_model_summary = queue.get()
+            t0 = queue.get()
 
-            model = Sequential()
-            model.add(Dense(units=paramDict['Dense1Units'], activation='relu',
-                            input_dim=feature_train_scaled.shape[1],))
-            model.add(Dense(units=paramDict['Dense2Units'], activation='relu', ))
-            model.add(Dense(units=1, ))
-
-            sgd = SGD(learning_rate=paramDict['learning_rate'], decay=paramDict['decay'],
-                      momentum=paramDict['momentum'], nesterov=paramDict['nesterov'])
-
-            model.compile(optimizer=sgd, loss=paramDict['loss'])
-            model.fit(feature_train_scaled, target_train, epochs=paramDict['epochs'], verbose=paramDict['verbose'],
-                      batch_size=paramDict['batch_size'], shuffle=False)
-
-            feature_test_scaled = scaler.transform(feature_test)
-            pred = model.predict(feature_test_scaled)
-
-            score = model.evaluate(feature_test_scaled, target_test, verbose=1)
-            # write_log(score)
-            model.summary()
+            print(short_model_summary)
 
 
             # Visualize result
@@ -225,12 +246,12 @@ def main():
             except ValueError:
                 write_log("module can't converge")
 
-            # Free memory
-            del model
-            del recordDf
-
 
 if __name__ == '__main__':
+    outputFilePath = './data/'
+    recordFileName = sys.argv[1]
+    recordCheckFileName = 'Step-0_ANNTwoResult.csv'
+    limit = 8  # rmse upper bound
     while True:
         main()
         write_log('The End of Execution')

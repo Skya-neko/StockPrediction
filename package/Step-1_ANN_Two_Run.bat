@@ -1,2 +1,0 @@
-SET "today=%date:~0,10%"
-C:\Users\Vivian\anaconda3\python.exe   D:\StockPrediction\StockPrediction\package\Step-1_ModuleANN_MethodTwo.py  >>   D:\StockPrediction\StockPrediction\data\Step-0_Log_%today:/=-%.txt  2>&1
