@@ -1,5 +1,9 @@
 import sys
 import pandas as pd
+from datetime import datetime
+
+def write_log(something):
+    print(f"INFO - {datetime.now().strftime('%Y/%m/%d %H:%M:%S')} - ", something)
 
 
 filePath = './data/'
@@ -37,5 +41,5 @@ recordADF = recordADF.head(0)  # Truncate table
 recordADF.to_csv(filePath+recordA, encoding='big5', index=False)
 recordBDF = recordBDF.head(0)  # Truncate table
 recordBDF.to_csv(filePath+recordB, encoding='big5', index=False)
-
+write_log('End')
 
