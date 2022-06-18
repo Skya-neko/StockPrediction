@@ -15,4 +15,6 @@ xcopy  %project_root%\package\Step-1_ANN_Two_Run_ProcessB.bat  %instance_root%\p
 xcopy  %project_root%\package\Step-1_CombineCSV.py  %instance_root%\package\Step-1_CombineCSV.py  /Y
 xcopy  %project_root%\package\Step-1_ANN_Two_CombineCSV_Run.bat  %instance_root%\package\Step-1_ANN_Two_CombineCSV_Run.bat  /Y
 xcopy  %project_root%\package\Step-1_ANN_Two_SchtaskCreate.bat  %instance_root%\package\Step-1_ANN_Two_SchtaskCreate.bat  /Y
+xcopy  %project_root%\package\Step-1_ANN_Two_Run_Single.bat  %instance_root%\package\Step-1_ANN_Two_Run_Single.bat  /Y
+
 pause
