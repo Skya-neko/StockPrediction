@@ -116,8 +116,8 @@ def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_tra
 def main():
     # Model parameters
     randomSeedList = [200]
-    Dense1List = np.random.randint(1, 144, size=1).tolist()
-    Dense2List = np.random.randint(1, 144, size=1).tolist()
+    Dense1List = np.random.randint(4, 144, size=1).tolist()
+    Dense2List = np.random.randint(4, 144, size=1).tolist()
     learningRateList = [0.00001]
     decayList = [0]
     momentumList = [0.9]
