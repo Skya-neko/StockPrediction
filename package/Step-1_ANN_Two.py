@@ -75,6 +75,27 @@ def new_param_dict(random_seed, Dense1Units,
     }
     return paramDict
 
+def check_wether_trained_params(filePath, checkTagetName, paramDict, startDate, endDate):
+    trained = False
+    recordDf = pd.read_csv(filePath + checkTagetName, index_col=False)
+
+    # Check wether the model parameters have been trained before
+    ifSameRow = (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
+    if ifSameRow.any():
+        # Check wether all the rmse of traind parameter is smaller than limitation
+        ifLessThan = (recordDf['rmse'][ifSameRow] < limit)
+        if ifLessThan.all():
+            mask1 = recordDf[['startDate', 'endDate']].loc[ifLessThan.index]
+            mask2 = pd.Series({'startDate': startDate, 'endDate': endDate})
+            # Check wether the duration has been trained
+            ifSameDate = (mask1 == mask2).all(1)
+            if ifSameDate.any():
+                trained = 'continue'   # Train other new duration!
+        else:
+            # Break the dutations loop to avoid to waste time on check the same params in all durations
+            trained = 'break'
+    return trained
+
 def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_train, target_test, queue):
     from tensorflow.compat.v1.keras import Sequential
     from tensorflow.compat.v1.keras.layers import Dense
@@ -164,32 +185,26 @@ def main():
             feature_test_scaled = scaler.transform(feature_test)
 
 
-            # """ # Comment this snippet for initialize result file
+            # """ # Comment this snippet for initializing result file
 
-            # Read data in chuncks to avoid error:
-            # pandas.errors.ParserError: Error tokenizing data. C error: out of memory
-            mylist = []
-            for chunk in pd.read_csv(outputFilePath + recordCheckFileName, sep=',', chunksize=20000):
-                mylist.append(chunk)
-            recordDf = pd.concat(mylist, axis=0)
-            del mylist
-
-            # Check wether the model parameters have been trained before
-            ifSameRow = (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
-            if ifSameRow.any():
-                # Check wether all the rmse of traind parameter is smaller than limitation
-                ifLessThan = (recordDf['rmse'][ifSameRow] < limit)
-                if ifLessThan.all():
-                    mask1 = recordDf[['startDate', 'endDate']].loc[ifLessThan.index]
-                    mask2 = pd.Series({'startDate': startDate, 'endDate': endDate})
-                    # Check wether the duration has been trained
-                    ifSameDate = (mask1 == mask2).all(1)
-                    if ifSameDate.any():
-                        continue
-                else:
+            # Check final result data
+            trained = check_wether_trained_params(outputFilePath, finalRecordFileName, paramDict, startDate, endDate)
+            # If trained == False, then program keep going.
+            if trained == 'continue':
+                continue
+            elif trained == 'break':
+                break
+            
+            if finalRecordFileName != processRecordFileName:
+                # Check process result data
+                trained = check_wether_trained_params(outputFilePath, processRecordFileName, paramDict, startDate, endDate)
+                # If trained == False, then program keep going.
+                if trained == 'continue':
+                    continue
+                elif trained == 'break':
                     break
 
-            # """ # Comment this snippet for initialize result file
+            # """ # Comment this snippet for initializing result file
 
             queue = Queue()
             model_process = Process(target=train_model, args=(paramDict, feature_train_scaled, feature_test_scaled, target_train, target_test, queue))
@@ -237,20 +252,21 @@ def main():
                 rowDf = pd.DataFrame([recordDict], columns=recordDict.keys())
 
                 # Initialize record file
-                # rowDf.to_csv(outputFilePath+recordFileName, encoding='big5', index=False)
-                # recordDf = pd.read_csv(outputFilePath+recordFileName, index_col=False).head(0)
+                # rowDf.to_csv(outputFilePath+processRecordFileName, encoding='big5', index=False)
+                # recordDf = pd.read_csv(outputFilePath+processRecordFileName, index_col=False).head(0)
 
-                recordDf = pd.read_csv(outputFilePath + recordFileName, index_col=False)
+                recordDf = pd.read_csv(outputFilePath + processRecordFileName, index_col=False)
                 recordDf = pd.concat([recordDf, rowDf], axis=0).reset_index(drop=True)
-                recordDf.to_csv(outputFilePath + recordFileName, encoding='big5', index=False)
+                recordDf.to_csv(outputFilePath + processRecordFileName, encoding='big5', index=False)
             except ValueError:
                 write_log("module can't converge")
 
 
 if __name__ == '__main__':
     outputFilePath = './data/'
-    recordFileName = sys.argv[1]
-    recordCheckFileName = 'Step-0_ANN_Two_Result.csv'
+    processRecordFileName = sys.argv[1]
+    # processRecordFileName = 'Step-0_ANN_Two_Result_ProcessA.csv'  # Debug
+    finalRecordFileName = 'Step-0_ANN_Two_Result.csv'
     limit = 8  # rmse upper bound
     while True:
         main()
