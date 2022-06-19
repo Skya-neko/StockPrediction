@@ -241,9 +241,9 @@ def main():
 
                 recordDict = {
                     'modelName': outputFileName,
-                    'score': score,
-                    'rmse': rmse,
-                    'spendTime': t1 - t0,
+                    'score': f'{score:.2f}',
+                    'rmse': f'{rmse:.2f}',
+                    'spendTime': f'{t1 - t0:.2f}',
                     'executionTime': datetime.now().strftime('%Y/%m/%d %H:%M:%S'),
                     'startDate': startDate,
                     'endDate': endDate,
