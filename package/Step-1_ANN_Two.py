@@ -207,7 +207,9 @@ def main():
             # """ # Comment this snippet for initializing result file
 
             queue = Queue()
-            model_process = Process(target=train_model, args=(paramDict, feature_train_scaled, feature_test_scaled, target_train, target_test, queue))
+            model_process = Process(target=train_model,
+                                    args=(paramDict, feature_train_scaled, feature_test_scaled,
+                                          target_train, target_test, queue))
             model_process.start()
             model_process.join()   # Continue the main process after execution of child process
 
@@ -245,6 +247,9 @@ def main():
                     'executionTime(s)': datetime.now().strftime('%Y/%m/%d %H:%M:%S'),
                     'startDate': startDate,
                     'endDate': endDate,
+                    'machine': machine,
+                    'runProcess': runProcess,
+
                 }
                 write_log('Output')
                 write_log(str(recordDict).replace(', ', ',\n').replace("{'", "{\n'").replace("}", "\n}"))
@@ -268,6 +273,9 @@ if __name__ == '__main__':
     # processRecordFileName = 'Step-0_ANN_Two_Result_ProcessA.csv'  # Debug
     finalRecordFileName = 'Step-0_ANN_Two_Result.csv'
     limit = 8  # rmse upper bound
+
+    machine = 'Vivian'
+    runProcess = sys.argv[2]  # Single, Double, Triple
     while True:
         main()
         write_log('The End of Execution')
