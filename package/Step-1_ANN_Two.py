@@ -244,7 +244,7 @@ def main():
                     'score': score,
                     'rmse': rmse,
                     'spendTime': t1 - t0,
-                    'executionTime(s)': datetime.now().strftime('%Y/%m/%d %H:%M:%S'),
+                    'executionTime': datetime.now().strftime('%Y/%m/%d %H:%M:%S'),
                     'startDate': startDate,
                     'endDate': endDate,
                     'machine': machine,

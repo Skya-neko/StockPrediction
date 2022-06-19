@@ -1,1 +1,11 @@
-modelName,score,rmse,spendTime,executionTime(s),startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size,machine,runProcess
+modelName,score,rmse,spendTime,executionTime,startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size,machine,runProcess
+rmseBeyond8,232.2718048095703,15.240463786272748,96.79118585586548,2022/06/20 01:20:28,2021-01-03,2021-01-17,200,81,170,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,168.1327667236328,12.966606379892495,93.97707152366638,2022/06/20 01:22:07,2021-01-03,2021-01-17,200,80,147,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,138.453125,11.766635525461528,97.0259416103363,2022/06/20 01:23:48,2021-01-03,2021-01-17,200,60,254,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,341.6665954589844,18.484257327279195,95.02793383598328,2022/06/20 01:25:28,2021-01-03,2021-01-17,200,34,221,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,75.11683654785156,8.667009223727822,92.0733199119568,2022/06/20 01:27:05,2021-01-03,2021-01-17,200,8,188,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,139.21022033691406,11.798761115367734,99.42639660835266,2022/06/20 01:28:49,2021-01-03,2021-01-17,200,106,221,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,143.99978637695312,11.999981245616697,94.05303263664246,2022/06/20 01:30:27,2021-01-03,2021-01-17,200,101,94,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,875.1259765625,29.58251712284958,94.42756056785583,2022/06/20 01:32:06,2021-01-03,2021-01-17,200,112,146,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,288.340087890625,16.98060554078972,94.5599536895752,2022/06/20 01:33:45,2021-01-03,2021-01-17,200,73,171,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond8,338.2933654785156,18.39276253555248,100.04111242294312,2022/06/20 01:35:29,2021-01-03,2021-01-17,200,116,238,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple

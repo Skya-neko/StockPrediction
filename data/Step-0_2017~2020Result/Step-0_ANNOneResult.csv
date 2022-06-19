@@ -1,4 +1,4 @@
-modelName,score,rmse,spendTime,executionTime(s),random_seed,Dense1Units,Dense2Units,Dense3Units,Dense4Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size
+modelName,score,rmse,spendTime,executionTime,random_seed,Dense1Units,Dense2Units,Dense3Units,Dense4Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size
 rmseBeyond5,24459.1796875,156.39431297068882,49.12305331230164,2022/04/09 17:22:10,0,256,256.0,256.0,256.0,1e-05,0.0,0.9,True,sgd,mean_squared_error,2000,0,20
 rmseBeyond5,9288.6591796875,96.37768392510841,46.86642813682556,2022/04/09 17:26:27,3,256,256.0,256.0,256.0,1e-05,0.0,0.9,True,sgd,mean_squared_error,2000,0,20
 rmseBeyond5,9288.6591796875,96.37768392510841,50.23054313659668,2022/04/09 17:49:35,3,256,256.0,256.0,256.0,1e-05,0.0,0.9,True,sgd,mean_squared_error,2000,0,20
