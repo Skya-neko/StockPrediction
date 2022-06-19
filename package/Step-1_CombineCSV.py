@@ -28,6 +28,19 @@ recordDf = pd.concat([recordDf, recordCDF], axis=0)
 recordDf = pd.concat([recordDf, recordDDF], axis=0)
 recordDf = pd.concat([recordDf, recordEDF], axis=0)
 
+# Initialize the per process record
+recordADF = recordADF.head(0)  # Truncate table
+recordADF.to_csv(filePath+recordA, encoding='big5', index=False)
+recordBDF = recordBDF.head(0)  # Truncate table
+recordBDF.to_csv(filePath+recordB, encoding='big5', index=False)
+recordCDF = recordCDF.head(0)  # Truncate table
+recordCDF.to_csv(filePath+recordC, encoding='big5', index=False)
+recordDDF = recordDDF.head(0)  # Truncate table
+recordDDF.to_csv(filePath+recordD, encoding='big5', index=False)
+recordEDF = recordEDF.head(0)  # Truncate table
+recordEDF.to_csv(filePath+recordE, encoding='big5', index=False)
+write_log('End')
+
 del recordADF
 del recordBDF
 del recordCDF
@@ -47,16 +60,5 @@ targetDF = targetDF.sort_values(by=sortList).reset_index(drop=True)
 targetDF.to_csv(filePath+target, encoding='big5', index=False)
 
 
-# Initialize the per process record
-recordADF = recordADF.head(0)  # Truncate table
-recordADF.to_csv(filePath+recordA, encoding='big5', index=False)
-recordBDF = recordBDF.head(0)  # Truncate table
-recordBDF.to_csv(filePath+recordB, encoding='big5', index=False)
-recordCDF = recordCDF.head(0)  # Truncate table
-recordCDF.to_csv(filePath+recordC, encoding='big5', index=False)
-recordDDF = recordDDF.head(0)  # Truncate table
-recordDDF.to_csv(filePath+recordD, encoding='big5', index=False)
-recordEDF = recordEDF.head(0)  # Truncate table
-recordEDF.to_csv(filePath+recordE, encoding='big5', index=False)
-write_log('End')
+
 

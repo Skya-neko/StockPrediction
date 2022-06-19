@@ -48,3 +48,9 @@ Traceback (most recent call last):
   File "D:\StockPrediction\StockPrediction\\package\Step-1_CombineCSV.py", line 51, in <module>
     recordADF = recordADF.head(0)  # Truncate table
 NameError: name 'recordADF' is not defined
+Traceback (most recent call last):
+  File "D:\StockPrediction\StockPrediction\\package\Step-1_CombineCSV.py", line 51, in <module>
+    recordADF = recordADF.head(0)  # Truncate table
+NameError: name 'recordADF' is not defined
+INFO - 2022/06/19 21:34:49 -  End
+INFO - 2022/06/19 21:37:22 -  End
