@@ -135,16 +135,6 @@ def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_tra
 
 # @profile   # uncomment for memory obervation & don't use in debugger mode
 def main():
-    # Model parameters
-    randomSeedList = [200]
-    Dense1List = np.random.randint(4, 144, size=1).tolist()
-    Dense2List = np.random.randint(4, 256, size=1).tolist()
-    learningRateList = [0.00001]
-    decayList = [0]
-    momentumList = [0.9]
-    epochsList = [2000]
-    batchSizeList = [10]
-
     # Generate iterator for every combination of elements in lists
     paramIterator = itertools.product(randomSeedList, Dense1List, Dense2List, learningRateList,
                                       decayList, momentumList, epochsList, batchSizeList)
@@ -276,6 +266,18 @@ if __name__ == '__main__':
 
     machine = 'Vivian'
     runProcess = sys.argv[2]  # Single, Double, Triple
+
+    # Model parameters
+    randomSeedList = [200]
+    Dense1List = np.random.randint(4, 144, size=1).tolist()
+    Dense2List = np.random.randint(4, 256, size=1).tolist()
+    learningRateList = [0.00001]
+    decayList = [0]
+    momentumList = [0.9]
+    epochsList = [2000]
+    batchSizeList = [10]
+
+
     while True:
         main()
         write_log('The End of Execution')

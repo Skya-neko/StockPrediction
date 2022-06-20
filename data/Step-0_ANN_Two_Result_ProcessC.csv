@@ -1,7 +1,1 @@
 modelName,score,rmse,spendTime,executionTime,startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size,machine,runProcess
-rmseBeyond15,346.73,18.62,93.05,2022/06/21 00:50:38,2021-01-03,2021-01-17,200,127,43,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-keras_7_84086.h5,61.48,7.84,89.2,2022/06/21 00:52:12,2021-01-03,2021-01-17,200,20,72,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond15,446.84,21.14,89.33,2022/06/21 00:53:45,2021-01-17,2021-01-31,200,20,72,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-keras_13_2005.h5,174.26,13.2,98.58,2022/06/21 00:55:28,2021-01-03,2021-01-17,200,139,221,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond15,280.47,16.75,100.03,2022/06/21 00:57:12,2021-01-17,2021-01-31,200,139,221,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-keras_9_12999.h5,83.36,9.13,90.40,2022/06/21 00:58:47,2021-01-03,2021-01-17,200,73,86,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
