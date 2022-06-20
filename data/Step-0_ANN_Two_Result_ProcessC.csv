@@ -1,13 +1,7 @@
 modelName,score,rmse,spendTime,executionTime,startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size,machine,runProcess
-rmseBeyond8,218.11,14.77,94.56,2022/06/20 09:50:50,2021-01-03,2021-01-17,200,63,254,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,229.49,15.15,89.8,2022/06/20 09:52:24,2021-01-03,2021-01-17,200,141,21,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,126.65,11.25,94.1,2022/06/20 09:54:02,2021-01-03,2021-01-17,200,88,158,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,96.87,9.84,89.03,2022/06/20 09:55:35,2021-01-03,2021-01-17,200,13,29,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,580.77,24.1,93.46,2022/06/20 09:57:13,2021-01-03,2021-01-17,200,49,77,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,973.33,31.2,92.94,2022/06/20 09:58:51,2021-01-03,2021-01-17,200,46,220,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,328.73,18.13,97.0,2022/06/20 10:00:32,2021-01-03,2021-01-17,200,70,247,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,232.62,15.25,96.77,2022/06/20 10:02:13,2021-01-03,2021-01-17,200,120,189,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,283.45,16.84,91.45,2022/06/20 10:03:49,2021-01-03,2021-01-17,200,71,159,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,815.93,28.56,89.8,2022/06/20 10:05:23,2021-01-03,2021-01-17,200,40,45,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,168.46,12.98,90.7,2022/06/20 10:06:58,2021-01-03,2021-01-17,200,21,167,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
-rmseBeyond8,638.19,25.26,94.46,2022/06/20 10:08:37,2021-01-03,2021-01-17,200,52,159,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,346.73,18.62,93.05,2022/06/21 00:50:38,2021-01-03,2021-01-17,200,127,43,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_7_84086.h5,61.48,7.84,89.2,2022/06/21 00:52:12,2021-01-03,2021-01-17,200,20,72,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,446.84,21.14,89.33,2022/06/21 00:53:45,2021-01-17,2021-01-31,200,20,72,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_13_2005.h5,174.26,13.2,98.58,2022/06/21 00:55:28,2021-01-03,2021-01-17,200,139,221,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,280.47,16.75,100.03,2022/06/21 00:57:12,2021-01-17,2021-01-31,200,139,221,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_9_12999.h5,83.36,9.13,90.40,2022/06/21 00:58:47,2021-01-03,2021-01-17,200,73,86,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple

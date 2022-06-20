@@ -272,7 +272,7 @@ if __name__ == '__main__':
     processRecordFileName = sys.argv[1]
     # processRecordFileName = 'Step-0_ANN_Two_Result_ProcessA.csv'  # Debug
     finalRecordFileName = 'Step-0_ANN_Two_Result.csv'
-    limit = 8  # rmse upper bound
+    limit = 15  # rmse upper bound
 
     machine = 'Vivian'
     runProcess = sys.argv[2]  # Single, Double, Triple
