@@ -54,7 +54,7 @@ def PltCombData( ):
     
     #設定樣式
     plt.grid(linestyle='-.')                                            #在圖上顯示網底
-    plt.savefig('./data/Step-0_MLROneResult.png')
+    plt.savefig('./data/Step_0_MLROneResult.png')
     plt.close()  # prevent matplotlib auto plot
     # plt.show()
         
@@ -62,7 +62,7 @@ def PltCombData( ):
      
 
 print('執行case: ')
-datasetDf = pd.read_csv('./data/Step-1_Dataset.csv',encoding='big5')
+datasetDf = pd.read_csv('./data/Step_1_Dataset.csv',encoding='big5')
 
 #劃分特徵值和目標值(都要變成ndarray才可以輸入train_test_split
 feature = datasetDf.iloc[:,~datasetDf.columns.isin(['date','close'])] #單獨抓出feature的值，並將其指定給feature。對df使用values函式後，資料型態就會變成ndarray

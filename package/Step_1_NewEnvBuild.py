@@ -17,8 +17,8 @@ for fileName in fileNameList:
         with open(protjectRoot + r'\package\\' + fileName, mode='w', encoding='utf8') as fileOut:
             fileOut.write(content)
 
-with open(protjectRoot+r'\package\Step-1_ANN_Two.py', mode='r', encoding='utf8') as file:
+with open(protjectRoot+r'\package\Step_1_ANN_Two.py', mode='r', encoding='utf8') as file:
     content = file.read()
     content = content.replace("machine = 'Vivian'", f"machine = '{machine}'")
-    with open(protjectRoot+r'\package\Step-1_ANN_Two.py', mode='w', encoding='utf8') as fileOut:
+    with open(protjectRoot+r'\package\Step_1_ANN_Two.py', mode='w', encoding='utf8') as fileOut:
         fileOut.write(content)

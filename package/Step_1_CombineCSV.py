@@ -7,12 +7,12 @@ def write_log(something):
 
 filePath = './data/'
 
-recordA = 'Step-0_ANN_Two_Result_ProcessA.csv'
-recordB = 'Step-0_ANN_Two_Result_ProcessB.csv'
-recordC = 'Step-0_ANN_Two_Result_ProcessC.csv'
-recordD = 'Step-0_ANN_Two_Result_ProcessD.csv'
-recordE = 'Step-0_ANN_Two_Result_ProcessE.csv'
-target = 'Step-0_ANN_Two_Result.csv'
+recordA = 'Step_0_ANN_Two_Result_ProcessA.csv'
+recordB = 'Step_0_ANN_Two_Result_ProcessB.csv'
+recordC = 'Step_0_ANN_Two_Result_ProcessC.csv'
+recordD = 'Step_0_ANN_Two_Result_ProcessD.csv'
+recordE = 'Step_0_ANN_Two_Result_ProcessE.csv'
+target = 'Step_0_ANN_Two_Result.csv'
 
 recordADF = pd.read_csv(filePath+recordA, index_col=False)  # ProcessA
 recordBDF = pd.read_csv(filePath+recordB, index_col=False)  # ProcessB

@@ -142,7 +142,7 @@ def main():
     for i_param in paramIterator:
         paramDict = new_param_dict(*i_param)
 
-        allDatasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
+        allDatasetDf = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5')
         mask = allDatasetDf['date'].isin(['2021-01-03'])     # Predict from 2021-01-03
         startIdx = mask[mask].index.tolist()[0] + 10         # Plus 10 make it start from 2021-01-03
 
@@ -260,8 +260,8 @@ def main():
 if __name__ == '__main__':
     outputFilePath = './data/'
     processRecordFileName = sys.argv[1]
-    # processRecordFileName = 'Step-0_ANN_Two_Result_ProcessA.csv'  # Debug
-    finalRecordFileName = 'Step-0_ANN_Two_Result.csv'
+    # processRecordFileName = 'Step_0_ANN_Two_Result_ProcessA.csv'  # Debug
+    finalRecordFileName = 'Step_0_ANN_Two_Result.csv'
     limit = 15  # rmse upper bound
 
     machine = 'Vivian'
@@ -283,5 +283,5 @@ if __name__ == '__main__':
         write_log('The End of Execution')
 
 r"""
-python D:\StockPrediction\StockPrediction\package\Step-1_ANN_Two.py >> D:\StockPrediction\Log\log_2022-05-15.txt 2>&1
+python D:\StockPrediction\StockPrediction\package\Step_1_ANN_Two.py >> D:\StockPrediction\Log\log_2022-05-15.txt 2>&1
 """

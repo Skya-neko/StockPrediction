@@ -1,2 +1,2 @@
 SET "today=%date:~0,10%"
-C:\Users\Vivian\anaconda3\python.exe   D:\StockPrediction\StockPrediction\testspace\test_bat.py  >>   D:\StockPrediction\StockPrediction\testspace\Step-0_Log_%today:/=-%.txt  2>&1
+C:\Users\Vivian\anaconda3\python.exe   D:\StockPrediction\StockPrediction\testspace\test_bat.py  >>   D:\StockPrediction\StockPrediction\testspace\Step_0_Log_%today:/=-%.txt  2>&1

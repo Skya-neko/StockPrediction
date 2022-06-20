@@ -21,5 +21,5 @@ plt.setp(plt.gca().get_xticklabels(),rotation=30)   #旋轉x軸標籤，以免�
 
 #設定樣式
 plt.grid(linestyle='-.')                            #在圖上顯示網底
-# plt.savefig(filePath+'Step-1_SentimentScoreDistribution.png')
+# plt.savefig(filePath+'Step_1_SentimentScoreDistribution.png')
 plt.show()

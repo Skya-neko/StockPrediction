@@ -131,7 +131,7 @@ def main():
     for i_param in paramIterator:
         paramDict = new_param_dict(*i_param)
 
-        datasetDf = pd.read_csv('./data/Step-1_Dataset.csv', encoding='big5')
+        datasetDf = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5')
         mask = datasetDf['date'].isin(['2021-01-03'])     # Predict from 2021-01-03
         startIdx = mask[mask].index.tolist()[0]
         startDate = datasetDf["date"][startIdx]
@@ -153,7 +153,7 @@ def main():
                                                                                   test_size=test_size,
                                                                                   shuffle=False)
 
-        scaler = joblib.load('./data/Step-1_ANN_One_Scaler.gz')
+        scaler = joblib.load('./data/Step_1_ANN_One_Scaler.gz')
         feature_train_scaled = scaler.fit_transform(feature_train)
         feature_test_scaled = scaler.transform(feature_test)
 
@@ -244,12 +244,12 @@ def main():
 if __name__ == '__main__':
     outputFilePath = './data/'
     recordFileName = sys.argv[1]
-    recordCheckFileName = 'Step-0_ANN_One_Result.csv'
+    recordCheckFileName = 'Step_0_ANN_One_Result.csv'
     limit = 8  # rmse upper bound
     while True:
         main()
         write_log('The End of Execution')
 
 r"""
-python D:\StockPrediction\StockPrediction\package\Step-1_ANN_Two.py >> D:\StockPrediction\Log\log_2022-05-15.txt 2>&1
+python D:\StockPrediction\StockPrediction\package\Step_1_ANN_Two.py >> D:\StockPrediction\Log\log_2022-05-15.txt 2>&1
 """

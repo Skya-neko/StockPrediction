@@ -37,7 +37,7 @@ SELECT COUNT(*) AS [count]
     ,[epochs]
     ,[verbose]
     ,[batch_size] 
-FROM [traing_result].[dbo].[Step-0_ANN_Two_Result_20220620]
+FROM [traing_result].[dbo].[Step_0_ANN_Two_Result_20220620]
 WHERE rmse < @rmseLimit
 GROUP BY [random_seed]
       ,[Dense1Units]
@@ -86,7 +86,7 @@ SELECT COUNT(*) AS [count]
     ,[verbose]
     ,[batch_size] 
 INTO #countLimit --drop table #countLimit
-FROM [traing_result].[dbo].[Step-0_ANN_Two_Result_20220620]
+FROM [traing_result].[dbo].[Step_0_ANN_Two_Result_20220620]
 WHERE rmse < @rmseLimit
 GROUP BY [random_seed]
       ,[Dense1Units]
@@ -112,7 +112,7 @@ From(
     -- SELECT any duration which is exceed endureRMSE in models 
     SELECT B.*
     FROM #countLimit A
-    INNER JOIN [Step-0_ANN_Two_Result_20220620] B
+    INNER JOIN [Step_0_ANN_Two_Result_20220620] B
     ON  A.[random_seed] = B.[random_seed]
     AND A.[Dense1Units] = B.[Dense1Units]
     AND A.[Dense2Units] = B.[Dense2Units]

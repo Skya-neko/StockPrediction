@@ -9,7 +9,7 @@ scoreFile = './data/Step-2_SentimentScore.csv'
 priceFile = './data/Step-2_StockPrice.csv'
 
 # Output File
-datasetFile = './data/Step-1_Dataset.csv'
+datasetFile = './data/Step_1_Dataset.csv'
 
 # ========================================================================
 # Monthly Indicators

@@ -349,8 +349,8 @@ engine = create_engine(conn_str)
 ### Use sqlalchemy and pandas communicate with SQL Server
 ```python=
 # pandas & sqlalchemy application
-recordDF = pd.read_csv('./data/Step-0_ANN_Two_Result.csv',index_col=False)
-recordDF.to_sql('Step-0_ANN_Two_Result_20220620', con=engine)
+recordDF = pd.read_csv('./data/Step_0_ANN_Two_Result.csv',index_col=False)
+recordDF.to_sql('Step_0_ANN_Two_Result_20220620', con=engine)
 ```
 使用上面的程式還沒問題，結果到了to_sql又出現了18456的錯誤了QQ
 ![](https://i.imgur.com/0146kw0.png)
@@ -369,13 +369,13 @@ operation error是連接到DB上的錯誤，並且是根源於pymssql的錯誤�
 
 原本的程式碼是這樣：
 ```python=
-table = pd.read_sql('dbo.[Step-0_ANN_Two_Result_20220619]', con=engine)
+table = pd.read_sql('dbo.[Step_0_ANN_Two_Result_20220619]', con=engine)
 ```
 後來查到[調用獲取表值參數的存儲過程時出現錯誤 2809](https://support.microsoft.com/en-us/topic/kb3205935-fix-error-2809-when-you-execute-a-stored-procedure-that-takes-a-table-valued-parameter-from-rpc-calls-in-sql-server-2014-or-2016-adfa8855-d272-ce13-a754-2eafe0106652)
 
 發現表明再python腳本應該寫成：
 ```python=
-table = pd.read_sql('Step-0_ANN_Two_Result_20220619', con=engine)
+table = pd.read_sql('Step_0_ANN_Two_Result_20220619', con=engine)
 ```
 就可以正常運行了！
 
