@@ -41,6 +41,24 @@ print('pandas!')
 # pandas & sqlalchemy application
 # table = pd.read_sql('Step-0_ANN_Two_Result_20220619', con=engine)
 
-recordDF = pd.read_csv('./data/Step-0_ANN_Two_Result.csv',index_col=False)
-recordDF.to_sql('Step-0_ANN_Two_Result_20220620', con=engine)
-
+# recordDF = pd.read_csv('./data/Step-0_ANN_Two_Result.csv',index_col=False)
+# recordDF.to_sql('Step-0_ANN_Two_Result_20220620', con=engine)
+#
+#
+# queryCMD = """
+# SELECT DISTINCT
+#        [random_seed]
+#       ,[Dense1Units]
+#       ,[Dense2Units]
+#       ,[learning_rate]
+#       ,[decay]
+#       ,[momentum]
+#       ,[nesterov]
+#       ,[optimizer]
+#       ,[loss]
+#       ,[epochs]
+#       ,[verbose]
+#       ,[batch_size]
+# FROM [traing_result].[dbo].[Step-0_ANN_Two_Result_20220620]
+# """
+# result = pd.read_sql_query(queryCMD, con=engine)
