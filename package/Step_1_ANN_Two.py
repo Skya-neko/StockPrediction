@@ -266,19 +266,19 @@ if __name__ == '__main__':
 
     machine = 'Vivian'
     runProcess = sys.argv[2]  # Single, Double, Triple
-
-    # Model parameters
-    randomSeedList = [200]
-    Dense1List = np.random.randint(4, 144, size=1).tolist()
-    Dense2List = np.random.randint(4, 256, size=1).tolist()
-    learningRateList = [0.00001]
-    decayList = [0]
-    momentumList = [0.9]
-    epochsList = [2000]
-    batchSizeList = [10]
-
+    # runProcess = 'Single'  # Debug
 
     while True:
+        # Model parameters
+        randomSeedList = [200]
+        Dense1List = np.random.randint(4, 144, size=1).tolist()
+        Dense2List = np.random.randint(4, 256, size=1).tolist()
+        learningRateList = [0.00001]
+        decayList = [0]
+        momentumList = [0.9]
+        epochsList = [2000]
+        batchSizeList = [10]
+
         main()
         write_log('The End of Execution')
 

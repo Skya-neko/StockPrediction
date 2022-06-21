@@ -1,1 +1,20 @@
 modelName,score,rmse,spendTime,executionTime,startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size,machine,runProcess
+keras_12_2053.h5,148.97,12.21,89.45,2022/06/21 02:28:18,2021-01-03,2021-01-17,200,52,113,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,337.64,18.38,91.85,2022/06/21 02:29:53,2021-01-17,2021-01-31,200,52,113,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_11_5839.h5,134.19,11.58,91.0,2022/06/21 02:58:23,2021-01-03,2021-01-17,200,51,160,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,414.97,20.37,90.91,2022/06/21 02:59:58,2021-01-17,2021-01-31,200,51,160,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_12_0329.h5,144.79,12.03,97.51,2022/06/21 03:03:14,2021-01-03,2021-01-17,200,99,225,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,433.54,20.82,96.49,2022/06/21 03:04:54,2021-01-17,2021-01-31,200,99,225,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_9_61098.h5,92.37,9.61,90.26,2022/06/21 11:22:11,2021-01-03,2021-01-17,200,45,123,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,364.16,19.08,91.4,2022/06/21 11:23:46,2021-01-17,2021-01-31,200,45,123,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,256.56,16.02,87.12,2022/06/21 11:25:18,2021-01-03,2021-01-17,200,4,41,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_11_0888.h5,122.96,11.09,89.97,2022/06/21 11:26:52,2021-01-03,2021-01-17,200,80,84,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,288.74,16.99,90.46,2022/06/21 11:28:26,2021-01-17,2021-01-31,200,80,84,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,513.4,22.66,90.5,2022/06/21 11:30:01,2021-01-03,2021-01-17,200,22,207,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+keras_12_0654.h5,145.57,12.07,94.46,2022/06/21 11:31:40,2021-01-03,2021-01-17,200,134,153,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,253.73,15.93,94.96,2022/06/21 11:33:19,2021-01-17,2021-01-31,200,134,153,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,406.23,20.16,92.99,2022/06/21 11:34:56,2021-01-03,2021-01-17,200,57,218,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,264.89,16.28,89.93,2022/06/21 11:36:30,2021-01-03,2021-01-17,200,78,29,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,260.24,16.13,90.95,2022/06/21 11:38:05,2021-01-03,2021-01-17,200,105,62,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,447.08,21.14,89.02,2022/06/21 11:39:39,2021-01-03,2021-01-17,200,38,65,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
+rmseBeyond15,459.96,21.45,92.36,2022/06/21 11:41:16,2021-01-03,2021-01-17,200,20,241,1e-05,0,0.9,True,sgd,mean_squared_error,2000,0,10,Vivian,Triple
