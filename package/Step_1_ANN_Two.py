@@ -259,14 +259,14 @@ def main():
 
 if __name__ == '__main__':
     outputFilePath = './data/'
-    processRecordFileName = sys.argv[1]
     # processRecordFileName = 'Step_0_ANN_Two_Result_ProcessA.csv'  # Debug
+    processRecordFileName = sys.argv[1]
     finalRecordFileName = 'Step_0_ANN_Two_Result.csv'
     limit = 15  # rmse upper bound
 
     machine = 'Vivian'
-    runProcess = sys.argv[2]  # Single, Double, Triple
     # runProcess = 'Single'  # Debug
+    runProcess = sys.argv[2]  # Single, Double, Triple
 
     while True:
         # Model parameters
