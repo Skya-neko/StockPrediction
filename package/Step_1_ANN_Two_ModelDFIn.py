@@ -9,7 +9,23 @@ from package.Step_1_ANN_Two import *
 from package.Step_0_WantedModel import *
 from datetime import datetime
 
-def check_abandon_units_comb:
+def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Dense2Units):
+    recordDF = pd.read_csv(outputFilePath+recordFileName, index_col=False)
+    unitsComb = pd.Series({'Dense1Units': Dense1Units, 'Dense2Units': Dense2Units})
+    mask = (recordDF[['Dense1Units', 'Dense2Units']] == unitsComb)
+    compareList = ['random_seed', 'Dense1Units', 'Dense2Units']
+    candidateDF = recordDF[mask]
+    # Find out the count of different random_seed from data under the same combination of units.
+    candidateDF = candidateDF.drop_duplicates(subset=compareList, keep='last').reset_index(drop=True)
+    count = len(candidateDF)
+    if count > seedCount:
+        return True
+    else:
+        return False
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -42,18 +58,21 @@ if __name__ == '__main__':
                                   })
     observedLogDF.to_csv('./data/Step_0_ANN_Two_ObservedLog.csv', encoding='big5', index=False)
 
-    isAbandoned = check_abandon_units_comb()
-
-    isAbandoned = check_abandon_units_comb()
-
-    seedAmount = 10
-    # Use n amount of random seed to train the same units' combination.
+    seedCount = 10
+    # Use n amount of random seed to train the same combination of units.
     # If these n random seed of specific unit combination still can't  find out best result,
     # then stop to train the specific unit combination in the future.
-    for count in range(seedAmount):
+    for count in range(seedCount):
         for i in range(len(observedDF)):
             Dense1Units = observedDF['Dense1Units'][i]
             Dense2Units = observedDF['Dense2Units'][i]
+
+            isAbandoned = check_whether_abandon_units(outputFilePath, finalRecordFileName, Dense1Units, Dense2Units)
+            if isAbandoned:
+                break
+            isAbandoned = check_whether_abandon_units(outputFilePath, processRecordFileName,Dense1Units, Dense2Units)
+            if isAbandoned:
+                break
 
             # Model parameters
             randomSeedList = np.random.randint(0, 200, size=1).tolist()
@@ -72,16 +91,4 @@ if __name__ == '__main__':
     if not bestDF.empty:
         print('Find the best model!')
         print(bestDF)
-
-    else:
-        abandonDF = observedDF['Dense1Units']
-        abandonDF['Dense2Units'] = observedDF['Dense2Units']
-
-        # Initialize Step_0_ANN_Two_Abandon.csv
-        abandonDF.to_csv('./data/Step_0_ANN_Two_Abandon.csv', encoding='big5', index=False)
-
-        # Step_0_ANN_Two_Abandon.csv append abandon units' comination
-        allAbandonDF = pd.read_csv('./data/Step_0_ANN_Two_Abandon.csv', encodings='big5', index_col=False)
-        allAbandonDF = pd.concat([allAbandonDF, abandonDF], axis=0).reset_index(drop=True)
-        allAbandonDF.to_csv('./data/Step_0_ANN_Two_Abandon.csv', encoding='big5', index=False)
 
