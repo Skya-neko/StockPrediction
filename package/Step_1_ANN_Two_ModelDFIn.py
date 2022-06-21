@@ -3,11 +3,16 @@ Recursive training model depend on the units of layer.
 When find out the observed models, iterate diffrent model parameters except of the units of layer.
 
 """
+import sys
 import pandas as pd
-
-from package.Step_1_ANN_Two import *
-from package.Step_0_WantedModel import *
+import numpy as np
 from datetime import datetime
+# Open CMD window, cd to project root, and execute cmd:
+# python   .\package\Step_1_ANN_Two_ModelDFIn.py Step_0_ANN_Two_Result_ProcessC.csv Triple
+# And the self-made module can be imported.
+import Step_1_ANN_Two
+from Step_0_WantedModel import *
+
 
 def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Dense2Units):
     recordDF = pd.read_csv(outputFilePath+recordFileName, index_col=False)
@@ -30,14 +35,14 @@ def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Den
 
 if __name__ == '__main__':
     outputFilePath = './data/'
-    processRecordFileName = 'Step_0_ANN_Two_Result_ProcessA.csv'  # Debug
-    # processRecordFileName = sys.argv[1]
+    # processRecordFileName = 'Step_0_ANN_Two_Result_ProcessA.csv'  # Debug
+    processRecordFileName = sys.argv[1]
     finalRecordFileName = 'Step_0_ANN_Two_Result.csv'
     limit = 15  # rmse upper bound
 
     machine = 'Vivian'
-    runProcess = 'Single'  # Debug
-    # runProcess = sys.argv[2]  # Single, Double, Triple
+    # runProcess = 'Single'  # Debug
+    runProcess = sys.argv[2]  # Single, Double, Triple
 
 
     # Observed model params
@@ -80,12 +85,15 @@ if __name__ == '__main__':
             Dense2List = [Dense2Units]
             learningRateList = [0.00001, 0.000001]
             decayList = [0, 0.000001, 0.0001, 0.01]
-            momentumList = [0.9, 1.2, 0.7]
+            momentumList = [0.9, 1, 0.7]
             epochsList = [2000]
             batchSizeList = [0]
 
-            main()
-            write_log('The End of Execution')
+            Step_1_ANN_Two.main(randomSeedList, Dense1List, Dense2List, learningRateList,
+                                decayList, momentumList, epochsList, batchSizeList,
+                                outputFilePath, processRecordFileName, finalRecordFileName, limit,
+                                machine, runProcess)
+            Step_1_ANN_Two.write_log('The End of Execution')
 
     bestDF = best_modelDF(table, limitRMSE=12)
     if not bestDF.empty:

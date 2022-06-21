@@ -75,7 +75,7 @@ def new_param_dict(random_seed, Dense1Units,
     }
     return paramDict
 
-def check_wether_trained_params(filePath, checkTagetName, paramDict, startDate, endDate):
+def check_wether_trained_params(filePath, checkTagetName, paramDict, limit, startDate, endDate):
     trained = False
     recordDf = pd.read_csv(filePath + checkTagetName, index_col=False)
 
@@ -134,7 +134,10 @@ def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_tra
 
 
 # @profile   # uncomment for memory obervation & don't use in debugger mode
-def main():
+def main(randomSeedList, Dense1List, Dense2List, learningRateList,
+             decayList, momentumList, epochsList, batchSizeList,
+             outputFilePath, processRecordFileName, finalRecordFileName, limit,
+             machine, runProcess):
     # Generate iterator for every combination of elements in lists
     paramIterator = itertools.product(randomSeedList, Dense1List, Dense2List, learningRateList,
                                       decayList, momentumList, epochsList, batchSizeList)
@@ -178,7 +181,7 @@ def main():
             # """ # Comment this snippet for initializing result file
 
             # Check final result data
-            trained = check_wether_trained_params(outputFilePath, finalRecordFileName, paramDict, startDate, endDate)
+            trained = check_wether_trained_params(outputFilePath, finalRecordFileName, paramDict, limit, startDate, endDate)
             # If trained == False, then program keep going.
             if trained == 'continue':
                 continue
@@ -187,12 +190,16 @@ def main():
             
             if finalRecordFileName != processRecordFileName:
                 # Check process result data
-                trained = check_wether_trained_params(outputFilePath, processRecordFileName, paramDict, startDate, endDate)
+                trained = check_wether_trained_params(outputFilePath, processRecordFileName, paramDict, limit, startDate, endDate)
                 # If trained == False, then program keep going.
                 if trained == 'continue':
                     continue
                 elif trained == 'break':
                     break
+
+            # Debug
+            # write_log('Input')
+            # write_log(str(paramDict).replace(', ', ',\n').replace("{'", "{\n'").replace("}", "\n}"))
 
             # """ # Comment this snippet for initializing result file
 
@@ -279,7 +286,10 @@ if __name__ == '__main__':
         epochsList = [2000]
         batchSizeList = [10]
 
-        main()
+        main(randomSeedList, Dense1List, Dense2List, learningRateList,
+             decayList, momentumList, epochsList, batchSizeList,
+             outputFilePath, processRecordFileName, finalRecordFileName, limit,
+             machine, runProcess)
         write_log('The End of Execution')
 
 r"""
