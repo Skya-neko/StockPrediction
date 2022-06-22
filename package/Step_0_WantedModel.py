@@ -19,7 +19,7 @@ def best_modelDF(table, limitRMSE):
     SET @rmseLimit = {limitRMSE}
     
     DECLARE @countDuration AS int
-    SET @countDuration = 25
+    SET @countDuration = 24
     
     -- The purpose is to find best model, but this also can find model has how many durations satiesfied limitRMSE.
     -- Prediction preiod has 25 predicted duration, thus if a model count(*)=25 then we find the best model.
@@ -50,7 +50,7 @@ def best_modelDF(table, limitRMSE):
           ,[epochs]
           ,[verbose]
           ,[batch_size]
-    HAVING COUNT(*) > @countDuration  --If COUNT(*) = 25 than find the best model.
+    HAVING COUNT(*) >= @countDuration  --If COUNT(*) = 25 than find the best model.
     """
 
     try:
@@ -150,9 +150,9 @@ def observed_modelDF(table, limitRMSE, countDuration, endureRMSE):
         return None
 
 if __name__ == '__main__':
-    table = 'Step-0_ANN_Two_Result_20220620'
+    table = 'ANN_Two_Result'
     limitRMSE = 15
     countDuration = 15  # At least n records satiesfy the limitRMSE
-    endureRMSE = 50
+    endureRMSE = 50  # 50
     bestDF = best_modelDF(table, limitRMSE)
     observedDF = observed_modelDF(table, limitRMSE, countDuration, endureRMSE)
