@@ -310,7 +310,7 @@ if __name__ == '__main__':
     # runProcess = Triple, processRecordFileName{} of each process =  C, D, E.
     processRecordFileName = sys.argv[1]
     finalRecordTable = 'ANN_Two_Result'   # The compilation of 3 computers traing data
-    limit = 15  # rmse upper bound
+    limit = 50  # rmse upper bound
 
     machine = 'Vivian'
     # runProcess = 'Single'  # Debug
@@ -326,13 +326,13 @@ if __name__ == '__main__':
 
     while True:
         # Model parameters
-        randomSeedList = [randint(4, 200)]
+        randomSeedList = np.random.randint(0, 200, size=10).tolist()
         Dense1List = [randint(4, 200)]  # np.random.randint(4, 144, size=4).tolist()
         Dense2List = [randint(4, 200)]  # np.random.randint(4, 256, size=4).tolist()
-        learningRateList = [0.00001]
+        learningRateList = [0.00001, 0.000001]
         decayList = [0]
         momentumList = [0.9]
-        epochsList = [2000]
+        epochsList = [2000, 4000]
         batchSizeList = [10]
 
         main(randomSeedList, Dense1List, Dense2List, learningRateList,
