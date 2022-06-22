@@ -7,7 +7,7 @@ from datetime import datetime
 from memory_profiler import profile  # Memory Observation
 import itertools
 from multiprocessing import Process, Queue
-
+from sqlalchemy import create_engine
 
 
 from sklearn.model_selection import train_test_split
@@ -75,9 +75,9 @@ def new_param_dict(random_seed, Dense1Units,
     }
     return paramDict
 
-def check_wether_trained_params(filePath, checkTagetName, paramDict, limit, startDate, endDate):
+def check_wether_trained_params(filePath, checkTargetName, paramDict, limit, startDate, endDate):
     trained = False
-    recordDf = pd.read_csv(filePath + checkTagetName, index_col=False)
+    recordDf = pd.read_csv(filePath + checkTargetName, index_col=False)
 
     # Check wether the model parameters have been trained before
     ifSameRow = (recordDf[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
@@ -86,6 +86,36 @@ def check_wether_trained_params(filePath, checkTagetName, paramDict, limit, star
         ifLessThan = (recordDf['rmse'][ifSameRow] < limit)
         if ifLessThan.all():
             mask1 = recordDf[['startDate', 'endDate']].loc[ifLessThan.index]
+            mask2 = pd.Series({'startDate': startDate, 'endDate': endDate})
+            # Check wether the duration has been trained
+            ifSameDate = (mask1 == mask2).all(1)
+            if ifSameDate.any():
+                trained = 'continue'   # Train other new duration!
+        else:
+            # Break the dutations loop to avoid to waste time on check the same params in all durations
+            trained = 'break'
+    return trained
+
+def check_wether_trained_params_SQL(finalRecordTable, paramDict, limit, startDate, endDate):
+    server = '140.134.25.164'  # DESKTOP-2LNIJAK\MSSQLSERVER
+    username = r'Vivian'
+    password = 'L102210221022'
+    database_name = 'traing_result'
+    port = 1433
+    conn_str = f'mssql+pymssql://{username}:{password}@{server}:{port}/{database_name}'
+    engine = create_engine(conn_str)
+
+    trained = False
+
+    recordDF = pd.read_sql(f"SELECT * FROM {finalRecordTable}", con=engine)
+
+    # Check wether the model parameters have been trained before
+    ifSameRow = (recordDF[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
+    if ifSameRow.any():
+        # Check wether all the rmse of traind parameter is smaller than limitation
+        ifLessThan = (recordDF['rmse'][ifSameRow] < limit)
+        if ifLessThan.all():
+            mask1 = recordDF[['startDate', 'endDate']].loc[ifLessThan.index]
             mask2 = pd.Series({'startDate': startDate, 'endDate': endDate})
             # Check wether the duration has been trained
             ifSameDate = (mask1 == mask2).all(1)
@@ -136,7 +166,7 @@ def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_tra
 # @profile   # uncomment for memory obervation & don't use in debugger mode
 def main(randomSeedList, Dense1List, Dense2List, learningRateList,
              decayList, momentumList, epochsList, batchSizeList,
-             outputFilePath, processRecordFileName, finalRecordFileName, limit,
+             outputFilePath, processRecordFileName, finalRecordTable, limit,
              machine, runProcess):
     # Generate iterator for every combination of elements in lists
     paramIterator = itertools.product(randomSeedList, Dense1List, Dense2List, learningRateList,
@@ -181,21 +211,21 @@ def main(randomSeedList, Dense1List, Dense2List, learningRateList,
             # """ # Comment this snippet for initializing result file
 
             # Check final result data
-            trained = check_wether_trained_params(outputFilePath, finalRecordFileName, paramDict, limit, startDate, endDate)
+            trained = check_wether_trained_params_SQL(paramDict, limit, startDate, endDate)
             # If trained == False, then program keep going.
             if trained == 'continue':
                 continue
             elif trained == 'break':
                 break
             
-            if finalRecordFileName != processRecordFileName:
-                # Check process result data
-                trained = check_wether_trained_params(outputFilePath, processRecordFileName, paramDict, limit, startDate, endDate)
-                # If trained == False, then program keep going.
-                if trained == 'continue':
-                    continue
-                elif trained == 'break':
-                    break
+
+            # Check process result data
+            trained = check_wether_trained_params(outputFilePath, processRecordFileName, paramDict, limit, startDate, endDate)
+            # If trained == False, then program keep going.
+            if trained == 'continue':
+                continue
+            elif trained == 'break':
+                break
 
             # Debug
             # write_log('Input')
@@ -267,8 +297,12 @@ def main(randomSeedList, Dense1List, Dense2List, learningRateList,
 if __name__ == '__main__':
     outputFilePath = './data/'
     # processRecordFileName = 'Step_0_ANN_Two_Result_ProcessA.csv'  # Debug
+    # If runProcess = Single, processRecordFileName = Step_0_ANN_Two_Result.csv
+    # Step_0_ANN_Two_Result_Process{}.csv
+    # runProcess = Double, processRecordFileName{} of each process =  A, B.
+    # runProcess = Triple, processRecordFileName{} of each process =  C, D, E.
     processRecordFileName = sys.argv[1]
-    finalRecordFileName = 'Step_0_ANN_Two_Result.csv'
+    finalRecordTable = 'ANN_Two_Result'   # The compilation of 3 computers traing data
     limit = 15  # rmse upper bound
 
     machine = 'Vivian'
@@ -288,7 +322,7 @@ if __name__ == '__main__':
 
         main(randomSeedList, Dense1List, Dense2List, learningRateList,
              decayList, momentumList, epochsList, batchSizeList,
-             outputFilePath, processRecordFileName, finalRecordFileName, limit,
+             outputFilePath, processRecordFileName, finalRecordTable, limit,
              machine, runProcess)
         write_log('The End of Execution')
 
