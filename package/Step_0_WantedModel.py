@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 import pandas as pd
-server = 'localhost'  # DESKTOP-2LNIJAK\SQLEXPRESS'  :57226
+server = '140.134.25.164'  # localhost # DESKTOP-2LNIJAK\SQLEXPRESS'
 username = r'Vivian'  #DESKTOP-2LNIJAK\Vivian
 password = 'L102210221022'
 database_name = 'traing_result'

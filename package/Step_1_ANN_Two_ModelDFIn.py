@@ -7,14 +7,21 @@ import sys
 import pandas as pd
 import numpy as np
 from datetime import datetime
+from random import randint
 # Open CMD window, cd to project root, and execute cmd:
 # python   .\package\Step_1_ANN_Two_ModelDFIn.py Step_0_ANN_Two_Result_ProcessC.csv Triple
 # And the self-made module can be imported.
 import Step_1_ANN_Two
 from Step_0_WantedModel import *
+# Debug
+# from package import Step_1_ANN_Two
+# from package.Step_0_WantedModel import *
 
-
-def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Dense2Units):
+def mark_delete_check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Dense2Units):
+    seedCount = 15
+    # Use n amount of random seed to train the same combination of units.
+    # If these n random seed of specific unit combination still can't  find out best result,
+    # then stop to train the specific unit combination in the future.
     recordDF = pd.read_csv(outputFilePath+recordFileName, index_col=False)
     unitsComb = pd.Series({'Dense1Units': Dense1Units, 'Dense2Units': Dense2Units})
     mask = (recordDF[['Dense1Units', 'Dense2Units']] == unitsComb)
@@ -23,12 +30,22 @@ def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Den
     # Find out the count of different random_seed from data under the same combination of units.
     candidateDF = candidateDF.drop_duplicates(subset=compareList, keep='last').reset_index(drop=True)
     count = len(candidateDF)
+    # print(count)  # Debug
     if count > seedCount:
         return True
     else:
         return False
 
-
+def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Dense2Units):
+    recordDF = pd.read_csv(outputFilePath+recordFileName, index_col=False)
+    unitsComb = pd.Series({'Dense1Units': Dense1Units, 'Dense2Units': Dense2Units})
+    mask = (recordDF[['Dense1Units', 'Dense2Units']] == unitsComb).all(1)
+    count = len(recordDF[mask])
+    # print(count)
+    if count > 1000:
+        return True
+    else:
+        return False
 
 
 
@@ -48,7 +65,7 @@ if __name__ == '__main__':
     # Observed model params
     # Find out the condition that there are n_countDuration records satisfied the limit n_limitRMSE per model,
     # And all rmse at all duration in a model should smaller than n_endureRMSE
-    table = 'Step-0_ANN_Two_Result_20220620'
+    table = 'ANN_Two_Result'
     limitRMSE = 15
     countDuration = 15  # At least n records satiesfy the limitRMSE
     endureRMSE = 50
@@ -61,26 +78,27 @@ if __name__ == '__main__':
                                   'endureRMSE': [endureRMSE],
                                   'observedTime': [observedTime],
                                   })
-    observedLogDF.to_csv('./data/Step_0_ANN_Two_ObservedLog.csv', encoding='big5', index=False)
+    allObservedLogDF = pd.read_csv('./data/Step_0_ANN_Two_ObservedLog.csv',index_col=False)
+    allObservedLogDF = pd.concat([allObservedLogDF, observedLogDF]).reset_index(drop=True)
+    allObservedLogDF.to_csv('./data/Step_0_ANN_Two_ObservedLog.csv', encoding='big5', index=False)
 
-    seedCount = 10
-    # Use n amount of random seed to train the same combination of units.
-    # If these n random seed of specific unit combination still can't  find out best result,
-    # then stop to train the specific unit combination in the future.
-    for count in range(seedCount):
+
+    for q in range(3):
         for i in range(len(observedDF)):
+            random_seed = observedDF['random_seed'][i]
             Dense1Units = observedDF['Dense1Units'][i]
             Dense2Units = observedDF['Dense2Units'][i]
 
             isAbandoned = check_whether_abandon_units(outputFilePath, finalRecordFileName, Dense1Units, Dense2Units)
             if isAbandoned:
-                break
+                continue
             isAbandoned = check_whether_abandon_units(outputFilePath, processRecordFileName,Dense1Units, Dense2Units)
             if isAbandoned:
-                break
+                continue
 
             # Model parameters
-            randomSeedList = np.random.randint(0, 200, size=1).tolist()
+            randomSeedList = [random_seed]
+            randomSeedList.append(randint(4, 200))
             Dense1List = [Dense1Units]
             Dense2List = [Dense2Units]
             learningRateList = [0.00001, 0.000001]
@@ -95,7 +113,7 @@ if __name__ == '__main__':
                                 machine, runProcess)
             Step_1_ANN_Two.write_log('The End of Execution')
 
-    bestDF = best_modelDF(table, limitRMSE=12)
+    bestDF = best_modelDF(table, limitRMSE=15)
     if not bestDF.empty:
         print('Find the best model!')
         print(bestDF)

@@ -13,9 +13,12 @@ xcopy  %project_root%\data\Step_0_ANN_Two_Result_ProcessE.csv  %instance_root%\d
 xcopy  %project_root%\data\Step_1_Dataset.csv  %instance_root%\data\Step_1_Dataset.csv  /Y
 @REM package
 xcopy  %project_root%\package\Step_1_ANN_Two.py   %instance_root%\package\Step_1_ANN_Two.py  /Y
+xcopy  %project_root%\package\Step_1_ANN_Two_ModelDFIn.py   %instance_root%\package\Step_1_ANN_Two_ModelDFIn.py  /Y
+xcopy  %project_root%\package\Step_0_WantedModel.py   %instance_root%\package\Step_0_WantedModel.py  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_Run_Single.bat  %instance_root%\package\Step_1_ANN_Two_Run_Single.bat  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_Run_Double.bat  %instance_root%\package\Step_1_ANN_Two_Run_Double.bat  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_Run_Triple.bat  %instance_root%\package\Step_1_ANN_Two_Run_Triple.bat  /Y
+xcopy  %project_root%\package\Step_1_ANN_Two_ModelDFIn_Run_Triple.bat  %instance_root%\package\Step_1_ANN_Two_ModelDFIn_Run_Triple.bat  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_Run_ProcessA.bat  %instance_root%\package\Step_1_ANN_Two_Run_ProcessA.bat  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_Run_ProcessB.bat  %instance_root%\package\Step_1_ANN_Two_Run_ProcessB.bat  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_Run_ProcessC.bat  %instance_root%\package\Step_1_ANN_Two_Run_ProcessC.bat  /Y
