@@ -8,6 +8,7 @@ username = r'Vivian'  #DESKTOP-2LNIJAK\Vivian
 password = 'L102210221022'
 database_name = 'traing_result'
 port = 1433
+toTable = 'ANN_Two_Result_No_Machine'
 
 conn_str = f'mssql+pymssql://{username}:{password}@{server}:{port}/{database_name}'
 engine = create_engine(conn_str)
@@ -20,7 +21,7 @@ resultDF['rmse'] = resultDF['rmse'].map('{:.2f}'.format)
 resultDF['spendTime'] = resultDF['spendTime'].map('{:.2f}'.format)
 booleanDictionary = {True: 'True', False: 'False'}
 resultDF['nesterov'] = resultDF['nesterov'].replace(booleanDictionary)
-resultDF.to_sql('ANN_Two_Result', engine, if_exists='replace', index=False,
+resultDF.to_sql(toTable, engine, if_exists='replace', index=False,
                 dtype={'modelName': NVARCHAR(30),
                        'score': Float(),
                        'rmse': Float(),

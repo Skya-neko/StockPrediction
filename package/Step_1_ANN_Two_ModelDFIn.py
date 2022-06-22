@@ -100,6 +100,7 @@ if __name__ == '__main__':
     allObservedLogDF = pd.read_csv('./data/Step_0_ANN_Two_ObservedLog.csv',index_col=False)
     allObservedLogDF = pd.concat([allObservedLogDF, observedLogDF]).reset_index(drop=True)
     allObservedLogDF.to_csv('./data/Step_0_ANN_Two_ObservedLog.csv', encoding='big5', index=False)
+    del allObservedLogDF
 
     for q in range(3):
         for i in range(len(observedDF)):
