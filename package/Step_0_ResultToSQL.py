@@ -3,7 +3,7 @@ from sqlalchemy.types import *
 import pandas as pd
 
 
-server = 'localhost'  # DESKTOP-2LNIJAK\SQLEXPRESS'  :57226
+server = '140.134.25.164'  # DESKTOP-2LNIJAK\SQLEXPRESS'  :57226
 username = r'Vivian'  #DESKTOP-2LNIJAK\Vivian
 password = 'L102210221022'
 database_name = 'traing_result'
@@ -42,4 +42,5 @@ resultDF.to_sql('ANN_Two_Result', engine, if_exists='replace', index=False,
                        'runProcess':  NVARCHAR(20),
                        }
                 )
+print('End')
 
