@@ -30,7 +30,7 @@ def mark_delete_check_whether_abandon_units(outputFilePath, recordFileName, Dens
     # Find out the count of different random_seed from data under the same combination of units.
     candidateDF = candidateDF.drop_duplicates(subset=compareList, keep='last').reset_index(drop=True)
     count = len(candidateDF)
-    # print(count)  # Debug
+
     if count > seedCount:
         return True
     else:
@@ -47,6 +47,17 @@ def check_whether_abandon_units(outputFilePath, recordFileName, Dense1Units, Den
     else:
         return False
 
+def check_whether_abandon_units_SQL(engine, finalRecordTable, Dense1Units, Dense2Units):
+    finalRecordTable = 'ANN_Two_Result'
+    recordDF = pd.read_sql(f"SELECT * FROM {finalRecordTable}", con=engine)
+    unitsComb = pd.Series({'Dense1Units': Dense1Units, 'Dense2Units': Dense2Units})
+    mask = (recordDF[['Dense1Units', 'Dense2Units']] == unitsComb).all(1)
+    count = len(recordDF[mask])
+    print(count)  # Debug
+    if count > 1000:
+        return True
+    else:
+        return False
 
 
 
@@ -54,12 +65,20 @@ if __name__ == '__main__':
     outputFilePath = './data/'
     # processRecordFileName = 'Step_0_ANN_Two_Result_ProcessA.csv'  # Debug
     processRecordFileName = sys.argv[1]
-    finalRecordFileName = 'Step_0_ANN_Two_Result.csv'
+    finalRecordTable = 'ANN_Two_Result'
     limit = 15  # rmse upper bound
 
     machine = 'Vivian'
     # runProcess = 'Single'  # Debug
     runProcess = sys.argv[2]  # Single, Double, Triple
+
+    server = '140.134.25.164'  # DESKTOP-2LNIJAK\MSSQLSERVER
+    username = r'Vivian'
+    password = 'L102210221022'
+    database_name = 'traing_result'
+    port = 1433
+    conn_str = f'mssql+pymssql://{username}:{password}@{server}:{port}/{database_name}'
+    engine = create_engine(conn_str)
 
 
     # Observed model params
@@ -73,7 +92,7 @@ if __name__ == '__main__':
     observedDF = observed_modelDF(table, limitRMSE, countDuration, endureRMSE)
 
     observedTime = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
-    observedLogDF = pd.DataFrame({'limitRMSE':[limitRMSE],
+    observedLogDF = pd.DataFrame({'limitRMSE': [limitRMSE],
                                   'countDuration': [countDuration],
                                   'endureRMSE': [endureRMSE],
                                   'observedTime': [observedTime],
@@ -82,17 +101,17 @@ if __name__ == '__main__':
     allObservedLogDF = pd.concat([allObservedLogDF, observedLogDF]).reset_index(drop=True)
     allObservedLogDF.to_csv('./data/Step_0_ANN_Two_ObservedLog.csv', encoding='big5', index=False)
 
-
     for q in range(3):
         for i in range(len(observedDF)):
             random_seed = observedDF['random_seed'][i]
             Dense1Units = observedDF['Dense1Units'][i]
             Dense2Units = observedDF['Dense2Units'][i]
 
-            isAbandoned = check_whether_abandon_units(outputFilePath, finalRecordFileName, Dense1Units, Dense2Units)
+
+            isAbandoned = check_whether_abandon_units_SQL(engine, finalRecordTable, Dense1Units, Dense2Units)
             if isAbandoned:
                 continue
-            isAbandoned = check_whether_abandon_units(outputFilePath, processRecordFileName,Dense1Units, Dense2Units)
+            isAbandoned = check_whether_abandon_units(outputFilePath, processRecordFileName, Dense1Units, Dense2Units)
             if isAbandoned:
                 continue
 
@@ -107,9 +126,10 @@ if __name__ == '__main__':
             epochsList = [2000]
             batchSizeList = [0]
 
+
             Step_1_ANN_Two.main(randomSeedList, Dense1List, Dense2List, learningRateList,
                                 decayList, momentumList, epochsList, batchSizeList,
-                                outputFilePath, processRecordFileName, finalRecordFileName, limit,
+                                outputFilePath, processRecordFileName, engine, finalRecordTable, limit,
                                 machine, runProcess)
             Step_1_ANN_Two.write_log('The End of Execution')
 

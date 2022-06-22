@@ -18,6 +18,8 @@ resultDF['learning_rate'] = resultDF['learning_rate'].map('{:.20f}'.format)  # S
 resultDF['score'] = resultDF['score'].map('{:.2f}'.format)
 resultDF['rmse'] = resultDF['rmse'].map('{:.2f}'.format)
 resultDF['spendTime'] = resultDF['spendTime'].map('{:.2f}'.format)
+booleanDictionary = {True: 'True', False: 'False'}
+resultDF['nesterov'] = resultDF['nesterov'].replace(booleanDictionary)
 resultDF.to_sql('ANN_Two_Result', engine, if_exists='replace', index=False,
                 dtype={'modelName': NVARCHAR(30),
                        'score': Float(),
@@ -32,7 +34,7 @@ resultDF.to_sql('ANN_Two_Result', engine, if_exists='replace', index=False,
                        'learning_rate': Float(),
                        'decay': Float(),
                        'momentum': Float(),
-                       'nesterov': NVARCHAR(10),
+                       'nesterov': String(10),
                        'optimizer': NVARCHAR(10),
                        'loss': NVARCHAR(20),
                        'epochs': SmallInteger(),

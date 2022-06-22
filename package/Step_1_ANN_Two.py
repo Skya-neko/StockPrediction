@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
+from random import randint
 from datetime import datetime
 from memory_profiler import profile  # Memory Observation
 import itertools
@@ -96,18 +97,24 @@ def check_wether_trained_params(filePath, checkTargetName, paramDict, limit, sta
             trained = 'break'
     return trained
 
-def check_wether_trained_params_SQL(finalRecordTable, paramDict, limit, startDate, endDate):
-    server = '140.134.25.164'  # DESKTOP-2LNIJAK\MSSQLSERVER
-    username = r'Vivian'
-    password = 'L102210221022'
-    database_name = 'traing_result'
-    port = 1433
-    conn_str = f'mssql+pymssql://{username}:{password}@{server}:{port}/{database_name}'
-    engine = create_engine(conn_str)
-
+def check_wether_trained_params_SQL(engine, finalRecordTable, paramDict, limit, startDate, endDate):
     trained = False
 
     recordDF = pd.read_sql(f"SELECT * FROM {finalRecordTable}", con=engine)
+
+    # In some condition, the datatype of nesterov from SQL is object, thus convert it to boolean
+    booleanDictionary = {'1': True, '0': False}
+    recordDF['nesterov'] = recordDF['nesterov'].replace(booleanDictionary)
+    recordDF['nesterov'] = recordDF['nesterov'] == 'True'   # Convert to dtype: bool
+
+    # Debug
+    # checkCol = 'nesterov'
+    # print('recordDF:', recordDF[checkCol].head(3))
+    # print('paramDict:', paramDict[checkCol])
+    # print('paramsSeries:', pd.Series({checkCol: paramDict[checkCol]}))
+    # # Use trained data to make sure data type in both of the df and dict can be matched
+    # check = (recordDF[list(paramDict.keys())] == pd.Series(paramDict)).any()
+    # print(check, '='*20)
 
     # Check wether the model parameters have been trained before
     ifSameRow = (recordDF[list(paramDict.keys())] == pd.Series(paramDict)).all(1)
@@ -166,7 +173,7 @@ def train_model(paramDict, feature_train_scaled, feature_test_scaled, target_tra
 # @profile   # uncomment for memory obervation & don't use in debugger mode
 def main(randomSeedList, Dense1List, Dense2List, learningRateList,
              decayList, momentumList, epochsList, batchSizeList,
-             outputFilePath, processRecordFileName, finalRecordTable, limit,
+             outputFilePath, processRecordFileName, engine,finalRecordTable, limit,
              machine, runProcess):
     # Generate iterator for every combination of elements in lists
     paramIterator = itertools.product(randomSeedList, Dense1List, Dense2List, learningRateList,
@@ -211,7 +218,7 @@ def main(randomSeedList, Dense1List, Dense2List, learningRateList,
             # """ # Comment this snippet for initializing result file
 
             # Check final result data
-            trained = check_wether_trained_params_SQL(paramDict, limit, startDate, endDate)
+            trained = check_wether_trained_params_SQL(engine, finalRecordTable, paramDict, limit, startDate, endDate)
             # If trained == False, then program keep going.
             if trained == 'continue':
                 continue
@@ -228,8 +235,8 @@ def main(randomSeedList, Dense1List, Dense2List, learningRateList,
                 break
 
             # Debug
-            # write_log('Input')
-            # write_log(str(paramDict).replace(', ', ',\n').replace("{'", "{\n'").replace("}", "\n}"))
+            write_log('Input')
+            write_log(str(paramDict).replace(', ', ',\n').replace("{'", "{\n'").replace("}", "\n}"))
 
             # """ # Comment this snippet for initializing result file
 
@@ -309,11 +316,19 @@ if __name__ == '__main__':
     # runProcess = 'Single'  # Debug
     runProcess = sys.argv[2]  # Single, Double, Triple
 
+    server = '140.134.25.164'  # DESKTOP-2LNIJAK\MSSQLSERVER
+    username = r'Vivian'
+    password = 'L102210221022'
+    database_name = 'traing_result'
+    port = 1433
+    conn_str = f'mssql+pymssql://{username}:{password}@{server}:{port}/{database_name}'
+    engine = create_engine(conn_str)
+
     while True:
         # Model parameters
-        randomSeedList = [200]
-        Dense1List = np.random.randint(4, 144, size=1).tolist()
-        Dense2List = np.random.randint(4, 256, size=1).tolist()
+        randomSeedList = [randint(4, 200)]
+        Dense1List = [randint(4, 200)]  # np.random.randint(4, 144, size=4).tolist()
+        Dense2List = [randint(4, 200)]  # np.random.randint(4, 256, size=4).tolist()
         learningRateList = [0.00001]
         decayList = [0]
         momentumList = [0.9]
@@ -322,7 +337,7 @@ if __name__ == '__main__':
 
         main(randomSeedList, Dense1List, Dense2List, learningRateList,
              decayList, momentumList, epochsList, batchSizeList,
-             outputFilePath, processRecordFileName, finalRecordTable, limit,
+             outputFilePath, processRecordFileName, engine,finalRecordTable, limit,
              machine, runProcess)
         write_log('The End of Execution')
 
