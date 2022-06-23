@@ -185,27 +185,41 @@ def main(randomSeedList, Dense1List, Dense2List, learningRateList,
         allDatasetDf = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5')
         mask = allDatasetDf['date'].isin(['2021-01-03'])     # Predict from 2021-01-03
         startIdx = mask[mask].index.tolist()[0] + 10         # Plus 10 make it start from 2021-01-03
+        modulo = len(allDatasetDf) % 10
 
         # Ensure data at last duration be predicted: (len(allDatasetDf) + 10)
         for i_dataset in range(startIdx, len(allDatasetDf) + 10, 10):
             # Ensure data at last duration be predicted
-            if i_dataset > len(allDatasetDf):
+            isLastDuration = i_dataset > len(allDatasetDf)
+            if isLastDuration:
                 i_dataset = len(allDatasetDf) - 1
+                datasetDf = allDatasetDf.loc[:i_dataset, ]
+                startDate = datasetDf["date"][i_dataset - modulo]
+                endDate = datasetDf["date"][i_dataset]
 
-            datasetDf = allDatasetDf.loc[:i_dataset, ]
-            startDate = datasetDf["date"][i_dataset - 10]    # Predict from this date at this time
-            endDate = datasetDf["date"][i_dataset]           # Predict from this date at this time
+                write_log(f'{"=" * 20} predict date {startDate} ~ {endDate} {"=" * 20} ')
 
-            write_log(f'{"=" * 20} predict date {startDate} ~ {endDate} {"=" * 20} ')
+                new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date', 'close'])]
+                new_target = np.array(datasetDf['close'])
 
-            # Select all rows, all columns except date and close as feature
-            new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date', 'close'])]
-            # Select close price as target
-            # "Func: train_test_split" must input DataFrame or numpy array,
-            # Turn pd.Series into np.array.
-            new_target = np.array(datasetDf['close'])
+                test_size = modulo / len(new_target)
 
-            test_size = 10 / len(new_target)                 # Split last 10 days into test dataset
+            else:
+                datasetDf = allDatasetDf.loc[:i_dataset, ]
+                startDate = datasetDf["date"][i_dataset - 10]  # Predict from this date at this time
+                endDate = datasetDf["date"][i_dataset]  # Predict from this date at this time
+
+                write_log(f'{"=" * 20} predict date {startDate} ~ {endDate} {"=" * 20} ')
+
+                # Select all rows, all columns except date and close as feature
+                new_feature = datasetDf.iloc[:, ~datasetDf.columns.isin(['date', 'close'])]
+                # Select close price as target
+                # "Func: train_test_split" must input DataFrame or numpy array,
+                # Turn pd.Series into np.array.
+                new_target = np.array(datasetDf['close'])
+
+                test_size = 10 / len(new_target)  # Split last 10 days into test dataset
+
             feature_train, feature_test, target_train, target_test = train_test_split(new_feature, new_target,
                                                                                       test_size=test_size,
                                                                                       shuffle=False)
