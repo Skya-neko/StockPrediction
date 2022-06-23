@@ -152,7 +152,7 @@ def observed_modelDF(table, limitRMSE, countDuration, endureRMSE):
 if __name__ == '__main__':
     table = 'ANN_Two_Result'
     limitRMSE = 15
-    countDuration = 15  # At least n records satiesfy the limitRMSE
-    endureRMSE = 50  # 50
+    countDuration = 23  # At least n records satiesfy the limitRMSE
+    endureRMSE = 18  # 50
     bestDF = best_modelDF(table, limitRMSE)
     observedDF = observed_modelDF(table, limitRMSE, countDuration, endureRMSE)

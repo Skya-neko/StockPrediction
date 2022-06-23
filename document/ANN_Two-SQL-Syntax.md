@@ -88,3 +88,15 @@ AND C.[verbose] = D.[verbose]
 AND C.[batch_size] = D.[batch_size]
 WHERE C.[random_seed] IS NULL
 ```
+
+## Best model until now
+```sql=
+SELECT *
+FROM [traing_result].[dbo].[ANN_Two_Result]
+WHERE [random_seed] = 90
+AND [Dense1Units] = 7
+AND [Dense2Units] = 22
+AND [learning_rate] = 0.000001
+AND [epochs] = 4000
+ORDER BY startDate
+```
