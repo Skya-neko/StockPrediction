@@ -11,6 +11,7 @@ xcopy  %project_root%\data\Step_0_ANN_Two_Result_ProcessC.csv  %instance_root%\d
 xcopy  %project_root%\data\Step_0_ANN_Two_Result_ProcessD.csv  %instance_root%\data\Step_0_ANN_Two_Result_ProcessD.csv  /Y
 xcopy  %project_root%\data\Step_0_ANN_Two_Result_ProcessE.csv  %instance_root%\data\Step_0_ANN_Two_Result_ProcessE.csv  /Y
 xcopy  %project_root%\data\Step_1_Dataset.csv  %instance_root%\data\Step_1_Dataset.csv  /Y
+xcopy  %project_root%\data\Step_0_ANN_Two_ObservedLog.csv  %instance_root%\data\Step_0_ANN_Two_ObservedLog.csv  /Y
 @REM package
 xcopy  %project_root%\package\Step_1_ANN_Two.py   %instance_root%\package\Step_1_ANN_Two.py  /Y
 xcopy  %project_root%\package\Step_1_ANN_Two_ModelDFIn.py   %instance_root%\package\Step_1_ANN_Two_ModelDFIn.py  /Y
@@ -38,4 +39,4 @@ xcopy  %project_root%\package\Step_1_NewEnvBuild_Run.bat  %instance_root%\packag
 
 
 
-pause
+@REM pause

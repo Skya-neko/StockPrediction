@@ -50,4 +50,6 @@ resultDF.to_sql(toTable, engine, if_exists='replace', index=False,
                        }
                 )
 write_log('Results to SQL End')
+resultDF = resultDF.head(0)  # Truncate table
+resultDF.to_csv('./data/Step_0_ANN_Two_Result.csv', encodings='big5', index=False)
 
