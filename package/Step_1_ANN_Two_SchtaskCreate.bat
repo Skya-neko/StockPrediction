@@ -1,4 +1,4 @@
-schtasks /create  /sc minute  /mo 30 /sd 2022/06/17 /st 22:50 /ed 2022/07/10 /tn ANN_Two /tr  D:\StockPrediction\StockPrediction\package\Step_1_ANN_Two_CombineCSV_Run.bat
+schtasks /create  /sc minute  /mo 30 /sd 2022/06/17 /st 22:00 /ed 2022/08/10 /tn ANN_Two /tr  D:\StockPrediction\StockPrediction\package\Step_1_ANN_Two_CombineCSV_Run.bat
 schtasks | find "ANN_Two"
 pause
 @REM schtasks /delete /tn ANN_Two ::Delete the job
