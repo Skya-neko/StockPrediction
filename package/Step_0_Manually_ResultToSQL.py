@@ -1,3 +1,6 @@
+"""
+For manually execute use.
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.types import *
 import pandas as pd
@@ -8,7 +11,7 @@ username = r'Vivian'  #DESKTOP-2LNIJAK\Vivian
 password = 'L102210221022'
 database_name = 'traing_result'
 port = 1433
-toTable = 'ANN_Two_Result'
+# toTable = 'ANN_Two_Result'  # Unless you need to execute, comment this.
 
 conn_str = f'mssql+pymssql://{username}:{password}@{server}:{port}/{database_name}'
 engine = create_engine(conn_str)

@@ -1,6 +1,6 @@
 cd ..\
 set  project_root=%cd%
-set  instance_root=D:\ANNTwo_CPU
+set  instance_root=C:\Users\Vivian\Desktop\ANNTwo_CPU
 echo Project root: %project_root%
 echo instance_root root: %instance_root%
 @REM data

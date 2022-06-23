@@ -25,6 +25,6 @@ with open(protjectRoot+r'\package\Step_1_ANN_Two.py', mode='r', encoding='utf8')
 
 with open(protjectRoot+r'\package\Step_0_ANN_Two_ResultToSQL.py', mode='r', encoding='utf8') as file:
     content = file.read()
-    content = content.replace("toTable = 'ANN_Two_Result_No_Machine'", f"toTable = 'ANN_Two_Result_{machine}")
+    content = content.replace("toTable = 'ANN_Two_Result_No_Machine'", f"toTable = 'ANN_Two_Result_{machine}'")
     with open(protjectRoot+r'\package\Step_0_ANN_Two_ResultToSQL.py', mode='w', encoding='utf8') as fileOut:
         fileOut.write(content)

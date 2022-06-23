@@ -1,6 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.types import *
 import pandas as pd
+from datetime import datetime
+
+def write_log(something):
+    print(f"INFO - {datetime.now().strftime('%Y/%m/%d %H:%M:%S')} - ", something)
 
 
 server = '140.134.25.164'  # DESKTOP-2LNIJAK\SQLEXPRESS'  :57226
@@ -45,5 +49,5 @@ resultDF.to_sql(toTable, engine, if_exists='replace', index=False,
                        'runProcess':  NVARCHAR(20),
                        }
                 )
-print('End')
+write_log('Results to SQL End')
 
