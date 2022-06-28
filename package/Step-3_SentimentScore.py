@@ -8,6 +8,8 @@ import time
 from ckiptagger import WS, POS, NER
 from ckiptagger import construct_dictionary
 from datetime import datetime, timedelta
+# import sys  # Debug
+# sys.path.append(r'D:\StockPrediction\StockPrediction')  # Debug
 
 
 ws = WS("../Step-3_CKIPtaggerModule/data")
@@ -64,7 +66,8 @@ def sum_category_score(filename, category):
 
     sentenceDF = pd.read_csv(filename)
     # Calculate sentiment score of each sentence in sentences_of_a_keyword.csv
-    for i_sentence in range(len(sentenceDF)):
+    # for i_sentence in range(len(sentenceDF)):
+    for i_sentence in range(60):
         t0 = time.time()
 
         sentence = sentenceDF['Sentence'][i_sentence]
@@ -88,8 +91,8 @@ def sum_category_score(filename, category):
     scoreDF = scoreDF.groupby(scoreDF['PublishDate']).sum()    # Sum the score at the same day
     scoreDF.reset_index(inplace=True)                          # After groupby function, PubilshDate will become index
 
-    i_date = datetime.strptime('2017-01-01', "%Y-%m-%d")
-    endDate = datetime.strptime('2021-12-31', "%Y-%m-%d")
+    i_date = datetime.strptime('2016-12-30', "%Y-%m-%d")
+    endDate = datetime.strptime('2016-12-31', "%Y-%m-%d")
 
     # Remove days beyond the duration we want
     scoreDF['PublishDate'] = pd.to_datetime(scoreDF['PublishDate'])
@@ -98,7 +101,8 @@ def sum_category_score(filename, category):
     scoreDF['PublishDate'] = scoreDF['PublishDate'].dt.strftime('%Y-%m-%d')
 
     scoreDF = scoreDF.sort_values(by=['PublishDate'], ascending=True)
-    scoreDF.to_csv(f'./data/Step-2_Score_{category}.csv', index=False)
+    # scoreDF.to_csv(f'./data/Step-2_Score_{category}.csv', index=False)
+    return scoreDF  # Debug
 
 
 def Balance_len_of_categories(categoryA, categoryB):
@@ -118,7 +122,7 @@ def Balance_len_of_categories(categoryA, categoryB):
     for i in range(len(dataToFillUpB)):
         scoreBDF.loc[len(scoreBDF)] = [dataToFillUpB.loc[i], 0]   # Append row to scoreBDF, the index of it will be -1
     scoreBDF.sort_values(by=['PublishDate'], ascending=True, inplace=True)
-    scoreBDF.to_csv(f'./data/Step-2_Score_{categoryB}.csv', index=False)
+    # scoreBDF.to_csv(f'./data/Step-2_Score_{categoryB}.csv', index=False)
 
 
 
@@ -135,22 +139,22 @@ def deduct_antiTSMC_score(categoryA, categoryB):
     categoryADF['Anti-Score'] = categoryBDF['Score']
     categoryADF['Score'] = categoryADF['Score'] - categoryADF['Anti-Score']
     categoryADF.drop(['Anti-Score'], axis=1, inplace=True)
-    categoryADF.to_csv(f'./data/Step-2_SentimentScore.csv', index=False)
+    # categoryADF.to_csv(f'./data/Step-2_SentimentScore.csv', index=False)
 
 
 TSMCSentencesFile = './data/Step-4_Sentences_TSMC.csv'
 antiTSMCSentencesFile = './data/Step-4_Sentences_antiTSMC.csv'
 
 # Run 1
-# sum_category_score(TSMCSentencesFile, 'TSMC')
-# sum_category_score(antiTSMCSentencesFile, 'antiTSMC')
+haha = sum_category_score(TSMCSentencesFile, 'TSMC')
+lala = sum_category_score(antiTSMCSentencesFile, 'antiTSMC')
 
 # Run 2
 # Balance_len_of_categories('TSMC', 'antiTSMC')
 # Balance_len_of_categories('antiTSMC', 'TSMC')
 
 # Run 3
-deduct_antiTSMC_score('TSMC', 'antiTSMC')
+# deduct_antiTSMC_score('TSMC', 'antiTSMC')
 
 
 

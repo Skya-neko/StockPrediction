@@ -340,13 +340,13 @@ if __name__ == '__main__':
 
     while True:
         # Model parameters
-        randomSeedList = np.random.randint(0, 200, size=10).tolist()
-        Dense1List = [randint(4, 200)]  # np.random.randint(4, 144, size=4).tolist()
-        Dense2List = [randint(4, 200)]  # np.random.randint(4, 256, size=4).tolist()
-        learningRateList = [0.00001, 0.000001]
-        decayList = [0]
-        momentumList = [0.9]
-        epochsList = [2000, 4000]
+        randomSeedList = np.random.randint(0, 1000, size=10).tolist()
+        Dense1List = [randint(4, 256)]  # np.random.randint(4, 144, size=4).tolist()
+        Dense2List = [randint(4, 256)]  # np.random.randint(4, 256, size=4).tolist()
+        learningRateList = [0.00001, 0.000001, 0.0000001, 0.00000005]
+        decayList = [0, 0.0001, 0.000001]
+        momentumList = [0.9, 0.5]
+        epochsList = [4000]
         batchSizeList = [10]
 
         main(randomSeedList, Dense1List, Dense2List, learningRateList,
