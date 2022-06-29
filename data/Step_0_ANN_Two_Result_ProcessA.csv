@@ -1,1 +1,2 @@
 modelName,score,rmse,spendTime,executionTime,startDate,endDate,random_seed,Dense1Units,Dense2Units,learning_rate,decay,momentum,nesterov,optimizer,loss,epochs,verbose,batch_size,machine,runProcess
+keras_4_98116.h5,24.81,4.98,251.60,2022/06/28 18:53:49,2021-12-26,2021-12-29,39,21,151,1e-06,0.0,0.9,True,sgd,mean_squared_error,4000,0,10,Vivian,Double

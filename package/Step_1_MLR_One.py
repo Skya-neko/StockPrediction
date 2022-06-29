@@ -54,9 +54,9 @@ def PltCombData( ):
     
     #設定樣式
     plt.grid(linestyle='-.')                                            #在圖上顯示網底
-    plt.savefig('./data/Step_0_MLROneResult.png')
-    plt.close()  # prevent matplotlib auto plot
-    # plt.show()
+    # plt.savefig('./data/Step_0_MLROneResult.png')
+    # plt.close()  # prevent matplotlib auto plot
+    plt.show()
         
 
      
@@ -86,7 +86,7 @@ model = LinearRegression()                                  #使用線性模型�
 model.fit(feature_train_scaled, target_train)               #將特徵值和目標值(多個自變數和一個依變數)餵給模型，並開始做模型擬合
                                                             #fit後，model這個物件就已經被訓練完成，成為我們要拿來預測資料的模型
 
-
+print(model.get_params())
 #用測試集預測結果
 feature_test_scaled = scaler.transform(feature_test)
 pred = model.predict(feature_test_scaled)                   #predictByTest是預測後得出的收盤價，而他的長度就是pridectedDays

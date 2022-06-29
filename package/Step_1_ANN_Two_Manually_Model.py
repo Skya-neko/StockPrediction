@@ -12,6 +12,8 @@ from tensorflow.compat.v1.keras import Sequential
 from tensorflow.compat.v1.keras.layers import Dense
 from tensorflow.compat.v1.keras.optimizers import SGD
 from tensorflow.compat.v1 import set_random_seed
+from tensorflow.keras.utils import plot_model
+
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -47,6 +49,23 @@ if __name__ == '__main__':
     paramDict = observedDF.iloc[0].to_dict()
     if paramDict['nesterov'] == 'True':
         paramDict['nesterov'] = True
+
+
+    # paramDict = {
+    #     # In tuning, random_seed is not important in statistic result
+    #     'random_seed': 200,
+    #     'Dense1Units': 40,
+    #     'Dense2Units': 58,
+    #     'learning_rate': 0.00001,
+    #     'decay': 0.0,
+    #     'momentum': 0.9,
+    #     'nesterov': True,
+    #     'optimizer': 'sgd',
+    #     'loss': 'mean_squared_error',
+    #     'epochs': 2000,
+    #     'verbose': 0,
+    #     'batch_size': 10,
+    # }
 
 
     # ==================================================================================================================
@@ -96,6 +115,7 @@ if __name__ == '__main__':
                                                                                   test_size=test_size,
                                                                                   shuffle=False)
 
+
         scaler = MinMaxScaler()
         feature_train_scaled = scaler.fit_transform(feature_train)
         feature_test_scaled = scaler.transform(feature_test)
@@ -122,6 +142,10 @@ if __name__ == '__main__':
         pred = model.predict(feature_test_scaled)
         score = model.evaluate(feature_test_scaled, target_test, verbose=1)
         model.summary()
+
+        # Model plot
+        path = "./data./Step_0_model_plot_ANN_Two.png"
+        plot_model(model, show_shapes=True, to_file=path)
 
         count += 1
 
