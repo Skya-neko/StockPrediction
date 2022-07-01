@@ -17,7 +17,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 
 
-def CombData(pred):
+def CombData(pred, count):
     # 在前95%的交易日中，設定預測結果和收盤價一致
     sameDays = len(datasetDf) - len(pred)  # 預測結果和收盤價一致的天數
     datasetDf.loc[:, 'predictedValue'] = datasetDf.loc[:,
@@ -25,10 +25,12 @@ def CombData(pred):
 
     # 在後5%的交易日中，用測試集推算預測股價，用預測的資料蓋掉原後5%的資料
     datasetDf.loc[sameDays:, 'predictedValue'] = pred
+    # datasetDf[['date', 'close', 'predictedValue']].to_csv(f'./data/Step_0_MLR_Two_Accuracy/Step_0_MLR_Two_Accuracy_{count}.csv', encoding='big5',
+    #                                                       index=False)
 
 
 def PltCombData(i_dataset, count):
-    pltStart = i_dataset - 20 # int(len(datasetDf) * 9 / 10)
+    pltStart = i_dataset - 20  # int(len(datasetDf) * 9 / 10)
 
     plt.figure(figsize=(25, 10))
     plt.title('Multiple Linear Regression', fontsize=25)
@@ -115,11 +117,11 @@ if __name__ == '__main__':
 
         pred = model.predict(feature_test_scaled)
 
-        CombData(pred)
-        PltCombData(i_dataset,count)
+        CombData(pred, count)
+        # PltCombData(i_dataset, count)
 
         rmse = mean_squared_error(target_test, pred, squared=False)
-        rmseList.append(rmse)
+        rmseList.append(float("{:.4f}".format(rmse)))
 
         count += 1
 
