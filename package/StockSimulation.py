@@ -6,7 +6,9 @@ from datetime import datetime
 datasetDF = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5', index_col=False)
 datasetDF = datasetDF[['date', 'open']]
 
-modelFile = 'Step_0_ANN_One_Accuracy.csv'
+# modelFile = 'Step_0_ANN_One_Accuracy.csv'
+# modelFile = 'Step_0_MLR_One_Accuracy.csv'
+modelFile = 'Step_0_ANN_Two_Accuracy.csv'
 predictDF = pd.read_csv(f'./data/{modelFile}', encoding='big5', index_col=False)
 predictDF = predictDF[['date', 'close', 'predictedValue']]
 # Tick calculate: The tick type in prediction duration only has 1 type: tick = 1
@@ -111,3 +113,12 @@ maxLoss = predictDF['income'].min()
 maxProfit = predictDF['income'].max()
 ROI = income / predictDF['call'].max()
 averageROI = ROI / tradeTimes
+
+print(f'income: {income}')
+print(f'tradeTimes: {tradeTimes}')
+print(f'tradeExpense: {tradeExpense}')
+print(f'odds: {odds}')
+print(f'maxLoss: {maxLoss}')
+print(f'maxProfit: {maxProfit}')
+print(f'ROI: {ROI}')
+print(f'averageROI: {averageROI}')
