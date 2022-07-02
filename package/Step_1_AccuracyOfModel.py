@@ -7,7 +7,8 @@
 import pandas as pd
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-accuracyFile = './data/Step_0_ANN_One_Accuracy.csv'
+# accuracyFile = './data/Step_0_ANN_One_Accuracy.csv'
+accuracyFile = './data/Step_0_ANN_Two_Accuracy.csv'
 datasetDF = pd.read_csv(accuracyFile, encoding='big5', index_col=False)
 mask = datasetDF['date'].isin(['2021-01-03'])     # Predict from 2021-01-03
 startIdx = mask[mask].index.tolist()[0]
