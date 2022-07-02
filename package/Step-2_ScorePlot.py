@@ -21,21 +21,21 @@ plt.setp(plt.gca().get_xticklabels(),rotation=30)   #旋轉x軸標籤，以免�
 
 #設定樣式
 plt.grid(linestyle='-.')                            #在圖上顯示網底
-plt.savefig('./data/Step_1_SentimentScoreDistribution.png')
+# plt.savefig('./data/Step_1_SentimentScoreDistribution.png')
 plt.show()
 
 
 
 
-# ========
-# Score status
-import pandas as pd
-datasetDF = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5', index_col=False)
-# mask = datasetDF['date'].isin(['2020-12-30'])
-# startInd = mask[mask].index.tolist()[0]
-# mask = datasetDF['date'].isin(['2021-12-29'])
-# endInd = mask[mask].index.tolist()[0]
-#
-# datasetDF = datasetDF.iloc[startInd:endInd+1].reset_index(drop=True)
-datasetDF['Score'].describe()
-# ========
+# # ========
+# # Score status
+# import pandas as pd
+# datasetDF = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5', index_col=False)
+# # mask = datasetDF['date'].isin(['2020-12-30'])
+# # startInd = mask[mask].index.tolist()[0]
+# # mask = datasetDF['date'].isin(['2021-12-29'])
+# # endInd = mask[mask].index.tolist()[0]
+# #
+# # datasetDF = datasetDF.iloc[startInd:endInd+1].reset_index(drop=True)
+# datasetDF['Score'].describe()
+# # ========

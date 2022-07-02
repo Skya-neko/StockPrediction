@@ -45,7 +45,7 @@ def PltCombData(i_dataset, count):
     pltStart = i_dataset - 20  # int(len(datasetDf) * 9 / 10)
 
     plt.figure(figsize=(25, 10))
-    plt.title('Multiple Linear Regression', fontsize=25)
+    plt.title('Artificial Neural Network', fontsize=25)
     datasetDf['close'][pltStart:].plot(color='blue', label='Real Data')
     datasetDf['predictedValue'][pltStart:].plot(color='red', label='predicted Data')
     plt.legend(loc='best', fontsize=18)

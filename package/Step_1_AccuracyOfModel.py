@@ -7,11 +7,23 @@
 import pandas as pd
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from sklearn.metrics import mean_squared_error
+
 # accuracyFile = './data/Step_0_ANN_One_Accuracy.csv'
 accuracyFile = './data/Step_0_ANN_Two_Accuracy.csv'
 datasetDF = pd.read_csv(accuracyFile, encoding='big5', index_col=False)
 mask = datasetDF['date'].isin(['2021-01-03'])     # Predict from 2021-01-03
 startIdx = mask[mask].index.tolist()[0]
+
+# =======
+# rmse
+target_test = datasetDF['close'][startIdx:]
+pred = datasetDF['predictedValue'][startIdx:]
+rmse = mean_squared_error(target_test, pred, squared=False)
+# =======
+
+
+
 startDate = datasetDF["date"][startIdx]
 endDate = datasetDF["date"].iloc[-1]
 
@@ -60,4 +72,5 @@ for i in range(len(closeSpread)):
 accuracy = (TP+TN) / (TP+TN+FP+FN)
 precision = TP / (TP+FP)
 recall = TP / (TP+FN)
+recallNegative = TN / (TN+FP)  # recall of negative sample
 f1 = 2 * precision * recall / (precision+recall)

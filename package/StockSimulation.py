@@ -6,9 +6,9 @@ from datetime import datetime
 datasetDF = pd.read_csv('./data/Step_1_Dataset.csv', encoding='big5', index_col=False)
 datasetDF = datasetDF[['date', 'open']]
 
-modelFile = 'Step_0_ANN_One_Accuracy.csv'
+# modelFile = 'Step_0_ANN_One_Accuracy.csv'
 # modelFile = 'Step_0_MLR_One_Accuracy.csv'
-# modelFile = 'Step_0_ANN_Two_Accuracy.csv'
+modelFile = 'Step_0_ANN_Two_Accuracy.csv'
 predictDF = pd.read_csv(f'./data/{modelFile}', encoding='big5', index_col=False)
 predictDF = predictDF[['date', 'close', 'predictedValue']]
 # Tick calculate: The tick type in prediction duration only has 1 type: tick = 1
