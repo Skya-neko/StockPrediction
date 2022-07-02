@@ -153,6 +153,6 @@ if __name__ == '__main__':
     table = 'ANN_Two_Result'
     limitRMSE = 15
     countDuration = 23  # At least n records satiesfy the limitRMSE
-    endureRMSE = 17.7  # 50
+    endureRMSE = 19  # 17.7  # 50
     bestDF = best_modelDF(table, limitRMSE)
     observedDF = observed_modelDF(table, limitRMSE, countDuration, endureRMSE)
