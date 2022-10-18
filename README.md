@@ -23,9 +23,42 @@ Predicting stock price trend using neural network based on financial lexicon and
 + 預測明日股價
 + 模擬投資
 
+## 開發環境&套件
++ Windows10
++ Python 3
++ tensorflow
++ matplotlib
++ pandas
++ request
++ sklearn
++ multiprocessing
+
+## 實驗方法
+![實驗方法](img/AllMethods.png)
+
+## 開始訓練模型
+將package中的module從step5執行到step0
+訓練出最佳模型
+
+## 使用最佳模型預測
+找出所有模型中RMSE最小的(最優模型)，套用該模型參數。
+本研究針對"視窗法-ANN"找出的最佳模型參數如下圖：
+![best-model](img/BestModelPatameter.png)
 
 ## 模型成效
-[model performance](img/ModelF1ScoreComparison.png)
-[Comparison of income](img/IncomeComparison.png)
+我們的模型在RMSE上有良好的表現，尤其視窗法-ANN的RMSE表現最佳
+![model_performance_RMSE](img/RMSEComparison.png)
+在準確率的表現上以視窗法-ANN 表現最佳
+![model performance_f1](img/ModelF1ScoreComparison.png)
+第一種投資策略除了傳統法-MLR 會獲
+利，其餘皆是虧損；第二種投資策略（從不同的範圍中挑選出獲利最高的）皆
+是獲利，但獲利皆不到9萬台幣；第三種投資策略的結果皆是獲利，尤以視窗法
+-ANN 的獲利表現為全部組合中最優的，高達325,398元。
+
+![Comparison of income](img/IncomeComparison.png)
+
+
+## 開發人員
++ Violet
 
 
