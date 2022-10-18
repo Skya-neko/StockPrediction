@@ -25,6 +25,7 @@ Predicting stock price trend using neural network based on financial lexicon and
 
 
 ## 模型成效
-
+[model performance](img/ModelF1ScoreComparison.png)
+[Comparison of income](img/IncomeComparison.png)
 
 
